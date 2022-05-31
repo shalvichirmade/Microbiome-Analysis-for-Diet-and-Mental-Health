@@ -1,0 +1,809 @@
+#### Weston Project - Microbiome Analysis
+### Author: Shalvi Chirmade
+### Date start: May 9, 2022
+# ---------------------------------------------------------------------
+
+## MetaPhaln 3.0 Pipeline to be used for this analysis
+
+# Links used as guidelines to create this pipeline
+# https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-3.0
+# https://github.com/biobakery/biobakery/wiki/metaphlan3
+
+## Download meptaphlan and all it's dependencies in a conda environment
+conda create --name mpa -c bioconda python=3.7 metaphlan
+
+# Terminal output - all the file dependencies
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /Users/shalvichirmade/miniconda3/envs/mpa
+
+  added / updated specs:
+    - metaphlan
+    - python=3.7
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    biom-format-2.1.12         |   py37h49e79e5_1        10.4 MB  conda-forge
+    biopython-1.79             |   py37h271585c_1         2.6 MB  conda-forge
+    bowtie2-2.4.5              |   py37h0f016ca_2         1.4 MB  bioconda
+    brotlipy-0.7.0             |py37h69ee0a8_1004         366 KB  conda-forge
+    bx-python-0.8.13           |   py37h2b10027_1         931 KB  bioconda
+    capnproto-0.9.1            |       h45c0eea_5         3.8 MB  conda-forge
+    certifi-2022.5.18.1        |   py37hf985489_0         150 KB  conda-forge
+    cffi-1.15.0                |   py37h446072c_0         218 KB  conda-forge
+    click-8.1.3                |   py37hf985489_0         145 KB  conda-forge
+    cryptography-37.0.2        |   py37h0169fcd_0         1.2 MB  conda-forge
+    fonttools-4.33.3           |   py37h994c40b_0         1.6 MB  conda-forge
+    future-0.18.2              |   py37hf985489_5         709 KB  conda-forge
+    h5py-3.6.0                 |nompi_py37h0ac0de7_100         1.1 MB  conda-forge
+    hdf5-1.12.1                |nompi_ha60fbc9_104         3.7 MB  conda-forge
+    importlib-metadata-4.11.4  |   py37hf985489_0          33 KB  conda-forge
+    kiwisolver-1.4.2           |   py37h18621fa_1          61 KB  conda-forge
+    krb5-1.19.3                |       hb49756b_0         1.2 MB  conda-forge
+    libcurl-7.83.1             |       h372c54d_0         317 KB  conda-forge
+    libnghttp2-1.47.0          |       h942079c_0         871 KB  conda-forge
+    libssh2-1.10.0             |       h52ee1ee_2         221 KB  conda-forge
+    matplotlib-base-3.5.2      |   py37h80cb303_0         7.4 MB  conda-forge
+    numpy-1.21.6               |   py37h345d48f_0         6.0 MB  conda-forge
+    pandas-1.3.4               |   py37h5b83a90_1        11.3 MB  conda-forge
+    pillow-9.1.1               |   py37h1eb1bbc_0        44.9 MB  conda-forge
+    pip-22.1.1                 |     pyhd8ed1ab_0         1.5 MB  conda-forge
+    pysam-0.19.0               |   py37h64e44a1_0         2.3 MB  bioconda
+    pysocks-1.7.1              |   py37hf985489_5          28 KB  conda-forge
+    python-3.7.12              |haf480d7_100_cpython        24.3 MB  conda-forge
+    python-lzo-1.14            |   py37h1c4811e_1          18 KB  conda-forge
+    python_abi-3.7             |          2_cp37m           4 KB  conda-forge
+    scipy-1.7.3                |   py37h4e3cf02_0        19.7 MB  conda-forge
+    setuptools-59.8.0          |   py37hf985489_1         1.0 MB  conda-forge
+    statsmodels-0.13.2         |   py37h032687b_0        10.6 MB  conda-forge
+    typing-extensions-4.2.0    |       hd8ed1ab_1           8 KB  conda-forge
+    typing_extensions-4.2.0    |     pyha770c72_1          27 KB  conda-forge
+    unicodedata2-14.0.0        |   py37h69ee0a8_1         497 KB  conda-forge
+    zipp-3.8.0                 |     pyhd8ed1ab_0          12 KB  conda-forge
+    zstd-1.5.2                 |       ha9df2e0_1         469 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:       161.0 MB
+
+The following NEW packages will be INSTALLED:
+
+  bcbio-gff          bioconda/noarch::bcbio-gff-0.6.9-pyh5e36f6f_0
+  biom-format        conda-forge/osx-64::biom-format-2.1.12-py37h49e79e5_1
+  biopython          conda-forge/osx-64::biopython-1.79-py37h271585c_1
+  blast              bioconda/osx-64::blast-2.6.0-boost1.64_2
+  boost-cpp          conda-forge/osx-64::boost-cpp-1.74.0-h8b082ac_8
+  bowtie2            bioconda/osx-64::bowtie2-2.4.5-py37h0f016ca_2
+  brotli             conda-forge/osx-64::brotli-1.0.9-h5eb16cf_7
+  brotli-bin         conda-forge/osx-64::brotli-bin-1.0.9-h5eb16cf_7
+  brotlipy           conda-forge/osx-64::brotlipy-0.7.0-py37h69ee0a8_1004
+  bx-python          bioconda/osx-64::bx-python-0.8.13-py37h2b10027_1
+  bzip2              conda-forge/osx-64::bzip2-1.0.8-h0d85af4_4
+  c-ares             conda-forge/osx-64::c-ares-1.18.1-h0d85af4_0
+  ca-certificates    conda-forge/osx-64::ca-certificates-2022.5.18.1-h033912b_0
+  cached-property    conda-forge/noarch::cached-property-1.5.2-hd8ed1ab_1
+  cached_property    conda-forge/noarch::cached_property-1.5.2-pyha770c72_1
+  capnproto          conda-forge/osx-64::capnproto-0.9.1-h45c0eea_5
+  certifi            conda-forge/osx-64::certifi-2022.5.18.1-py37hf985489_0
+  cffi               conda-forge/osx-64::cffi-1.15.0-py37h446072c_0
+  charset-normalizer conda-forge/noarch::charset-normalizer-2.0.12-pyhd8ed1ab_0
+  click              conda-forge/osx-64::click-8.1.3-py37hf985489_0
+  cmseq              bioconda/noarch::cmseq-1.0.4-pyhb7b1952_0
+  cryptography       conda-forge/osx-64::cryptography-37.0.2-py37h0169fcd_0
+  cycler             conda-forge/noarch::cycler-0.11.0-pyhd8ed1ab_0
+  dendropy           bioconda/noarch::dendropy-4.5.2-pyh3252c3a_0
+  diamond            bioconda/osx-64::diamond-2.0.15-h9d1909e_0
+  fasttree           bioconda/osx-64::fasttree-2.1.11-hdcdfbac_1
+  fonttools          conda-forge/osx-64::fonttools-4.33.3-py37h994c40b_0
+  freetype           conda-forge/osx-64::freetype-2.10.4-h4cff582_1
+  future             conda-forge/osx-64::future-0.18.2-py37hf985489_5
+  giflib             conda-forge/osx-64::giflib-5.2.1-hbcb3906_2
+  gsl                conda-forge/osx-64::gsl-2.7-h93259b0_0
+  h5py               conda-forge/osx-64::h5py-3.6.0-nompi_py37h0ac0de7_100
+  hdf5               conda-forge/osx-64::hdf5-1.12.1-nompi_ha60fbc9_104
+  htslib             bioconda/osx-64::htslib-1.15.1-hc057d7f_0
+  icu                conda-forge/osx-64::icu-70.1-h96cf925_0
+  idna               conda-forge/noarch::idna-3.3-pyhd8ed1ab_0
+  importlib-metadata conda-forge/osx-64::importlib-metadata-4.11.4-py37hf985489_0
+  iqtree             bioconda/osx-64::iqtree-2.2.0.3-h135ad0d_0
+  jbig               conda-forge/osx-64::jbig-2.1-h0d85af4_2003
+  jpeg               conda-forge/osx-64::jpeg-9e-h5eb16cf_1
+  kiwisolver         conda-forge/osx-64::kiwisolver-1.4.2-py37h18621fa_1
+  krb5               conda-forge/osx-64::krb5-1.19.3-hb49756b_0
+  lcms2              conda-forge/osx-64::lcms2-2.12-h577c468_0
+  lerc               conda-forge/osx-64::lerc-3.0-he49afe7_0
+  libblas            conda-forge/osx-64::libblas-3.9.0-14_osx64_openblas
+  libbrotlicommon    conda-forge/osx-64::libbrotlicommon-1.0.9-h5eb16cf_7
+  libbrotlidec       conda-forge/osx-64::libbrotlidec-1.0.9-h5eb16cf_7
+  libbrotlienc       conda-forge/osx-64::libbrotlienc-1.0.9-h5eb16cf_7
+  libcblas           conda-forge/osx-64::libcblas-3.9.0-14_osx64_openblas
+  libcurl            conda-forge/osx-64::libcurl-7.83.1-h372c54d_0
+  libcxx             conda-forge/osx-64::libcxx-14.0.3-hc203e6f_0
+  libdeflate         conda-forge/osx-64::libdeflate-1.10-h0d85af4_0
+  libedit            conda-forge/osx-64::libedit-3.1.20191231-h0678c8f_2
+  libev              conda-forge/osx-64::libev-4.33-haf1e3a3_1
+  libffi             conda-forge/osx-64::libffi-3.4.2-h0d85af4_5
+  libgfortran        conda-forge/osx-64::libgfortran-5.0.0-9_3_0_h6c81a4c_23
+  libgfortran5       conda-forge/osx-64::libgfortran5-9.3.0-h6c81a4c_23
+  liblapack          conda-forge/osx-64::liblapack-3.9.0-14_osx64_openblas
+  libnghttp2         conda-forge/osx-64::libnghttp2-1.47.0-h942079c_0
+  libopenblas        conda-forge/osx-64::libopenblas-0.3.20-openmp_hb3cd9ec_0
+  libpng             conda-forge/osx-64::libpng-1.6.37-h7cec526_2
+  libssh2            conda-forge/osx-64::libssh2-1.10.0-h52ee1ee_2
+  libtiff            conda-forge/osx-64::libtiff-4.3.0-h17f2ce3_3
+  libwebp            conda-forge/osx-64::libwebp-1.2.2-h28dabe5_0
+  libwebp-base       conda-forge/osx-64::libwebp-base-1.2.2-h0d85af4_1
+  libxcb             conda-forge/osx-64::libxcb-1.13-h0d85af4_1004
+  libzlib            conda-forge/osx-64::libzlib-1.2.11-h6c3fc93_1014
+  llvm-openmp        conda-forge/osx-64::llvm-openmp-14.0.3-ha654fa7_0
+  lz4-c              conda-forge/osx-64::lz4-c-1.9.3-he49afe7_1
+  lzo                conda-forge/osx-64::lzo-2.10-haf1e3a3_1000
+  mafft              bioconda/osx-64::mafft-7.505-ha5712d3_0
+  mash               bioconda/osx-64::mash-2.3-hf785b45_2
+  matplotlib-base    conda-forge/osx-64::matplotlib-base-3.5.2-py37h80cb303_0
+  metaphlan          bioconda/noarch::metaphlan-3.0.14-pyhb7b1952_0
+  munkres            bioconda/noarch::munkres-1.0.7-py_1
+  muscle             bioconda/osx-64::muscle-5.1-hb339e23_1
+  ncurses            conda-forge/osx-64::ncurses-6.3-h96cf925_1
+  numpy              conda-forge/osx-64::numpy-1.21.6-py37h345d48f_0
+  openjpeg           conda-forge/osx-64::openjpeg-2.4.0-h6e7aa92_1
+  openssl            conda-forge/osx-64::openssl-1.1.1o-hfe4f2af_0
+  packaging          conda-forge/noarch::packaging-21.3-pyhd8ed1ab_0
+  pandas             conda-forge/osx-64::pandas-1.3.4-py37h5b83a90_1
+  patsy              conda-forge/noarch::patsy-0.5.2-pyhd8ed1ab_0
+  perl               conda-forge/osx-64::perl-5.32.1-2_h0d85af4_perl5
+  phylophlan         bioconda/noarch::phylophlan-3.0.2-py_0
+  pillow             conda-forge/osx-64::pillow-9.1.1-py37h1eb1bbc_0
+  pip                conda-forge/noarch::pip-22.1.1-pyhd8ed1ab_0
+  pthread-stubs      conda-forge/osx-64::pthread-stubs-0.4-hc929b4f_1001
+  pycparser          conda-forge/noarch::pycparser-2.21-pyhd8ed1ab_0
+  pyopenssl          conda-forge/noarch::pyopenssl-22.0.0-pyhd8ed1ab_0
+  pyparsing          conda-forge/noarch::pyparsing-3.0.9-pyhd8ed1ab_0
+  pysam              bioconda/osx-64::pysam-0.19.0-py37h64e44a1_0
+  pysocks            conda-forge/osx-64::pysocks-1.7.1-py37hf985489_5
+  python             conda-forge/osx-64::python-3.7.12-haf480d7_100_cpython
+  python-dateutil    conda-forge/noarch::python-dateutil-2.8.2-pyhd8ed1ab_0
+  python-lzo         conda-forge/osx-64::python-lzo-1.14-py37h1c4811e_1
+  python_abi         conda-forge/osx-64::python_abi-3.7-2_cp37m
+  pytz               conda-forge/noarch::pytz-2022.1-pyhd8ed1ab_0
+  raxml              bioconda/osx-64::raxml-8.2.12-ha5712d3_4
+  readline           conda-forge/osx-64::readline-8.1-h05e3726_0
+  requests           conda-forge/noarch::requests-2.27.1-pyhd8ed1ab_0
+  samtools           bioconda/osx-64::samtools-1.15.1-h9f30945_0
+  scipy              conda-forge/osx-64::scipy-1.7.3-py37h4e3cf02_0
+  seaborn            conda-forge/noarch::seaborn-0.11.2-hd8ed1ab_0
+  seaborn-base       conda-forge/noarch::seaborn-base-0.11.2-pyhd8ed1ab_0
+  setuptools         conda-forge/osx-64::setuptools-59.8.0-py37hf985489_1
+  six                conda-forge/noarch::six-1.16.0-pyh6c4a22f_0
+  sqlite             conda-forge/osx-64::sqlite-3.38.5-hd9f0692_0
+  statsmodels        conda-forge/osx-64::statsmodels-0.13.2-py37h032687b_0
+  tbb                conda-forge/osx-64::tbb-2020.2-h940c156_4
+  tk                 conda-forge/osx-64::tk-8.6.12-h5dbffcc_0
+  trimal             bioconda/osx-64::trimal-1.4.1-hcd10b59_6
+  typing-extensions  conda-forge/noarch::typing-extensions-4.2.0-hd8ed1ab_1
+  typing_extensions  conda-forge/noarch::typing_extensions-4.2.0-pyha770c72_1
+  unicodedata2       conda-forge/osx-64::unicodedata2-14.0.0-py37h69ee0a8_1
+  urllib3            conda-forge/noarch::urllib3-1.26.9-pyhd8ed1ab_0
+  wheel              conda-forge/noarch::wheel-0.37.1-pyhd8ed1ab_0
+  xorg-libxau        conda-forge/osx-64::xorg-libxau-1.0.9-h35c211d_0
+  xorg-libxdmcp      conda-forge/osx-64::xorg-libxdmcp-1.1.3-h35c211d_0
+  xz                 conda-forge/osx-64::xz-5.2.5-haf1e3a3_1
+  zipp               conda-forge/noarch::zipp-3.8.0-pyhd8ed1ab_0
+  zlib               conda-forge/osx-64::zlib-1.2.11-h6c3fc93_1014
+  zstd               conda-forge/osx-64::zstd-1.5.2-ha9df2e0_1
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+pip-22.1.1           | 1.5 MB    | ######################################################################################## | 100% 
+click-8.1.3          | 145 KB    | ######################################################################################## | 100% 
+matplotlib-base-3.5. | 7.4 MB    | ######################################################################################## | 100% 
+pillow-9.1.1         | 44.9 MB   | ######################################################################################## | 100% 
+h5py-3.6.0           | 1.1 MB    | ######################################################################################## | 100% 
+pysam-0.19.0         | 2.3 MB    | ######################################################################################## | 100% 
+python-3.7.12        | 24.3 MB   | ######################################################################################## | 100% 
+libnghttp2-1.47.0    | 871 KB    | ######################################################################################## | 100% 
+unicodedata2-14.0.0  | 497 KB    | ######################################################################################## | 100% 
+statsmodels-0.13.2   | 10.6 MB   | ######################################################################################## | 100% 
+hdf5-1.12.1          | 3.7 MB    | ######################################################################################## | 100% 
+zstd-1.5.2           | 469 KB    | ######################################################################################## | 100% 
+scipy-1.7.3          | 19.7 MB   | ######################################################################################## | 100% 
+pysocks-1.7.1        | 28 KB     | ######################################################################################## | 100% 
+kiwisolver-1.4.2     | 61 KB     | ######################################################################################## | 100% 
+numpy-1.21.6         | 6.0 MB    | ######################################################################################## | 100% 
+cryptography-37.0.2  | 1.2 MB    | ######################################################################################## | 100% 
+libssh2-1.10.0       | 221 KB    | ######################################################################################## | 100% 
+typing_extensions-4. | 27 KB     | ######################################################################################## | 100% 
+python-lzo-1.14      | 18 KB     | ######################################################################################## | 100% 
+fonttools-4.33.3     | 1.6 MB    | ######################################################################################## | 100% 
+python_abi-3.7       | 4 KB      | ######################################################################################## | 100% 
+typing-extensions-4. | 8 KB      | ######################################################################################## | 100% 
+importlib-metadata-4 | 33 KB     | ######################################################################################## | 100% 
+bx-python-0.8.13     | 931 KB    | ######################################################################################## | 100% 
+biopython-1.79       | 2.6 MB    | ######################################################################################## | 100% 
+future-0.18.2        | 709 KB    | ######################################################################################## | 100% 
+biom-format-2.1.12   | 10.4 MB   | ######################################################################################## | 100% 
+certifi-2022.5.18.1  | 150 KB    | ######################################################################################## | 100% 
+pandas-1.3.4         | 11.3 MB   | ######################################################################################## | 100% 
+brotlipy-0.7.0       | 366 KB    | ######################################################################################## | 100% 
+krb5-1.19.3          | 1.2 MB    | ######################################################################################## | 100% 
+setuptools-59.8.0    | 1.0 MB    | ######################################################################################## | 100% 
+bowtie2-2.4.5        | 1.4 MB    | ######################################################################################## | 100% 
+capnproto-0.9.1      | 3.8 MB    | ######################################################################################## | 100% 
+zipp-3.8.0           | 12 KB     | ######################################################################################## | 100% 
+libcurl-7.83.1       | 317 KB    | ######################################################################################## | 100% 
+cffi-1.15.0          | 218 KB    | ######################################################################################## | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+
+# To activate the environment:
+conda activate mpa
+
+# To deactivate the environment:
+conda deactivate
+
+
+## First, start by carrying out the pre-processing steps. Done using Compute Canada.
+module avail # all available modules
+module keyword fastqc # search for the program "fastqc"
+module spider fastqc # search for available versions of the program
+
+
+## FastQC
+module keyword fastqc
+module spider fastqc/0.11.9 # latest version
+salloc --time=1:0:0 --ntasks=2 --account=def-tvanraay # interactive node
+module load fastqc/0.11.9
+module list # confirm that the module has loaded
+1-fastqc Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz -o ../fastqc > ../fastqc/reports/Patient1.txt 
+# Decided against reports for all as it only says "analysis complete" and I am checking after each submission
+2-fastqc Patient_2_S298_R1_001.fastq.gz Patient_2_S298_R2_001.fastq.gz -o ../fastqc
+3-fastqc Patient_3_S299_R1_001.fastq.gz Patient_3_S299_R2_001.fastq.gz -o ../fastqc
+4-fastqc Patient_4_S300_R1_001.fastq.gz Patient_4_S300_R2_001.fastq.gz -o ../fastqc
+5-fastqc Patient_5_S301_R1_001.fastq.gz Patient_5_S301_R2_001.fastq.gz -o ../fastqc
+6-fastqc Patient_6_S302_R1_001.fastq.gz Patient_6_S302_R2_001.fastq.gz -o ../fastqc
+7-fastqc Patient_7_S303_R1_001.fastq.gz Patient_7_S303_R2_001.fastq.gz -o ../fastqc
+9-fastqc Patient_9_S304_R1_001.fastq.gz Patient_9_S304_R2_001.fastq.gz -o ../fastqc
+11-fastqc Patient_11_S305_R1_001.fastq.gz Patient_11_S305_R2_001.fastq.gz -o ../fastqc
+ASD-fastqc Patient_ASD977_S306_R1_001.fastq.gz Patient_ASD977_S306_R2_001.fastq.gz -o ../fastqc
+
+# For example on patient 4: for each submission, these are the messages received:
+Picked up JAVA_TOOL_OPTIONS: -Xmx2g
+Started analysis of Patient_4_S300_R1_001.fastq.gz
+Approx 5% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 10% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 15% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 20% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 25% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 30% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 35% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 40% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 45% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 50% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 55% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 60% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 65% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 70% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 75% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 80% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 85% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 90% complete for Patient_4_S300_R1_001.fastq.gz
+Approx 95% complete for Patient_4_S300_R1_001.fastq.gz
+Analysis complete for Patient_4_S300_R1_001.fastq.gz
+Started analysis of Patient_4_S300_R2_001.fastq.gz
+Approx 5% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 10% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 15% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 20% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 25% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 30% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 35% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 40% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 45% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 50% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 55% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 60% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 65% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 70% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 75% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 80% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 85% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 90% complete for Patient_4_S300_R2_001.fastq.gz
+Approx 95% complete for Patient_4_S300_R2_001.fastq.gz
+Analysis complete for Patient_4_S300_R2_001.fastq.gz
+
+# Need to transport the .html files to my personal computer to check on the quality of each sequence
+scp shalvi@graham.computecanada.ca:~/scratch/WestonProject/fastqc/*.html . # . is the file I am in on my personal computer
+
+## Trimmomatic
+# MiGS (where sequencing was done) already conducted adapter trimming - will not be doing that in this step 
+module spider trimmomatic
+salloc --time=1:0:0 --ntasks=2 --account=def-tvanraay # interactive node
+module load trimmomatic/0.39
+module list
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz \
+../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz \
+../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz \
+LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 $>> ../trimmomatic/reports/Patient1.txt
+
+# Error message:
+Picked up JAVA_TOOL_OPTIONS: -Xmx2g
+TrimmomaticPE: Started with arguments:
+ -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 $
+Multiple cores found: Using 2 threads
+Exception in thread "main" java.lang.RuntimeException: Unknown trimmer: $
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:73)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+
+# Try again - specified threads
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -threads 30 -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz \
+../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz \
+../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz \
+LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 $>> ../trimmomatic/reports/Patient1.txt
+
+# Error message:
+Picked up JAVA_TOOL_OPTIONS: -Xmx2g
+TrimmomaticPE: Started with arguments:
+ -threads 30 -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 $
+Exception in thread "main" java.lang.RuntimeException: Unknown trimmer: $
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:73)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+
+# Try again - add specific adapter argument and remove lines
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz ILLUMINACLIP:/FILEPATH/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 $>> ../trimmomatic/reports/Patient1.txt
+
+# Error message:
+Picked up JAVA_TOOL_OPTIONS: -Xmx2g
+TrimmomaticPE: Started with arguments:
+ -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz ILLUMINACLIP:/FILEPATH/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 $
+Multiple cores found: Using 2 threads
+java.io.FileNotFoundException: /FILEPATH/TruSeq3-PE-2.fa (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:155)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Exception in thread "main" java.lang.RuntimeException: Unknown trimmer: $
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:73)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+
+
+# Try again - noticed $ instead of & in file output
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+# WORKED! Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx2g
+TrimmomaticPE: Started with arguments:
+ -phred33 Patient_1_S297_R1_001.fastq.gz Patient_1_S297_R2_001.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R1_001-se.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-pe.fastq.gz ../trimmomatic/Patient_1_S297_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+Multiple cores found: Using 2 threads
+Input Read Pairs: 3603822 Both Surviving: 3522121 (97.73%) Forward Only Surviving: 39345 (1.09%) Reverse Only Surviving: 39848 (1.11%) Dropped: 2508 (0.07%)
+TrimmomaticPE: Completed successfully
+
+# Use same code for all:
+2-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_2_S298_R1_001.fastq.gz Patient_2_S298_R2_001.fastq.gz ../trimmomatic/Patient_2_S298_R1_001-pe.fastq.gz ../trimmomatic/Patient_2_S298_R1_001-se.fastq.gz ../trimmomatic/Patient_2_S298_R2_001-pe.fastq.gz ../trimmomatic/Patient_2_S298_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 3786840 Both Surviving: 3698692 (97.67%) Forward Only Surviving: 45388 (1.20%) Reverse Only Surviving: 40065 (1.06%) Dropped: 2695 (0.07%)
+TrimmomaticPE: Completed successfully
+
+3-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_3_S299_R1_001.fastq.gz Patient_3_S299_R2_001.fastq.gz ../trimmomatic/Patient_3_S299_R1_001-pe.fastq.gz ../trimmomatic/Patient_3_S299_R1_001-se.fastq.gz ../trimmomatic/Patient_3_S299_R2_001-pe.fastq.gz ../trimmomatic/Patient_3_S299_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 4216494 Both Surviving: 4131949 (97.99%) Forward Only Surviving: 38683 (0.92%) Reverse Only Surviving: 43490 (1.03%) Dropped: 2372 (0.06%)
+
+4-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_4_S300_R1_001.fastq.gz Patient_4_S300_R2_001.fastq.gz ../trimmomatic/Patient_4_S300_R1_001-pe.fastq.gz ../trimmomatic/Patient_4_S300_R1_001-se.fastq.gz ../trimmomatic/Patient_4_S300_R2_001-pe.fastq.gz ../trimmomatic/Patient_4_S300_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 4255879 Both Surviving: 4163450 (97.83%) Forward Only Surviving: 40585 (0.95%) Reverse Only Surviving: 49301 (1.16%) Dropped: 2543 (0.06%)
+TrimmomaticPE: Completed successfully
+
+5-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_5_S301_R1_001.fastq.gz Patient_5_S301_R2_001.fastq.gz ../trimmomatic/Patient_5_S301_R1_001-pe.fastq.gz ../trimmomatic/Patient_5_S301_R1_001-se.fastq.gz ../trimmomatic/Patient_5_S301_R2_001-pe.fastq.gz ../trimmomatic/Patient_5_S301_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 3722469 Both Surviving: 3641620 (97.83%) Forward Only Surviving: 38254 (1.03%) Reverse Only Surviving: 40317 (1.08%) Dropped: 2278 (0.06%)
+TrimmomaticPE: Completed successfully
+
+6-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_6_S302_R1_001.fastq.gz Patient_6_S302_R2_001.fastq.gz ../trimmomatic/Patient_6_S302_R1_001-pe.fastq.gz ../trimmomatic/Patient_6_S302_R1_001-se.fastq.gz ../trimmomatic/Patient_6_S302_R2_001-pe.fastq.gz ../trimmomatic/Patient_6_S302_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 4084476 Both Surviving: 3994431 (97.80%) Forward Only Surviving: 40452 (0.99%) Reverse Only Surviving: 46887 (1.15%) Dropped: 2706 (0.07%)
+TrimmomaticPE: Completed successfully
+
+7-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_7_S303_R1_001.fastq.gz Patient_7_S303_R2_001.fastq.gz ../trimmomatic/Patient_7_S303_R1_001-pe.fastq.gz ../trimmomatic/Patient_7_S303_R1_001-se.fastq.gz ../trimmomatic/Patient_7_S303_R2_001-pe.fastq.gz ../trimmomatic/Patient_7_S303_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 3768415 Both Surviving: 3677123 (97.58%) Forward Only Surviving: 43576 (1.16%) Reverse Only Surviving: 45134 (1.20%) Dropped: 2582 (0.07%)
+TrimmomaticPE: Completed successfully
+
+9-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_9_S304_R1_001.fastq.gz Patient_9_S304_R2_001.fastq.gz ../trimmomatic/Patient_9_S304_R1_001-pe.fastq.gz ../trimmomatic/Patient_9_S304_R1_001-se.fastq.gz ../trimmomatic/Patient_9_S304_R2_001-pe.fastq.gz ../trimmomatic/Patient_9_S304_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 4495830 Both Surviving: 4392634 (97.70%) Forward Only Surviving: 56823 (1.26%) Reverse Only Surviving: 42926 (0.95%) Dropped: 3447 (0.08%)
+TrimmomaticPE: Completed successfully
+
+11-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_11_S305_R1_001.fastq.gz Patient_11_S305_R2_001.fastq.gz ../trimmomatic/Patient_11_S305_R1_001-pe.fastq.gz ../trimmomatic/Patient_11_S305_R1_001-se.fastq.gz ../trimmomatic/Patient_11_S305_R2_001-pe.fastq.gz ../trimmomatic/Patient_11_S305_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+Output:
+Input Read Pairs: 3562399 Both Surviving: 3486295 (97.86%) Forward Only Surviving: 33322 (0.94%) Reverse Only Surviving: 41036 (1.15%) Dropped: 1746 (0.05%)
+TrimmomaticPE: Completed successfully
+
+ASD-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 Patient_ASD977_S306_R1_001.fastq.gz Patient_ASD977_S306_R2_001.fastq.gz ../trimmomatic/Patient_ASD977_S306_R1_001-pe.fastq.gz ../trimmomatic/Patient_ASD977_S306_R1_001-se.fastq.gz ../trimmomatic/Patient_ASD977_S306_R2_001-pe.fastq.gz ../trimmomatic/Patient_ASD977_S306_R2_001-se.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 
+
+Output:
+Input Read Pairs: 3523903 Both Surviving: 3421262 (97.09%) Forward Only Surviving: 52124 (1.48%) Reverse Only Surviving: 47782 (1.36%) Dropped: 2735 (0.08%)
+TrimmomaticPE: Completed successfully
+
+## Will be using the paired forward and reverse files for each sample for the rest of the analysis.
+
+## Fastq-join
+module spider fastq-join
+module load fastq-join/1.3.1
+module list
+fastq-join Patient_1_S297_R1_001-pe.fastq.gz Patient_1_S297_R2_001-pe.fastq.gz -o ../join_fastq/Patient_1_S297_%.fastq.gz
+# Wouldn't work - waiting for more arguments..
+
+# Try again:
+fastq-join -f Patient_1_S297_R1_001-pe.fastq.gz -r Patient_1_S297_R2_001-pe.fastq.gz -o ../join_fastq/Patient_1_S297_%.fastq.gz
+
+# Message:
+fastq-join: invalid option -- 'f'
+Unknown option `-f'.
+Usage: fastq-join [options] <read1.fq> <read2.fq> [mate.fq] -o <read.0q>
+Version: 1.3.1
+
+Joins two paired-end reads on the overlapping ends.
+
+Options:
+
+-o FIL     See 'Output' below
+-v C       Verifies that the 2 files probe id's match up to char C
+            use ' ' (space) for Illumina reads
+-p N       N-percent maximum difference (8)
+-m N       N-minimum overlap (6)
+-r FIL     Verbose stitch length report
+-R         No reverse complement
+-x         Allow insert < read length
+
+Output: 
+
+  You can supply 3 -o arguments, for un1, un2, join files, or one 
+argument as a file name template.  The suffix 'un1, un2, or join' is 
+appended to the file, or they replace a %-character if present.
+
+  If a 'mate' input file is present (barcode read), then the files
+'un3' and 'join2' are also created.
+
+# Tried without .gz for output file - still won't go forward.
+
+# Try again: add an extra space between file names
+fastq-join Patient_1_S297_R1_001-pe.fastq.gz  Patient_1_S297_R2_001-pe.fastq.gz -o ../join_fastq/Patient_1_S297_%.fastq.gz
+
+
+# It just takes time without any confirmation of the program running
+
+Output:
+Total reads: 3522121
+Total joined: 905181
+Average join len: 63.97
+Stdev join len: 40.08
+Version: 1.3.1
+
+# Continue on for each sample.
+2-fastq-join Patient_2_S298_R1_001-pe.fastq.gz Patient_2_S298_R2_001-pe.fastq.gz -o Patient_2_S298_%.fastq.gz
+
+Output:
+Total reads: 3698692
+Total joined: 909247
+Average join len: 63.61
+Stdev join len: 40.06
+Version: 1.3.1
+
+3-fastq-join Patient_3_S299_R1_001-pe.fastq.gz Patient_3_S299_R2_001-pe.fastq.gz -o Patient_3_S299_%.fastq.gz
+
+Output:
+Total reads: 4131949
+Total joined: 1258161
+Average join len: 63.97
+Stdev join len: 39.64
+Version: 1.3.1
+
+4-fastq-join Patient_4_S300_R1_001-pe.fastq.gz Patient_4_S300_R2_001-pe.fastq.gz -o Patient_4_S300_%.fastq.gz
+
+Output:
+Total reads: 4163450
+Total joined: 1203600
+Average join len: 64.86
+Stdev join len: 40.10
+Version: 1.3.1
+
+5-fastq-join Patient_5_S301_R1_001-pe.fastq.gz Patient_5_S301_R2_001-pe.fastq.gz -o Patient_5_S301_%.fastq.gz
+
+Output:
+Total reads: 3641620
+Total joined: 914181
+Average join len: 63.75
+Stdev join len: 40.03
+Version: 1.3.1
+
+6-fastq-join Patient_6_S302_R1_001-pe.fastq.gz Patient_6_S302_R2_001-pe.fastq.gz -o Patient_6_S302_%.fastq.gz
+
+Output:
+Total reads: 3994431
+Total joined: 1120103
+Average join len: 64.83
+Stdev join len: 40.22
+Version: 1.3.1
+
+7-fastq-join Patient_7_S303_R1_001-pe.fastq.gz Patient_7_S303_R2_001-pe.fastq.gz -o Patient_7_S303_%.fastq.gz
+
+Output:
+Total reads: 3677123
+Total joined: 999579
+Average join len: 64.50
+Stdev join len: 40.13
+Version: 1.3.1
+
+9-fastq-join Patient_9_S304_R1_001-pe.fastq.gz Patient_9_S304_R2_001-pe.fastq.gz -o Patient_9_S304_%.fastq.gz
+
+Output:
+Total reads: 4392634
+Total joined: 1240273
+Average join len: 63.47
+Stdev join len: 39.65
+Version: 1.3.1
+
+11-fastq-join Patient_11_S305_R1_001-pe.fastq.gz Patient_11_S305_R2_001-pe.fastq.gz -o Patient_11_S305_%.fastq.gz
+
+Output:
+Total reads: 3486295
+Total joined: 891405
+Average join len: 64.03
+Stdev join len: 40.15
+Version: 1.3.1
+
+ASD-fastq-join Patient_ASD977_S306_R1_001-pe.fastq.gz Patient_ASD977_S306_R2_001-pe.fastq.gz -o Patient_ASD977_S306_%.fastq.gz
+
+Output:
+Total reads: 3421262
+Total joined: 673611
+Average join len: 64.65
+Stdev join len: 40.68
+Version: 1.3.1
+
+
+## Combine the three output files into one so that no data is missed - as per tutorial.
+cat Patient_11_S305*.gz > Patient_11_S305_merged.fastq.gz
+cat Patient_1_S297*.gz > Patient_1_S297_merged.fastq.gz
+cat Patient_2_S298*.gz > Patient_2_S298_merged.fastq.gz
+cat Patient_3_S299*.gz > Patient_3_S299_merged.fastq.gz
+cat Patient_4_S300*.gz > Patient_4_S300_merged.fastq.gz
+cat Patient_5_S301*.gz > Patient_5_S301_merged.fastq.gz
+cat Patient_6_S302*.gz > Patient_6_S302_merged.fastq.gz
+cat Patient_7_S303*.gz > Patient_7_S303_merged.fastq.gz
+cat Patient_9_S304*.gz > Patient_9_S304_merged.fastq.gz
+cat Patient_ASD977_S306*.gz > Patient_ASD977_S306_merged.fastq.gz
+
+# Moving forward, the merged.fastq.gz files will be used for MetaPhlan.
+
+
+## Conduct FASTQC on a few trimmomatic sequences, just to make sure the quality is good.
+fastqc Patient_1_S297_R1_001-pe.fastq.gz Patient_1_S297_R2_001-pe.fastq.gz -o ./reports/
+fastqc Patient_9_S304_R1_001-pe.fastq.gz Patient_9_S304_R2_001-pe.fastq.gz -o ./reports/
+
+# Copy files to my personal computer
+scp shalvi@graham.computecanada.ca:~/scratch/WestonProject/trimmomatic/reports/*.html . 
+
+
+## MetaPhlan
+
+# Install the database not in the conda environment
+metaphlan --install --bowtie2db . # MetaPhlan folder on personal computer
+# /Users/shalvichirmade/Documents/MBinf/BINF 6999/Weston Project/MetaPhlan 3.0
+# This step took about 15 minutes.
+
+# Terminal output:
+Downloading http://cmprod1.cibio.unitn.it/biobakery3/metaphlan_databases/mpa_latest
+Downloading file of size: 0.00 MB
+0.01 MB 31507.69 %  22.38 MB/sec  0 min -0 sec         
+Downloading MetaPhlAn database
+Please note due to the size this might take a few minutes
+
+Downloading http://cmprod1.cibio.unitn.it/biobakery3/metaphlan_databases/mpa_v30_CHOCOPhlAn_201901.tar
+Downloading file of size: 366.62 MB
+366.62 MB 100.00 %  19.07 MB/sec  0 min -0 sec         
+Downloading http://cmprod1.cibio.unitn.it/biobakery3/metaphlan_databases/mpa_v30_CHOCOPhlAn_201901.md5
+Downloading file of size: 0.00 MB
+0.01 MB 12800.00 %  32.97 MB/sec  0 min -0 sec         
+
+Decompressing ./mpa_v30_CHOCOPhlAn_201901.fna.bz2 into ./mpa_v30_CHOCOPhlAn_201901.fna
+
+Building Bowtie2 indexes
+Renaming ./mpa_v30_CHOCOPhlAn_201901.3.bt2.tmp to ./mpa_v30_CHOCOPhlAn_201901.3.bt2
+Renaming ./mpa_v30_CHOCOPhlAn_201901.4.bt2.tmp to ./mpa_v30_CHOCOPhlAn_201901.4.bt2
+Renaming ./mpa_v30_CHOCOPhlAn_201901.1.bt2.tmp to ./mpa_v30_CHOCOPhlAn_201901.1.bt2
+Renaming ./mpa_v30_CHOCOPhlAn_201901.2.bt2.tmp to ./mpa_v30_CHOCOPhlAn_201901.2.bt2
+Renaming ./mpa_v30_CHOCOPhlAn_201901.rev.1.bt2.tmp to ./mpa_v30_CHOCOPhlAn_201901.rev.1.bt2
+Renaming ./mpa_v30_CHOCOPhlAn_201901.rev.2.bt2.tmp to ./mpa_v30_CHOCOPhlAn_201901.rev.2.bt2
+Removing uncompress database ./mpa_v30_CHOCOPhlAn_201901.fna
+
+Download complete
+The database is installed
+
+# Remember to run MetaPhlAn using --bowtie2db "/Users/shalvichirmade/Documents/MBinf/BINF 6999/Weston Project/MetaPhlan 3.0"
+
+
+## Run a trial on Patient 1 using 2 cores
+conda activate mpa # start conda environment
+which metaphlan # make sure command exists in environment 
+# Output: /Users/shalvichirmade/miniconda3/envs/mpa/bin/metaphlan
+
+metaphlan Patient_1_S297_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > Patient_1_S297_merged_profile.txt
+# . because the command is run in the directory containing the bowtie2db
+# Tried first without the --bowtie2db command and it was downloading the MetaPhlAn db again
+# Takes a long time, does not print anything to terminal for a while. Took around 8 minutes.
+
+# Output to terminal:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+# The meaning of this warning was found on https://forum.biobakery.org/t/unexpected-output-format/658
+# "These are from MetaPhlAn, they just inform you that some species found can have “alternative” taxonomies (the list of species in the additional_species column). All the species listed under additional_species are not represented by any markers but they were found to be <5% ANI distant from the “reference” species (clade_name)."
+
+# Look at output files created (2)
+less -S Patient_1_S297_merged_profile.txt
+wc -l Patient_1_S297_merged_profile.txt # 150
+less -S Patient_1_S297_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_1_S297_merged.fastq.gz.bowtie2out.txt # 111053
+
+# Bowtie output contains the intermediate mapping results to unique sequence markers.
+
+# Deactivate conda environment after use
+conda deactivate
+
+
+## Carry out MetaPhlAn on the remaining nine samples
+# Files are now on the external hard drive.
+conda activate mpa
+which metaphlan
+
+# In the directory containing the database
+metaphlan ../WMS_Merged/Patient_2_S298_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_2_S298_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+# Bowtie2 output file is saved in the directory containing the inout sample. Have to move after.
+
+metaphlan ../WMS_Merged/Patient_3_S299_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_3_S299_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_4_S300_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_4_S300_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_5_S301_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_5_S301_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_6_S302_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_6_S302_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_7_S303_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_7_S303_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_9_S304_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_9_S304_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_11_S305_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_11_S305_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+metaphlan ../WMS_Merged/Patient_ASD977_S306_merged.fastq.gz --input_type fastq --bowtie2db . --nproc 2 > ./Initial_Ten_Samples/Patient_ASD977_S306_merged_profile.txt
+
+# Output:
+WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+An additional column listing the merged species is added to the MetaPhlAn output.
+
+
+# Look at output files created (2)
+less -S Patient_2_S298_merged_profile.txt
+wc -l Patient_2_S298_merged_profile.txt # 120
+less -S Patient_2_S298_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_2_S298_merged.fastq.gz.bowtie2out.txt # 141867
+
+# Look at output files created (2)
+less -S Patient_3_S299_merged_profile.txt
+wc -l Patient_3_S299_merged_profile.txt # 123
+less -S Patient_3_S299_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_3_S299_merged.fastq.gz.bowtie2out.txt # 103821
+
+# Look at output files created (2)
+less -S Patient_4_S300_merged_profile.txt
+wc -l Patient_4_S300_merged_profile.txt # 123
+less -S Patient_4_S300_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_4_S300_merged.fastq.gz.bowtie2out.txt # 134349
+
+# Look at output files created (2)
+less -S Patient_5_S301_merged_profile.txt
+wc -l Patient_5_S301_merged_profile.txt # 106
+less -S Patient_5_S301_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_5_S301_merged.fastq.gz.bowtie2out.txt # 114759
+
+# Look at output files created (2)
+less -S Patient_6_S302_merged_profile.txt
+wc -l Patient_6_S302_merged_profile.txt # 135
+less -S Patient_6_S302_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_6_S302_merged.fastq.gz.bowtie2out.txt # 110006
+
+# Look at output files created (2)
+less -S Patient_7_S303_merged_profile.txt
+wc -l Patient_7_S303_merged_profile.txt # 136
+less -S Patient_7_S303_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_7_S303_merged.fastq.gz.bowtie2out.txt # 116160
+
+# Look at output files created (2)
+less -S Patient_9_S304_merged_profile.txt
+wc -l Patient_9_S304_merged_profile.txt # 165
+less -S Patient_9_S304_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_9_S304_merged.fastq.gz.bowtie2out.txt # 104196
+
+# Look at output files created (2)
+less -S Patient_11_S305_merged_profile.txt
+wc -l Patient_11_S305_merged_profile.txt # 114
+less -S Patient_11_S305_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_11_S305_merged.fastq.gz.bowtie2out.txt # 135597
+
+# Look at output files created (2)
+less -S Patient_ASD977_S306_merged_profile.txt
+wc -l Patient_ASD977_S306_merged_profile.txt # 82
+less -S Patient_ASD977_S306_merged.fastq.gz.bowtie2out.txt
+wc -l Patient_ASD977_S306_merged.fastq.gz.bowtie2out.txt # 150383
+
+
+
+## Merge profile output files
+merge_metaphlan_tables.py Initial_Ten_Samples/*_profile.txt > merged_abundance_table.txt
+
+
+
+# Deactivate conda environment after use
+conda deactivate
+
