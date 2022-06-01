@@ -5,5 +5,5 @@ BINF 6999 Project for Summer 2022
 
 Van Raay Lab at the University of Guelph
 
-Primary Advisor: Dr. Terry Van Raay
+Primary Advisor: Dr. Terry Van Raay   
 Secondary Advisor: Dr. Lewis Lukens
