@@ -8,3 +8,5 @@
 ## Primary Advisor: Dr. Terry Van Raay
 ## Secondary Advisor: Dr. Lewis Lukens
 
+# Description:
+# Microbiome analysis of ten patient samples for the identification of diet-derived metabolites and their effects on mental health.
