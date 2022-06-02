@@ -15,7 +15,16 @@
 
 # +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
-#### 1. Data Import and Cleaning ----
+#### 1. Load Required Packages ----
+
+#install.packages("tidyverse")
+library(tidyverse)
+
+
+
+
+
+#### 2. Data Import and Cleaning ----
 
 # Data has been pre-processed through command-line on Compute Canada using:
       # FastQC 0.11.9
@@ -25,4 +34,34 @@
 # Taxonomic analysis has been carried out on command-line using Bowtie2 and MetaPhlAn 3
 
 # The taxonomic profile files for each sequence has been combined into one file called merged_abundance_table.txt
+
+# Import the merged taxa file.
+dfData <- read.delim("merged_abundance_table.txt", header = F)
+View(dfData)
+
+# Row 1 contains the name of the database used for the taxonomy analysis - will be deleted.
+dfData <- dfData[-1,]
+
+# Now Row 1 contains the column names, will make those the names of the columns of the dataframe and delete the row.
+colnames(dfData) <- dfData[1,]
+colnames(dfData)
+dfData <- dfData[-1,]
+
+# Clean the column names to display only the patient number
+colnames(dfData)[3:12] <- str_extract(colnames(dfData)[3:12], "Patient_[:alnum:]+")
+colnames(dfData)
+colnames(dfData)[3] <- str_extract(colnames(dfData)[3], "Patient_[:alpha:]+")
+colnames(dfData)
+
+# Create a new dataframe with the clade information separated into different columns.
+dfTidy <- dfData
+dfTidy <- dfTidy %>% 
+  separate(clade_name, 
+           into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+           sep = "\\|", 
+           extra = "merge")
+
+
+
+
 
