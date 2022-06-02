@@ -12,3 +12,6 @@ Van Raay Lab at the University of Guelph
 
 Primary Advisor: Dr. Terry Van Raay   
 Secondary Advisor: Dr. Lewis Lukens
+
+
+Whole metagenome sequences were used from ten patient fecal samples. These sequences were pre-processed in command-line and the steps can be viewed in the Analysis_Log.txt file.
