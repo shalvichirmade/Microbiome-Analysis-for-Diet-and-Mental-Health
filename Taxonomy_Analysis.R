@@ -26,4 +26,3 @@
 
 # The taxonomic profile files for each sequence has been combined into one file called merged_abundance_table.txt
 
-
