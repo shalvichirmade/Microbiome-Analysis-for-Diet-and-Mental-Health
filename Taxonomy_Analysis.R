@@ -69,14 +69,15 @@ dfTidy <- dfTidy %>%
            sep = "\\|", 
            extra = "merge")
 
+
 # Clean all the rank names - i.e. remove "x__".
 for (i in 1:7){
   dfTidy[,i] <- sapply(str_split(dfTidy[,i], "__"), "[", 2)
 } 
 
 
-
-
+# Remove genus name from species column.
+dfTidy[,7] <- sapply(str_split(dfTidy[,7], "_", n = 2), "[", 2)
 
 
 # The number of NAs in each taxonomic rank column
