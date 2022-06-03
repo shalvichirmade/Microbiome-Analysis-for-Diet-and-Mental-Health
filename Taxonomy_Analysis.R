@@ -86,6 +86,7 @@ sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
 # 0        3        10      24     44       81     154 
 
 
-
+# Remove variables that are not required downstream.
+rm(i)
 
 
