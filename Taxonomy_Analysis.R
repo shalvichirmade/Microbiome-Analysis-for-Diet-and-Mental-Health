@@ -17,14 +17,18 @@
 
 #### 1. Load Required Packages ----
 
+# CRAN
 
-
-#BiocManager::install(c("MicrobiotaProcess"))
-library(MicrobiotaProcess)
 #install.packages("tidyverse")
 library(tidyverse)
 
+# Bioconductor
 
+#BiocManager::install(c("MicrobiotaProcess"))
+library(MicrobiotaProcess)
+
+
+# GitHub
 
 
 
@@ -64,6 +68,11 @@ dfTidy <- dfTidy %>%
            into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"), 
            sep = "\\|", 
            extra = "merge")
+
+# The number of NAs in each taxonomic rank column
+sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
+# Kingdom  Phylum   Class   Order  Family   Genus  Species 
+# 0        3        10      24     44       81     154 
 
 
 
