@@ -79,6 +79,9 @@ for (i in 1:7){
 # Remove genus name from species column.
 dfTidy[,7] <- sapply(str_split(dfTidy[,7], "_", n = 2), "[", 2)
 
+# Make rownames clean.
+write_tsv(dfTidy, file = "Tidy_Merged_Abundance_Table.tsv", col_names = T)
+
 
 # The number of NAs in each taxonomic rank column
 sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
@@ -88,5 +91,8 @@ sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
 
 # Remove variables that are not required downstream.
 rm(i)
+
+
+# Export dfTidy as a .tsv file for cleaner raw data.
 
 
