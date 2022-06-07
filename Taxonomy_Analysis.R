@@ -110,7 +110,7 @@ dfFamily <- dfFamily[complete.cases(dfFamily$Family),]
 dfFamily <- dfFamily[!complete.cases(dfFamily$Genus),]
 dfFamily <- dfFamily[,c(1, 5:14)]
 
-# Convert abundance information from chaarcter to numerical values.
+# Convert abundance information from character to numerical values.
 dfFamily[, 2:11] <- lapply(dfFamily[, 2:11], function(x) as.numeric(as.character(x)))
 sapply(dfFamily, class)
 
@@ -132,8 +132,42 @@ ggplot(dfFamily, aes(x = Sample, y = Abundance, fill = Family)) +
   geom_bar(position = "fill", stat = "identity") +
   scale_fill_manual(values = colors) +
   theme_minimal() +
-  ggtitle("Relative Abundance of Taxonomy")
+  ggtitle("Relative Abundance of Family")
 
 
+## Carry out same analysis using Phylum level.
+dfPhylum <- dfTidy[,2:18]
+
+# Remove rows with NAs in Family
+dfPhylum <- dfPhylum[complete.cases(dfPhylum$Phylum),]
+
+# Keep rows with NAs in Class - we only want these rows as the abundance information encompasses the whole Family.
+dfPhylum <- dfPhylum[!complete.cases(dfPhylum$Class),]
+dfPhylum <- dfPhylum[,c(1, 8:17)]
+
+# Convert abundance information from character to numerical values.
+dfPhylum[, 2:11] <- lapply(dfPhylum[, 2:11], function(x) as.numeric(as.character(x)))
+sapply(dfPhylum, class)
+
+# Sum the abundance for each sample.
+lapply(dfPhylum[, 2:11], sum)
+
+
+# Create color palette for unique taxa.
+colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"Set2"))(nrow(dfPhylum))
+
+# Make the columns into rows - result checked to make sure the transformation was accurate.
+dfPhylum <- pivot_longer(dfPhylum, cols = 2:11, names_to = "Sample")
+colnames(dfPhylum)[3] <- "Abundance"
+dfPhylum <- dfPhylum %>%
+  filter(Abundance != 0)
+
+
+# Create stacked barplot using this new dataframe.
+ggplot(dfPhylum, aes(x = Sample, y = Abundance, fill = Phylum)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_fill_manual(values = colors) +
+  theme_minimal() +
+  ggtitle("Relative Abundance of Phylum")
 
 
