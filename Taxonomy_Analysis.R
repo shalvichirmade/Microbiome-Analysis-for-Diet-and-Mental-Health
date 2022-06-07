@@ -100,12 +100,6 @@ rm(i)
 
 #### 3. Relative Abundance Visualization ----
 
-# Using the MicrobiotaProcess package to produce visualizations.
-
-# Create object with taxa level Family.
-taxa_family <- get_taxadf(dfTidy, taxlevel = "Family", taxa_are_rows = T, taxda = dfTidy)
-
-
 ## Create stacked bar chart by using ggplot and the Family taxa. First create a manipulated dataframe containing only the Family information. Due to the way our abundance table was created, we have to select the rows where the data is describing the abundance for the whole Family; the entries with Genus and Species specific s is encompassed in these Family abundance rows.
 dfFamily <- dfTidy[,5:18]
 
@@ -113,10 +107,32 @@ dfFamily <- dfTidy[,5:18]
 dfFamily <- dfFamily[complete.cases(dfFamily$Family),]
 
 # Keep rows with NAs in both Genus and Species - we only want these rows as the abundance information encompasses the whole Family.
+dfFamily <- dfFamily[!complete.cases(dfFamily$Genus),]
+dfFamily <- dfFamily[,c(1, 5:14)]
+
+# Convert abundance information from chaarcter to numerical values.
+dfFamily[, 2:11] <- lapply(dfFamily[, 2:11], function(x) as.numeric(as.character(x)))
+sapply(dfFamily, class)
+
+# Sum the abundance for each sample.
+lapply(dfFamily[, 2:11], sum)
+
+# Create color palette for unique taxa.
+colors <- colorRampPalette(RColorBrewer::brewer.pal(12,"Set2"))(nrow(dfFamily))
+
+# Make the columns into rows - result checked to make sure the transformation was accurate.
+dfFamily <- pivot_longer(dfFamily, cols = 2:11, names_to = "Sample")
+colnames(dfFamily)[3] <- "Abundance"
+dfFamily <- dfFamily %>%
+  filter(Abundance != 0)
 
 
-
-
+# Create stacked barplot using this new dataframe.
+ggplot(dfFamily, aes(x = Sample, y = Abundance, fill = Family)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_fill_manual(values = colors) +
+  theme_minimal() +
+  ggtitle("Relative Abundance of Taxonomy")
 
 
 
