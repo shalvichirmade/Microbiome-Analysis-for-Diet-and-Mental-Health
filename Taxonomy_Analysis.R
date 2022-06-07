@@ -61,6 +61,9 @@ colnames(dfData)
 colnames(dfData)[3] <- str_extract(colnames(dfData)[3], "Patient_[:alpha:]+")
 colnames(dfData)
 
+# Make rownames clean.
+rownames(dfData) <- 1:(nrow(dfData))
+
 # Create a new dataframe with the clade information separated into different columns.
 dfTidy <- dfData
 dfTidy <- dfTidy %>% 
@@ -79,9 +82,6 @@ for (i in 1:7){
 # Remove genus name from species column.
 dfTidy[,7] <- sapply(str_split(dfTidy[,7], "_", n = 2), "[", 2)
 
-# Make rownames clean.
-write_tsv(dfTidy, file = "Tidy_Merged_Abundance_Table.tsv", col_names = T)
-
 
 # The number of NAs in each taxonomic rank column
 sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
@@ -93,6 +93,7 @@ sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
 rm(i)
 
 
-# Export dfTidy as a .tsv file for cleaner raw data.
+# Export dfTidy as a .tsv file for cleaner raw data. Code commented out as we don't need to do it again.
+# write_tsv(dfTidy, file = "Tidy_Merged_Abundance_Table.tsv", col_names = T)
 
 
