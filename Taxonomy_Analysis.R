@@ -93,7 +93,31 @@ sapply(dfTidy[,1:7], function(x) sum(is.na(x)))
 rm(i)
 
 
-# Export dfTidy as a .tsv file for cleaner raw data. Code commented out as we don't need to do it again.
+# Export dfTidy as a .tsv file for cleaner raw data. Code commented out as it does not need to be redone.
 # write_tsv(dfTidy, file = "Tidy_Merged_Abundance_Table.tsv", col_names = T)
+
+
+
+#### 3. Relative Abundance Visualization ----
+
+# Using the MicrobiotaProcess package to produce visualizations.
+
+# Create object with taxa level Family.
+taxa_family <- get_taxadf(dfTidy, taxlevel = "Family", taxa_are_rows = T, taxda = dfTidy)
+
+
+## Create stacked bar chart by using ggplot and the Family taxa. First create a manipulated dataframe containing only the Family information. Due to the way our abundance table was created, we have to select the rows where the data is describing the abundance for the whole Family; the entries with Genus and Species specific s is encompassed in these Family abundance rows.
+dfFamily <- dfTidy[,5:18]
+
+# Remove rows with NAs in Family
+dfFamily <- dfFamily[complete.cases(dfFamily$Family),]
+
+# Keep rows with NAs in both Genus and Species - we only want these rows as the abundance information encompasses the whole Family.
+
+
+
+
+
+
 
 
