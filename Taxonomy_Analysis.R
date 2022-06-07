@@ -19,8 +19,12 @@
 
 # CRAN
 
+
 #install.packages("tidyverse")
 library(tidyverse)
+#install.packages("unikn")
+library(unikn)  
+
 
 # Bioconductor
 
@@ -154,7 +158,7 @@ lapply(dfPhylum[, 2:11], sum)
 
 
 # Create color palette for unique taxa.
-colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"Set2"))(nrow(dfPhylum))
+colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"GnBu"))(10)
 
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfPhylum <- pivot_longer(dfPhylum, cols = 2:11, names_to = "Sample")
@@ -166,7 +170,7 @@ dfPhylum <- dfPhylum %>%
 # Create stacked barplot using this new dataframe.
 ggplot(dfPhylum, aes(x = Sample, y = Abundance, fill = Phylum)) +
   geom_bar(position = "fill", stat = "identity") +
-  scale_fill_manual(values = colors) +
+  scale_fill_manual(values = colors[4:10]) +
   theme_minimal() +
   ggtitle("Relative Abundance of Phylum")
 
