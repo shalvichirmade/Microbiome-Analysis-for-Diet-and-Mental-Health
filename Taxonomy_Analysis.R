@@ -122,7 +122,7 @@ sapply(dfFamily, class)
 lapply(dfFamily[, 2:11], sum)
 
 # Create color palette for unique taxa.
-colors <- colorRampPalette(RColorBrewer::brewer.pal(12,"Set2"))(nrow(dfFamily))
+colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"Set2"))(nrow(dfFamily))
 
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfFamily <- pivot_longer(dfFamily, cols = 2:11, names_to = "Sample")
@@ -160,6 +160,7 @@ lapply(dfPhylum[, 2:11], sum)
 # Create color palette for unique taxa.
 colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"GnBu"))(10)
 
+
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfPhylum <- pivot_longer(dfPhylum, cols = 2:11, names_to = "Sample")
 colnames(dfPhylum)[3] <- "Abundance"
@@ -175,3 +176,4 @@ ggplot(dfPhylum, aes(x = Sample, y = Abundance, fill = Phylum)) +
   ggtitle("Relative Abundance of Phylum")
 
 
+# Update based on comments - may change clade
