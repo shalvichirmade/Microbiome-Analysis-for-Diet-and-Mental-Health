@@ -29,7 +29,7 @@ library(unikn)
 # Bioconductor
 
 #BiocManager::install(c("MicrobiotaProcess"))
-library(MicrobiotaProcess)
+#library(MicrobiotaProcess)
 
 
 # GitHub
@@ -138,6 +138,12 @@ ggplot(dfFamily, aes(x = Sample, y = Abundance, fill = Family)) +
   theme_minimal() +
   ggtitle("Relative Abundance of Family")
 
+# Show a summary fo the relative abundance of the Family taxa.
+dfFamily %>%
+  group_by(Family) %>%
+  summarise(mean = mean(Abundance)) %>%
+  arrange(desc(mean))
+
 
 ## Carry out same analysis using Phylum level.
 dfPhylum <- dfTidy[,2:18]
@@ -175,5 +181,13 @@ ggplot(dfPhylum, aes(x = Sample, y = Abundance, fill = Phylum)) +
   theme_minimal() +
   ggtitle("Relative Abundance of Phylum")
 
+# Show a summary fo the relative abundance of the Phylum taxa.
+dfPhylum %>%
+  group_by(Phylum) %>%
+  summarise(mean = mean(Abundance)) %>%
+  arrange(desc(mean))
+
 
 # Update based on comments - may change clade
+
+#TODO table showing the relative abundance for the clade requested
