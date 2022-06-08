@@ -138,6 +138,9 @@ ggplot(dfFamily, aes(x = Sample, y = Abundance, fill = Family)) +
   theme_minimal() +
   ggtitle("Relative Abundance of Family")
 
+
+# Ideas of cleaning by Riffomonas Project https://www.youtube.com/watch?v=w4X3o6MQjVA
+
 # Show a summary fo the relative abundance of the Family taxa.
 dfFamily %>%
   group_by(Family) %>%
@@ -190,4 +193,15 @@ dfPhylum %>%
 
 # Update based on comments - may change clade
 
-#TODO table showing the relative abundance for the clade requested
+#TODO table showing the relative abundance for the clade requested and drop based on threshold
+
+# example: save in another variable
+dfPhylum %>%
+  group_by(Phylum) %>%
+  summarise(pool = mean(Abundance) < 1, .groups = "drop")
+
+
+#TODO can manipulate ggplot to have the top two taxa on either side of the stacked bar --> anchor for the top two, one at the top, and one at the bottom
+
+
+
