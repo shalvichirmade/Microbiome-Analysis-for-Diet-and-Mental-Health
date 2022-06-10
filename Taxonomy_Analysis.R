@@ -65,6 +65,7 @@ colnames(dfData)[3:12] <- str_extract(colnames(dfData)[3:12], "Patient_[:alnum:]
 colnames(dfData)
 colnames(dfData)[3] <- str_extract(colnames(dfData)[3], "Patient_[:alpha:]+")
 colnames(dfData)
+samples <- sort(colnames(dfData)[3:12])
 
 # Make rownames clean.
 rownames(dfData) <- 1:(nrow(dfData))
@@ -180,6 +181,7 @@ ggplot(dfFamily_Others, aes(x = Sample, y = Abundance, fill = Family)) +
                                "Ruminococcaceae",
                                "Streptococcaceae",
                                "Other")) +
+  scale_x_discrete(limits = levels(samples)) +
   theme_minimal() +
   ggtitle("Relative Abundance of Family")
 
@@ -254,6 +256,7 @@ ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
                                "Firmicutes",
                                "Verrucomicrobia",
                                "Other")) +
+  scale_x_discrete(limits = levels(samples)) +
   theme_minimal() +
   ggtitle("Relative Abundance of Phylum")
 
