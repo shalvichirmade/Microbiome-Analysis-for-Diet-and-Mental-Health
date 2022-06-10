@@ -21,6 +21,8 @@
 
 #install.packages("forcats")
 library(forcats)
+#install.packages("ggfortify")
+library(ggfortify)
 #install.packages("tidyverse")
 library(tidyverse)
 
@@ -69,6 +71,7 @@ samples <- reorder(samples, c(1,9,2,3,4,5,6,7,8,10))
 
 # Make rownames clean.
 rownames(dfData) <- 1:(nrow(dfData))
+
 
 # Create a new dataframe with the clade information separated into different columns.
 dfTidy <- dfData
@@ -255,6 +258,53 @@ rm(dfPhylum, dfPhylum_Others, dfPhylum_pool)
 
 
 #### 4. PCA ----
+
+# Will be using the covariance matrix of this dataset as the units for all variables are the same. Have to transform dfData as prcomp() uses the columns as variables.
+
+## Standardize the data as some taxa are found is high and low abundance, which may skew the analysis. Make the taxa the row names before transforming.
+dfScaled <- dfData[,c(1, 3:12)]
+rownames(dfScaled) <- dfScaled[,1]
+dfScaled <- dfScaled[,-1]
+dfScaled <- as.data.frame(t(dfScaled))
+
+# Convert abundance data to numeric.
+dfScaled[] <- lapply(dfScaled, function(x) as.numeric(as.character(x)))
+sapply(dfScaled, class)
+
+# Standardize data.
+dfScaled <- as.data.frame(scale(dfScaled))
+
+# Add column for samples to differentiate in visualiations.
+dfScaled$Sample <- factor(rownames(dfScaled), levels = levels(samples))
+
+# Perform PCA.
+pca1 <- prcomp(dfScaled[,-326])
+
+# Scree plot to visualize variance.
+dfPCA1_var <- data.frame(PC = paste0("PC", 1:length(row.names(dfScaled))),
+                          var = (pca1$sdev)^2 / sum((pca1$sdev)^2))
+
+ggplot(dfPCA1_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
+  geom_bar(stat = "identity", fill = "darkslategray3") +
+  ggtitle("Scree plot: PCA based on variance for taxonomy") +
+  xlab("Principal Component") +
+  ylab("Proportion of Variance") +
+  theme_minimal() +
+  scale_y_continuous(expand = c(0, 0))
+
+# PCA visualization
+autoplot(pca1, data = dfScaled,
+         colour = "Sample",
+         main = "PCA for Differentiation of Samples",
+         size = 5) +
+  theme_minimal() +
+  scale_color_manual(values = c("#ef9e98", "#eaae7a", "#f7de92", "#aef9a1", "#96e3de",
+                                "#9bd7fd", "#73adff", "#c8abe3", "#f68bf9", "#dedede")) +
+  geom_text(label = rownames(dfScaled),
+            nudge_x = 0.07,
+            cex = 3)
+  
+
 
 
 
