@@ -23,9 +23,6 @@
 library(forcats)
 #install.packages("tidyverse")
 library(tidyverse)
-#install.packages("unikn")
-library(unikn)  
-
 
 # Bioconductor
 
@@ -65,7 +62,10 @@ colnames(dfData)[3:12] <- str_extract(colnames(dfData)[3:12], "Patient_[:alnum:]
 colnames(dfData)
 colnames(dfData)[3] <- str_extract(colnames(dfData)[3], "Patient_[:alpha:]+")
 colnames(dfData)
+
+# Store sample names in order.
 samples <- sort(colnames(dfData)[3:12])
+samples <- reorder(samples, c(1,9,2,3,4,5,6,7,8,10))
 
 # Make rownames clean.
 rownames(dfData) <- 1:(nrow(dfData))
@@ -123,22 +123,12 @@ sapply(dfFamily, class)
 # Sum the abundance for each sample.
 lapply(dfFamily[, 2:11], sum)
 
-# Create color palette for unique taxa.
-colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"Set2"))(nrow(dfFamily))
 
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfFamily <- pivot_longer(dfFamily, cols = 2:11, names_to = "Sample")
 colnames(dfFamily)[3] <- "Abundance"
 dfFamily <- dfFamily %>%
   filter(Abundance != 0)
-
-
-# Create stacked barplot using this new dataframe.
-ggplot(dfFamily, aes(x = Sample, y = Abundance, fill = Family)) +
-  geom_bar(position = "fill", stat = "identity") +
-  scale_fill_manual(values = colors) +
-  theme_minimal() +
-  ggtitle("Relative Abundance of Family")
 
 
 # Ideas of cleaning by Riffomonas Project https://www.youtube.com/watch?v=w4X3o6MQjVA
@@ -168,22 +158,25 @@ dfFamily_Others <- inner_join(dfFamily, dfFamily_pool, by = "Family") %>%
 
 # Create stacked barplot using this new dataframe.
 colors <- RColorBrewer::brewer.pal(9,"Set3")
+colors <- c("#debbcc", "#d4cce6", "#bad6ef", "#a8e1de", "#ebc9a7", "#bedcb8", "#dedede")
 
 ggplot(dfFamily_Others, aes(x = Sample, y = Abundance, fill = Family)) +
   geom_bar(position = "fill", stat = "identity") +
   scale_fill_manual(values = colors, 
-                    breaks = c("Bifidobacteriaceae", 
-                               "Clostridiales_unclassified", 
+                    breaks = c("Bifidobacteriaceae",
                                "Coriobacteriaceae",
                                "Enterococcaceae",
-                               "Eubacteriaceae",
                                "Lachnospiraceae",
                                "Ruminococcaceae",
                                "Streptococcaceae",
                                "Other")) +
   scale_x_discrete(limits = levels(samples)) +
+  scale_y_continuous(expand = c(0, 0)) +
   theme_minimal() +
-  ggtitle("Relative Abundance of Family")
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  ggtitle("Relative Abundance of Family") +
+  ylab("Relative Abundance")
+
 
 
 ## Carry out same analysis using Phylum level.
@@ -204,23 +197,12 @@ sapply(dfPhylum, class)
 lapply(dfPhylum[, 2:11], sum)
 
 
-# Create color palette for unique taxa.
-colors <- colorRampPalette(RColorBrewer::brewer.pal(8,"GnBu"))(10)
-
-
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfPhylum <- pivot_longer(dfPhylum, cols = 2:11, names_to = "Sample")
 colnames(dfPhylum)[3] <- "Abundance"
 dfPhylum <- dfPhylum %>%
   filter(Abundance != 0)
 
-
-# Create stacked barplot using this new dataframe.
-ggplot(dfPhylum, aes(x = Sample, y = Abundance, fill = Phylum)) +
-  geom_bar(position = "fill", stat = "identity") +
-  scale_fill_manual(values = colors[4:10]) +
-  theme_minimal() +
-  ggtitle("Relative Abundance of Phylum")
 
 # Show a summary fo the relative abundance of the Phylum taxa.
 dfPhylum %>%
@@ -247,6 +229,7 @@ dfPhylum_Others <- inner_join(dfPhylum, dfPhylum_pool, by = "Phylum") %>%
 
 # Create stacked barplot using this new dataframe.
 colors <- RColorBrewer::brewer.pal(5,"Set3")
+colors <- c("#debbcc", "#d4cce6", "#bad6ef", "#a8e1de", "#dedede")
 
 ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
   geom_bar(position = "fill", stat = "identity") +
@@ -257,8 +240,11 @@ ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
                                "Verrucomicrobia",
                                "Other")) +
   scale_x_discrete(limits = levels(samples)) +
+  scale_y_continuous(expand = c(0, 0)) +
   theme_minimal() +
-  ggtitle("Relative Abundance of Phylum")
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  ggtitle("Relative Abundance of Phylum") +
+  ylab("Relative Abundance")
 
 
 #TODO can manipulate ggplot to have the top two taxa on either side of the stacked bar --> anchor for the top two, one at the top, and one at the bottom
