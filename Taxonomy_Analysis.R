@@ -177,6 +177,8 @@ ggplot(dfFamily_Others, aes(x = Sample, y = Abundance, fill = Family)) +
   ggtitle("Relative Abundance of Family") +
   ylab("Relative Abundance")
 
+# Remove variables no longer required.
+rm(dfFamily, dfFamily_Others, dfFamily_pool)
 
 
 ## Carry out same analysis using Phylum level.
@@ -246,8 +248,16 @@ ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
   ggtitle("Relative Abundance of Phylum") +
   ylab("Relative Abundance")
 
+# Remove variables no longer required.
+rm(dfPhylum, dfPhylum_Others, dfPhylum_pool)
 
 #TODO can manipulate ggplot to have the top two taxa on either side of the stacked bar --> anchor for the top two, one at the top, and one at the bottom
+
+
+#### 4. PCA ----
+
+
+
 
 
 
