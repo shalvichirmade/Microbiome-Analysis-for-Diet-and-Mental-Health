@@ -190,15 +190,24 @@ dfPhylum %>%
   summarise(mean = mean(Abundance)) %>%
   arrange(desc(mean))
 
-
-# Update based on comments - may change clade
-
-#TODO table showing the relative abundance for the clade requested and drop based on threshold
-
-# example: save in another variable
-dfPhylum %>%
+# Create an "Other" category based on a threshold of abundance 5%
+dfPhylum_pool <- dfPhylum %>%
   group_by(Phylum) %>%
-  summarise(pool = mean(Abundance) < 1, .groups = "drop")
+  summarise(pool = mean(Abundance) < 2, .groups = "drop")
+
+dfPhylum_Others <- inner_join(dfPhylum, dfPhylum_pool, by = "Phylum") %>%
+  mutate(Phylum = if_else(pool, "Other", Phylum)) %>%
+  group_by(Sample, Phylum) %>%
+  summarise(Abundance = sum(Abundance))
+
+# Create stacked barplot using this new dataframe.
+colors <- RColorBrewer::brewer.pal(4,"Set2")
+
+ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_fill_manual(values = colors) +
+  theme_minimal() +
+  ggtitle("Relative Abundance of Phylum")
 
 
 #TODO can manipulate ggplot to have the top two taxa on either side of the stacked bar --> anchor for the top two, one at the top, and one at the bottom
