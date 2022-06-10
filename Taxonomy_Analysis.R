@@ -19,7 +19,8 @@
 
 # CRAN
 
-
+#install.packages("forcats")
+library(forcats)
 #install.packages("tidyverse")
 library(tidyverse)
 #install.packages("unikn")
@@ -144,8 +145,43 @@ ggplot(dfFamily, aes(x = Sample, y = Abundance, fill = Family)) +
 # Show a summary fo the relative abundance of the Family taxa.
 dfFamily %>%
   group_by(Family) %>%
-  summarise(mean = mean(Abundance)) %>%
-  arrange(desc(mean))
+  summarise(max = max(Abundance)) %>%
+  arrange(desc(max))
+
+# Create an "Other" category based on a threshold of abundance 5%
+dfFamily_pool <- dfFamily %>%
+  group_by(Family) %>%
+  summarise(pool = max(Abundance) < 10, 
+            mean = mean(Abundance),
+            .groups = "drop")
+
+dfFamily_Others <- inner_join(dfFamily, dfFamily_pool, by = "Family") %>%
+  mutate(Family = if_else(pool, "Other", Family)) %>%
+  group_by(Sample, Family) %>%
+  summarise(Abundance = sum(Abundance), 
+            mean = min(mean),
+            .groups = "drop") %>%
+  mutate(Family = factor(Family),
+         Family = fct_reorder(Family, mean, .desc = T))
+  
+
+# Create stacked barplot using this new dataframe.
+colors <- RColorBrewer::brewer.pal(9,"Set3")
+
+ggplot(dfFamily_Others, aes(x = Sample, y = Abundance, fill = Family)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_fill_manual(values = colors, 
+                    breaks = c("Bifidobacteriaceae", 
+                               "Clostridiales_unclassified", 
+                               "Coriobacteriaceae",
+                               "Enterococcaceae",
+                               "Eubacteriaceae",
+                               "Lachnospiraceae",
+                               "Ruminococcaceae",
+                               "Streptococcaceae",
+                               "Other")) +
+  theme_minimal() +
+  ggtitle("Relative Abundance of Family")
 
 
 ## Carry out same analysis using Phylum level.
@@ -187,25 +223,37 @@ ggplot(dfPhylum, aes(x = Sample, y = Abundance, fill = Phylum)) +
 # Show a summary fo the relative abundance of the Phylum taxa.
 dfPhylum %>%
   group_by(Phylum) %>%
-  summarise(mean = mean(Abundance)) %>%
-  arrange(desc(mean))
+  summarise(max = max(Abundance)) %>%
+  arrange(desc(max))
 
 # Create an "Other" category based on a threshold of abundance 5%
 dfPhylum_pool <- dfPhylum %>%
   group_by(Phylum) %>%
-  summarise(pool = mean(Abundance) < 2, .groups = "drop")
+  summarise(pool = max(Abundance) < 5, 
+            mean = mean(Abundance),
+            .groups = "drop")
 
 dfPhylum_Others <- inner_join(dfPhylum, dfPhylum_pool, by = "Phylum") %>%
   mutate(Phylum = if_else(pool, "Other", Phylum)) %>%
   group_by(Sample, Phylum) %>%
-  summarise(Abundance = sum(Abundance))
+  summarise(Abundance = sum(Abundance),
+            mean = min(mean),
+            .groups = "drop") %>%
+  mutate(Phylum = factor(Phylum),
+         Phylum = fct_reorder(Phylum, mean, .desc = T))
+
 
 # Create stacked barplot using this new dataframe.
-colors <- RColorBrewer::brewer.pal(4,"Set2")
+colors <- RColorBrewer::brewer.pal(5,"Set3")
 
 ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
   geom_bar(position = "fill", stat = "identity") +
-  scale_fill_manual(values = colors) +
+  scale_fill_manual(values = colors,
+                    breaks = c("Actinobacteria",
+                               "Bacteroidetes",
+                               "Firmicutes",
+                               "Verrucomicrobia",
+                               "Other")) +
   theme_minimal() +
   ggtitle("Relative Abundance of Phylum")
 
