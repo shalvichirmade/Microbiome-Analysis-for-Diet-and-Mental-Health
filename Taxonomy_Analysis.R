@@ -23,6 +23,8 @@
 library(forcats)
 #install.packages("ggfortify")
 library(ggfortify)
+#install.packages("plotly")
+library(plotly)
 #install.packages("tidyverse")
 library(tidyverse)
 
@@ -274,7 +276,7 @@ sapply(dfScaled, class)
 # Standardize data.
 dfScaled <- as.data.frame(scale(dfScaled))
 
-# Add column for samples to differentiate in visualiations.
+# Add column for samples to differentiate in visualizations.
 dfScaled$Sample <- factor(rownames(dfScaled), levels = levels(samples))
 
 # Perform PCA.
@@ -292,20 +294,34 @@ ggplot(dfPCA1_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
   theme_minimal() +
   scale_y_continuous(expand = c(0, 0))
 
-# PCA visualization
+
+# Get scores for each PC.
+summary(pca1)
+
+# 2D PCA visualization
+colors_pca1 <- c("#ef9e98", "#eaae7a", "#f7de92", "#aef9a1", "#96e3de",
+                 "#9bd7fd", "#73adff", "#c8abe3", "#f68bf9", "#dedede")
+
 autoplot(pca1, data = dfScaled,
          colour = "Sample",
          main = "PCA for Differentiation of Samples",
          size = 5) +
   theme_minimal() +
-  scale_color_manual(values = c("#ef9e98", "#eaae7a", "#f7de92", "#aef9a1", "#96e3de",
-                                "#9bd7fd", "#73adff", "#c8abe3", "#f68bf9", "#dedede")) +
+  scale_color_manual(values = colors_pca1) +
   geom_text(label = rownames(dfScaled),
             nudge_x = 0.07,
             cex = 3)
   
+# 3D PCA visualization - to determine if the points grouped together are separated based on PC3 or are similar to one another. Create a dataframe for the PC scores used for this visualization.
+dfPCA1_scores <- as.data.frame(pca1$x)
+dfPCA1_scores$Sample <- factor(rownames(dfPCA1_scores), levels = levels(samples))
+dfPCA1_scores$PC1 <- -dfPCA1_scores$PC1
+#dfPCA1_scores$PC3 <- -dfPCA1_scores$PC3
 
-
+plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3, 
+        color = dfPCA1_scores$Sample, 
+        colors = colors_pca1) %>%
+  layout(title = "3D PCA of Samples")
 
 
 
