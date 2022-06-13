@@ -1,9 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-# Microbiome-Analysis-for-Diet-and-Mental-Health
+# Microbiome Analysis for Diet and Mental Health
 Microbiome analysis of ten patient fecal samples for the identification of diet-derived metabolites and their effects on mental health.
 
 BINF 6999 Project for Summer 2022
