@@ -316,12 +316,15 @@ autoplot(pca1, data = dfScaled,
 dfPCA1_scores <- as.data.frame(pca1$x)
 dfPCA1_scores$Sample <- factor(rownames(dfPCA1_scores), levels = levels(samples))
 dfPCA1_scores$PC1 <- -dfPCA1_scores$PC1
-#dfPCA1_scores$PC3 <- -dfPCA1_scores$PC3
 
 plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3, 
         color = dfPCA1_scores$Sample, 
-        colors = colors_pca1) %>%
+        colors = colors_pca1,
+        type = "scatter3d",
+        mode = "markers+text") %>%
   layout(title = "3D PCA of Samples")
+
+
 
 
 
