@@ -31,6 +31,8 @@ library(ggfortify)
 library(plotly)
 #install.packages("tidyverse")
 library(tidyverse)
+#install.packages("vegan")
+library(vegan)
 
 # Bioconductor
 
@@ -364,6 +366,19 @@ fviz_dend(hc,k = 5,
           #ggtheme = theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())) # Add if y axis lines are required
 
 
+
+#### 6. Statistical Analysis ----
+
+# Create a matrix of the relative abundance data.
+matData <- dfData[,c(1, 3:12)]
+rownames(matData) <- matData[,1]
+matData <- matData[,-1]
+matData <- as.data.frame(matData)
+
+# Convert abundance data to numeric.
+matData[] <- lapply(matData, function(x) as.numeric(as.character(x)))
+sapply(matData, class)
+matData <- as.matrix(matData)
 
 
 
