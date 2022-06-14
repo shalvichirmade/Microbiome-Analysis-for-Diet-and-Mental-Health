@@ -19,6 +19,8 @@
 
 # CRAN
 
+#install.packages("factoextra")
+library(factoextra)
 #install.packages("forcats")
 library(forcats)
 #install.packages("ggfortify")
@@ -315,7 +317,6 @@ autoplot(pca1, data = dfScaled,
 # 3D PCA visualization - to determine if the points grouped together are separated based on PC3 or are similar to one another. Create a dataframe for the PC scores used for this visualization.
 dfPCA1_scores <- as.data.frame(pca1$x)
 dfPCA1_scores$Sample <- factor(rownames(dfPCA1_scores), levels = levels(samples))
-dfPCA1_scores$PC1 <- -dfPCA1_scores$PC1
 
 plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3, 
         color = dfPCA1_scores$Sample, 
