@@ -326,7 +326,25 @@ plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3,
   layout(title = "3D PCA of Samples")
 
 
+#### 5. Hierarchical Clustering ----
 
+# Create numerical matrix from data.
+matScaled <- as.matrix(dfScaled[,1:325])
+matScaled <- matScaled[levels(samples),,drop = F]
+
+# Crete dissimilarity matrix.
+distDissim <- dist(matScaled)
+
+# Visualize the dissimilarity matrix for the samples.
+fviz_dist(distDissim,
+          order = F,
+          gradient = list(low = "darkslategray3",
+                          mid = "white",
+                          high = "salmon2")) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  ggtitle("Heatmap of dissimilarity between the samples") +
+  xlab("") +
+  ylab("") 
 
 
 
