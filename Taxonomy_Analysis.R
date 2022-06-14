@@ -19,6 +19,8 @@
 
 # CRAN
 
+#install.packages("cluster")
+library(cluster)
 #install.packages("factoextra")
 library(factoextra)
 #install.packages("forcats")
@@ -334,6 +336,7 @@ matScaled <- matScaled[levels(samples),,drop = F]
 
 # Crete dissimilarity matrix.
 distDissim <- dist(matScaled)
+matDissim <- as.matrix(distDissim)
 
 # Visualize the dissimilarity matrix for the samples.
 fviz_dist(distDissim,
@@ -345,6 +348,19 @@ fviz_dist(distDissim,
   ggtitle("Heatmap of dissimilarity between the samples") +
   xlab("") +
   ylab("") 
+
+# Complete linkage clustering.
+hc <- hclust(distDissim) # complete is the default
+
+fviz_dend(hc,k = 5,
+          cex = 0.7,
+          k_colors = c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07"),
+          rect = T,
+          rect_fill = T,
+          rect_border = c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07"),
+          main = "Hierarchical Clustering of Samples using Complete Linkage")
+          #ggtheme = theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())) # Add if y axis lines are required
+
 
 
 
