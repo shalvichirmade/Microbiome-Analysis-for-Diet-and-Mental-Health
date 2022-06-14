@@ -352,14 +352,18 @@ fviz_dist(distDissim,
 # Complete linkage clustering.
 hc <- hclust(distDissim) # complete is the default
 
+colors <- c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07")
+  
 fviz_dend(hc,k = 5,
-          cex = 0.7,
-          k_colors = c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07"),
+          cex = 0.8,
+          k_colors = colors,
           rect = T,
           rect_fill = T,
-          rect_border = c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07"),
+          rect_border = colors,
           main = "Hierarchical Clustering of Samples using Complete Linkage")
           #ggtheme = theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())) # Add if y axis lines are required
+
+
 
 
 
