@@ -416,8 +416,55 @@ rownames(dfSamples) <- dfSamples$sample
 # Create phyloseq object.
 phy <- phyloseq(otu, tax, dfSamples)
 
+# Make another phyloseq object with the full dataset.
+dfOTU2 <- dfData[,c(1,3:12)]
+dfOTU2 <- relocate(dfOTU2, levels(samples))
+dfOTU2 <- relocate(dfOTU2, clade_name, .before = levels(samples))
+colnames(dfOTU2)[1] <- "otu"
+dfOTU2$otu <- paste0("OTU", 1:nrow(dfOTU2))
+rownames(dfOTU2) <- dfOTU2$otu
+matOTU2 <- as.matrix(dfOTU2[,-1])
+storage.mode(matOTU2) <- "numeric"
+otu2 <- otu_table(matOTU2, taxa_are_rows = T)
+
+dfTaxa2 <- tibble(otu = dfOTU2$otu, dfTidy[,1:7])
+rownames(dfTaxa2) <- dfTaxa2$otu
+matTaxa2 <- as.matrix(dfTaxa2)
+tax2 <- tax_table(matTaxa2)
+
+phy2 <- phyloseq(otu2, tax2, dfSamples)
+
+
+# Alpha diversity measure using Shannon index.
+# "In our study, microbiota diversity was quantified using Shannon index. This diversity index is a quantitative indicator of the number of different bacteria that are present in a stool sample, taking into account the uniformity in the distribution of these bacteria in these species. Diversity index value increases both when the number of species increases and when evenness increases. The Shannon index is a well-known diversity index used in microecological studies. The higher the Shannon index value, the higher the community diversity ." Yin et al., 2019
+plot_richness(phy, measures = "Shannon") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on Phylum alone")
+
+plot_richness(phy2, measures = "Shannon") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on full data")
+
+# There's only one point for each sample as we have not distinguished the samples by any variable.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### . REFERENCES ----
+
+# Yin, L., Wan, Y. D., Pan, X. T., Zhou, C. Y., Lin, N., Ma, C. T., Yao, J., Su, Z., Wan, C., Yu, Y. W., & Zhu, R. X. (2019). Association Between Gut Bacterial Diversity and Mortality in Septic Shock Patients: A Cohort Study. Medical science monitor : international medical journal of experimental and clinical research, 25, 7376–7382. https://doi.org/10.12659/MSM.916808
 
 
