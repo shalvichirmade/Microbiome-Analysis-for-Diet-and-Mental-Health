@@ -209,6 +209,9 @@ sapply(dfPhylum, class)
 # Sum the abundance for each sample.
 lapply(dfPhylum[, 2:11], sum)
 
+# Save this dataframe to be used later to create a phyloseq object.
+dfOTU <- dfPhylum
+
 
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfPhylum <- pivot_longer(dfPhylum, cols = 2:11, names_to = "Sample")
@@ -381,6 +384,17 @@ sapply(matData, class)
 matData <- as.matrix(matData)
 
 
+
+## Try to create Phyloseq object. Require three dataframes: OTU, taxonomy and samples table.
+
+# OTU table needs to have the OTU names as a column and all the samples as columns. I will make the full taxonomy name as the OTU name (already created when making dfPhylum). Only using the Phylum information as this is the clade being used for analysis and the relative abundance for all samples at this stage equate to 100%.
+
+# Changing the columns to go in order.
+dfOTU <- relocate(dfOTU, levels(samples))
+dfOTU <- relocate(dfOTU, Phylum, .before = levels(samples))
+
+# Make the rownmaes, the Phylum names.
+rownames(dfOTU) <- dfOTU$Phylum
 
 
 
