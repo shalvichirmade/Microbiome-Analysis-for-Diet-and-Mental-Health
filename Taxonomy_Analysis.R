@@ -27,6 +27,8 @@ library(factoextra)
 library(forcats)
 #install.packages("ggfortify")
 library(ggfortify)
+#install.packages("phyloseq")
+library(phyloseq)
 #install.packages("plotly")
 library(plotly)
 #install.packages("tidyverse")
@@ -392,9 +394,30 @@ matData <- as.matrix(matData)
 # Changing the columns to go in order.
 dfOTU <- relocate(dfOTU, levels(samples))
 dfOTU <- relocate(dfOTU, Phylum, .before = levels(samples))
+colnames(dfOTU)[1] <- "otu"
 
-# Make the rownmaes, the Phylum names.
-rownames(dfOTU) <- dfOTU$Phylum
+# Make the row names, the Phylum names. First, save the current row names into a varibale.
+index <- rownames(dfOTU)
+rownames(dfOTU) <- dfOTU$otu
+matOTU <- as.matrix(dfOTU[,-1])
+otu <- otu_table(matOTU, taxa_are_rows = T)
+
+
+# Making the Taxonomy table, keeping the otu names column as the first (what is required).
+dfTaxa <- tibble(otu = dfOTU$otu, dfTidy[index, 1:2])
+rownames(dfTaxa) <- dfTaxa$otu
+matTaxa <- as.matrix(dfTaxa)
+tax <- tax_table(matTaxa)
+
+# Making the Samples table. The frist column has to be the sample names.
+dfSamples <- data.frame(sample = colnames(dfOTU)[2:11])
+rownames(dfSamples) <- dfSamples$sample
+
+# Create phyloseq object.
+phy <- phyloseq(otu, tax, dfSamples)
+
+
+
 
 
 
