@@ -448,18 +448,16 @@ plot_richness(phy2, measures = "Shannon") +
 # There's only one point for each sample as we have not distinguished the samples by any variable.
 
 
+# Carry out an ANOVA test based on the Shannon index for each sample. Save the Shannon index calculations into a dataframe first.
+dfShannon <- data.frame(sample = dfSamples$sample, 
+                        Shannon = estimate_richness(phy2, measures = "Shannon"))
+
+# Don't think this is correct....
+anova <- aov(Shannon ~ sample, data = dfShannon)
+TukeyHSD(anova)
 
 
-
-
-
-
-
-
-
-
-
-
+# Also tried lm and wilcox-test - none seem appropriate.
 
 
 
