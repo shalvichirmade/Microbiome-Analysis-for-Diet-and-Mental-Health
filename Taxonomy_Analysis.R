@@ -412,9 +412,22 @@ tax <- tax_table(matTaxa)
 # Making the Samples table. The frist column has to be the sample names.
 dfSamples <- data.frame(sample = colnames(dfOTU)[2:11])
 rownames(dfSamples) <- dfSamples$sample
+dfSamples <- dfSamples[,-1]
+
+# Adding age range as a variable.
+dfSamples$Age5 <- c("Below", "Below", "Above", "Below", "Below", 
+                   "Above", "Below", "Below", "Below", "Above")
+dfSamples$Age5 <- as.factor(dfSamples$Age5)
+
+# Adding if the child was exposed to antibiotics as a variable.
+dfSamples$Ab <- c("Yes", "Yes", "Yes", "Yes", "No",
+                  "Yes", "Yes", "No", "No", "Yes")
+dfSamples$Ab <- as.factor(dfSamples$Ab)
+
+dfSamples_phy <- sample_data(dfSamples)
 
 # Create phyloseq object.
-phy <- phyloseq(otu, tax, dfSamples)
+phy <- phyloseq(otu, tax, dfSamples_phy)
 
 # Make another phyloseq object with the full dataset.
 dfOTU2 <- dfData[,c(1,3:12)]
@@ -432,7 +445,9 @@ rownames(dfTaxa2) <- dfTaxa2$otu
 matTaxa2 <- as.matrix(dfTaxa2)
 tax2 <- tax_table(matTaxa2)
 
-phy2 <- phyloseq(otu2, tax2, dfSamples)
+
+
+phy2 <- phyloseq(otu2, tax2, dfSamples_phy)
 
 
 # Alpha diversity measure using Shannon index.
@@ -443,10 +458,24 @@ plot_richness(phy, measures = "Shannon") +
 
 plot_richness(phy2, measures = "Shannon") +
   scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on full data")
+  ggtitle("Alpha Diversity based on full dataset")
 
 # There's only one point for each sample as we have not distinguished the samples by any variable.
 
+# Measure based on the variables.
+
+plot_richness(phy, measures = "Shannon", color = "Ab") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on Phylum alone") +
+  xlab("Samples")
+
+
+plot_richness(phy2, measures = "Shannon", color = "Ab") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on full dataset") +
+  xlab("Samples")
+
+# Samples 5 and 9 always seem to be outliers and they have never been exposed to antibiotics.
 
 # Carry out an ANOVA test based on the Shannon index for each sample. Save the Shannon index calculations into a dataframe first.
 dfShannon <- data.frame(sample = dfSamples$sample, 
