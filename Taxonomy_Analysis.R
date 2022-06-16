@@ -489,6 +489,23 @@ TukeyHSD(anova)
 # Also tried lm and wilcox-test - none seem appropriate.
 
 
+# Try t-test for the variables.
+dfShannon <- data.frame(dfSamples, 
+                        Shannon = estimate_richness(phy2, measures = "Shannon"))
+
+test <- dfShannon %>%
+  group_by(Ab) %>%
+  summarise(meanShannon = mean(Shannon))
+  
+wilcox.test(Shannon ~ Ab, data = dfShannon)
+t.test(Shannon ~ Ab, data = dfShannon)
+
+hist(dfShannon$Shannon)
+qqnorm(dfShannon$Shannon)
+qqline(dfShannon$Shannon)
+var(dfShannon$Shannon)
+# 0.03690366
+
 
 #### . REFERENCES ----
 
