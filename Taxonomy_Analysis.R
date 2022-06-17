@@ -444,6 +444,81 @@ dfExtAbund_Subset <- dfExtAbund_Subset %>%
 dfExtAbund_Subset[,7] <- sapply(dfExtAbund_Subset[,7], function(x) word(x, 2))
 
 
+# Replace NA in count table with 0.
+dfExtAbund_Subset[,8:37] <- sapply(dfExtAbund_Subset[,8:37], function(x) replace_na(x, 0))
+
+
+# Make count data into relative abundance data. Create a function to change each value based on the sum of the vector (column of dataframe).
+make_relative <- function(numvec){
+  # Store the sum of the vector into a variable.
+  sumvec <- sum(numvec)
+  
+  # Divide each element of the vector by the total sum and multiply by 100 - this creates relative abundance data.
+  numvec <- sapply(numvec, function(x) (x/sumvec)*100)
+  
+  return(numvec)
+}
+
+dfExtAbund_Subset[,8:37] <- sapply(dfExtAbund_Subset[,8:37], make_relative)
+
+
+# How many taxa match between dfTidy and dfExtAbund_Subset?
+nrow(inner_join(dfTidy, dfExtAbund_Subset, by = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"))) #29
+
+dfJoin <- inner_join(dfTidy, dfExtAbund_Subset, 
+                     by = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"))
+
+# Remove the taxa columns as that information is not required for PCA.
+dfJoin <- dfJoin[,9:48]
+
+# Convert abundance data to numeric.
+dfJoin[] <- lapply(dfJoin, function(x) as.numeric(as.character(x)))
+sapply(dfJoin, class)
+
+# Transpose the data so the samples are rows.
+dfJoin <- t(dfJoin)
+
+# Standardize data.
+dfJoin <- as.data.frame(scale(dfJoin))
+
+# Add column for samples to differentiate in visualizations.
+dfJoin$Sample <- rep(c("Sample", "External"), c(10, 30))
+
+# Perform PCA.
+pca2 <- prcomp(dfJoin[,-30])
+
+# Scree plot to visualize variance.
+dfPCA2_var <- data.frame(PC = paste0("PC", 1:29),
+                         var = (pca2$sdev)^2 / sum((pca2$sdev)^2))
+
+ggplot(dfPCA2_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
+  geom_bar(stat = "identity", fill = "darkslategray3") +
+  ggtitle("Scree plot: PCA based on variance for taxonomy") +
+  xlab("Principal Component") +
+  ylab("Proportion of Variance") +
+  theme_minimal() +
+  scale_y_continuous(expand = c(0, 0))
+
+
+# Get scores for each PC.
+summary(pca2)
+
+# 2D PCA visualization
+colors_pca2 <- c("darkslategray3", "lightsalmon2")
+
+autoplot(pca2, data = dfJoin,
+         colour = "Sample",
+         main = "PCA for Differentiation of Samples",
+         size = 5) +
+  theme_minimal() +
+  scale_color_manual(values = colors_pca2) +
+  geom_text(label = c(rownames(dfJoin)[1:10],rep("", 30)),
+            nudge_x = 0.04,
+            cex = 3)
+
+
+
+
 
 
 #### 7. Statistical Analysis ----
