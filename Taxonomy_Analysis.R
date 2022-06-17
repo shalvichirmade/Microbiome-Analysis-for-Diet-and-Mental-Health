@@ -475,6 +475,16 @@ plot_richness(phy2, measures = "Shannon", color = "Ab") +
   ggtitle("Alpha Diversity based on full dataset") +
   xlab("Samples")
 
+plot_richness(phy2, measures = "Simpson", color = "Ab") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on full dataset") +
+  xlab("Samples")
+
+plot_richness(phy, measures = "Simpson", color = "Ab") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on Phylum alone") +
+  xlab("Samples")
+
 # Samples 5 and 9 always seem to be outliers and they have never been exposed to antibiotics.
 
 # Carry out an ANOVA test based on the Shannon index for each sample. Save the Shannon index calculations into a dataframe first.
@@ -489,7 +499,7 @@ TukeyHSD(anova)
 # Also tried lm and wilcox-test - none seem appropriate.
 
 
-# Try t-test for the variables.
+# Try t-test for the variables -Shannon.
 dfShannon <- data.frame(dfSamples, 
                         Shannon = estimate_richness(phy2, measures = "Shannon"))
 
@@ -505,6 +515,23 @@ qqnorm(dfShannon$Shannon)
 qqline(dfShannon$Shannon)
 var(dfShannon$Shannon)
 # 0.03690366
+
+# Try t-test for the variables - Simpson.
+dfSimpson <- data.frame(dfSamples, 
+                        Simpson = estimate_richness(phy2, measures = "Simpson"))
+
+test <- dfSimpson %>%
+  group_by(Ab) %>%
+  summarise(meanSimpson = mean(Simpson))
+
+wilcox.test(Simpson ~ Ab, data = dfSimpson)
+t.test(Simpson ~ Ab, data = dfSimpson)
+
+hist(dfSimpson$Simpson)
+qqnorm(dfSimpson$Simpson)
+qqline(dfSimpson$Simpson)
+var(dfSimpson$Simpson)
+# 0.0001757916
 
 
 #### . REFERENCES ----
