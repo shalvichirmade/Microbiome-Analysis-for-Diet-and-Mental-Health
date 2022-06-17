@@ -517,8 +517,57 @@ autoplot(pca2, data = dfJoin,
             cex = 3)
 
 
+## Try again using the FULL taxonomic information.
+dfTidy[,9:18] <- sapply(dfTidy[,9:18], function(x) as.numeric(as.character(x)))
+dfFullJoin <- full_join(dfTidy, dfExtAbund_Subset, 
+                        by = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"))
+
+dfFullJoin[,9:18] <- sapply(dfFullJoin[,9:18], function(x) as.numeric(as.character(x)))
+#dfFullJoin[,9:48] <- sapply(dfFullJoin[,9:48], function(x) replace_na(x, as.numeric(0)))
+
+dfFullJoin <- dfFullJoin[,9:48]
+dfFullJoin[is.na(dfFullJoin)] <- 0
+
+# Transpose the data so the samples are rows.
+dfFullJoin <- t(dfFullJoin)
+
+# Standardize data.
+dfFullJoin <- as.data.frame(scale(dfFullJoin))
+
+# Add column for samples to differentiate in visualizations.
+dfFullJoin$Sample <- rep(c("Sample", "External"), c(10, 30))
+
+# Perform PCA.
+pca3 <- prcomp(dfFullJoin[,-1067])
+
+# Scree plot to visualize variance.
+dfPCA3_var <- data.frame(PC = paste0("PC", 1:1066),
+                         var = (pca3$sdev)^2 / sum((pca3$sdev)^2))
+
+ggplot(dfPCA3_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
+  geom_bar(stat = "identity", fill = "darkslategray3") +
+  ggtitle("Scree plot: PCA based on variance for taxonomy") +
+  xlab("Principal Component") +
+  ylab("Proportion of Variance") +
+  theme_minimal() +
+  scale_y_continuous(expand = c(0, 0))
 
 
+# Get scores for each PC.
+summary(pca2)
+
+# 2D PCA visualization
+colors_pca2 <- c("darkslategray3", "lightsalmon2")
+
+autoplot(pca2, data = dfFullJoin,
+         colour = "Sample",
+         main = "PCA for Differentiation of Samples",
+         size = 5) +
+  theme_minimal() +
+  scale_color_manual(values = colors_pca2) +
+  geom_text(label = c(rownames(dfJoin)[1:10],rep("", 30)),
+            nudge_x = 0.04,
+            cex = 3)
 
 
 #### 7. Statistical Analysis ----
