@@ -372,7 +372,81 @@ fviz_dend(hc,k = 5,
 
 
 
-#### 6. Statistical Analysis ----
+#### 6. PCA Comparison to Publicly Available Data ----
+
+# Dataset was obtained from MicrobiomeDB. It is the maturation of the human gut microbiome during the first 5 years of life in children living in Bangladesh. 
+# https://microbiomedb.org/mbio/app/record/dataset/DS_01668ecdbf
+
+# This dataset will be used to for comparison against the ten samples in this study. A PCA plot will be used to show the differences between the healthy children in the obtained dataset and the children of the ten samples.
+
+# Input the data.
+dfExtDetails <- read_tsv("Bangladesh_healthy_5yr.16s_DADA2.sample_details.tsv")
+dfExtAbund <- read_tsv("Bangladesh_healthy_5yr.16s_DADA2.taxon_abundance.tsv")
+
+# What is the oldest age of a child form this dataset?
+max(dfExtDetails$`Age at sample collection (months)`) # 60.4 - 5rs of age
+
+# Remove children below 2 of age as the lowest age of the ten samples is 2 years.
+sapply(dfExtDetails, class)
+dfExtDetails <- dfExtDetails %>%
+  filter(`Age at sample collection (months)` > 24)
+
+unique(dfExtDetails$`Host body product`) # all fecal samples
+
+# Rename sample column header.
+colnames(dfExtDetails)[1] <- "Sample"
+
+# How many samples from each age group?
+dfExtDetails %>%
+  filter(`Age at sample collection (months)` > 24 & `Age at sample collection (months)` < 36.1) %>%
+  count() # 438
+
+dfExtDetails %>%
+  filter(`Age at sample collection (months)` > 36 & `Age at sample collection (months)` < 48.1) %>%
+  count() # 602
+
+dfExtDetails %>%
+  filter(`Age at sample collection (months)` > 48 & `Age at sample collection (months)` < 61) %>%
+  count() # 543
+
+
+# Randomly select 10 samples from each age group for further analysis.
+set.seed(6999)
+
+dfExtDetails_Subset <- dfExtDetails %>%
+  filter(`Age at sample collection (months)` > 24 &
+           `Age at sample collection (months)` < 36.1) %>%
+  sample_n(10)
+
+dfExtDetails_Subset <- rbind(dfExtDetails_Subset, dfExtDetails %>%
+                               filter(`Age at sample collection (months)` > 36 &
+                                        `Age at sample collection (months)` < 48.1) %>%
+                               sample_n(10))
+
+dfExtDetails_Subset <- rbind(dfExtDetails_Subset, dfExtDetails %>%
+                               filter(`Age at sample collection (months)` > 48 &
+                                        `Age at sample collection (months)` < 60.4) %>%
+                               sample_n(10))
+
+
+# Subset the Abundance table according to the samples selected.
+dfExtAbund_Subset <- dfExtAbund %>% 
+  select(...1 ,dfExtDetails_Subset$Sample)
+colnames(dfExtAbund_Subset)[1] <- "Taxa"
+
+
+# Separate the Taxa column into individual columns by clade.
+dfExtAbund_Subset <- dfExtAbund_Subset %>%
+  separate(Taxa, into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
+           sep = ";")
+
+# Remove genus name from species column.
+dfExtAbund_Subset[,7] <- sapply(dfExtAbund_Subset[,7], function(x) word(x, 2))
+
+
+
+
+#### 7. Statistical Analysis ----
 
 # Create a matrix of the relative abundance data.
 matData <- dfData[,c(1, 3:12)]
@@ -483,6 +557,11 @@ plot_richness(phy2, measures = "Simpson", color = "Ab") +
 plot_richness(phy, measures = "Simpson", color = "Ab") +
   scale_x_discrete(limits = levels(samples)) +
   ggtitle("Alpha Diversity based on Phylum alone") +
+  xlab("Samples")
+
+plot_richness(phy2, measures = c("Simpson", "Shannon"), color = "Ab") +
+  scale_x_discrete(limits = levels(samples)) +
+  ggtitle("Alpha Diversity based on full dataset") +
   xlab("Samples")
 
 # Samples 5 and 9 always seem to be outliers and they have never been exposed to antibiotics.
