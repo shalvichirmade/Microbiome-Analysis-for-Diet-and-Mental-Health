@@ -512,7 +512,7 @@ autoplot(pca2, data = dfJoin,
          size = 5) +
   theme_minimal() +
   scale_color_manual(values = colors_pca2) +
-  geom_text(label = c(rownames(dfJoin)[1:10],rep("", 30)),
+  geom_text(label = c(rownames(dfJoin)[1:10], rep("", 30)),
             nudge_x = 0.04,
             cex = 3)
 
@@ -566,10 +566,29 @@ autoplot(pca3, data = dfFullJoin,
          main = "PCA for Differentiation of Samples",
          size = 5) +
   theme_minimal() +
-  scale_color_manual(values = colors_pca2) +
-  geom_text(label = c(rownames(dfJoin)[1:10], rep("", 30)),
+  scale_color_manual(values = colors_pca3) +
+  geom_text(label = c(rownames(dfFullJoin)[1:10], rep("", 30)),
             nudge_x = 0.04,
             cex = 3)
+
+# 3D PCA visualization - to determine if the points grouped together are separated based on PC3 or are similar to one another. Create a dataframe for the PC scores used for this visualization.
+dfPCA3_scores <- as.data.frame(pca3$x)
+dfPCA3_scores$Sample <- c(rownames(dfPCA3_scores)[1:10], rep("External", 30))
+dfPCA3_scores$Sample <- factor(rownames(dfPCA3_scores), levels = levels(samples))
+dfPCA3_scores$Sample <- addNA(dfPCA3_scores$Sample)
+levels(dfPCA3_scores$Sample) <- c(levels(dfPCA3_scores$Sample), "External")
+dfPCA3_scores$Sample[is.na(dfPCA3_scores$Sample)] <- "External"
+
+plot_ly(dfPCA3_scores, x = ~PC1, y = ~PC2, z = ~PC3, 
+        color = dfPCA3_scores$Sample, 
+        colors = c(colors_pca1, "lightsalmon2"),
+        type = "scatter3d",
+        mode = "markers+text") %>%
+  layout(title = "3D PCA of Samples")
+
+
+
+
 
 
 #### 7. Statistical Analysis ----
