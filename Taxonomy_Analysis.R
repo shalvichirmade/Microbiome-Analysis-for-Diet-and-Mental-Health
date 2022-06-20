@@ -589,8 +589,6 @@ plot_ly(dfPCA3_scores, x = ~PC1, y = ~PC2, z = ~PC3,
 
 
 
-
-
 #### 7. Statistical Analysis ----
 
 # Create a matrix of the relative abundance data.
@@ -604,6 +602,18 @@ matData[] <- lapply(matData, function(x) as.numeric(as.character(x)))
 sapply(matData, class)
 matData <- as.matrix(matData)
 
+
+# Carry out anoism test. 
+t.Data <- as.data.frame(t(matData))
+t.Data.Sample <- rep(rownames(t.Data), 2)
+t.matData <- t(matData)
+t.matData <- rbind(t.matData, t.matData) # Had to duplicate the results data as ANOSIM requires replicates withing groupings; out groupings are the sample names.
+anosim(t.matData, grouping = t.Data.Sample, permutations = 9999, distance = "bray")
+# ANOSIM statistic R:     1 
+# Significance: 1e-04 
+# Permutation: free
+
+# As the significance value is less than 0.05 and the R statistic is 1, there is a strong, statistically significant difference between the samples. 
 
 
 ## Try to create Phyloseq object. Require three dataframes: OTU, taxonomy and samples table.
