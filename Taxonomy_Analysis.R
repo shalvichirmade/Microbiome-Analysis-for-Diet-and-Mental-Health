@@ -134,7 +134,7 @@ dfFamily[, 2:11] <- lapply(dfFamily[, 2:11], function(x) as.numeric(as.character
 sapply(dfFamily, class)
 
 # Sum the abundance for each sample.
-lapply(dfFamily[, 2:11], sum)
+round(sapply(dfFamily[, 2:11], sum), 3)
 
 
 # Make the columns into rows - result checked to make sure the transformation was accurate.
@@ -151,6 +151,11 @@ dfFamily %>%
   group_by(Family) %>%
   summarise(max = max(Abundance)) %>%
   arrange(desc(max))
+
+dfFamily %>%
+  group_by(Family) %>%
+  summarise(mean = mean(Abundance)) %>%
+  arrange(desc(mean))
 
 # Create an "Other" category based on a threshold of abundance 5%
 dfFamily_pool <- dfFamily %>%
@@ -170,7 +175,6 @@ dfFamily_Others <- inner_join(dfFamily, dfFamily_pool, by = "Family") %>%
   
 
 # Create stacked barplot using this new dataframe.
-colors <- RColorBrewer::brewer.pal(9,"Set3")
 colors <- c("#debbcc", "#d4cce6", "#bad6ef", "#a8e1de", "#ebc9a7", "#bedcb8", "#dedede")
 
 ggplot(dfFamily_Others, aes(x = Sample, y = Abundance, fill = Family)) +
@@ -209,7 +213,7 @@ dfPhylum[, 2:11] <- lapply(dfPhylum[, 2:11], function(x) as.numeric(as.character
 sapply(dfPhylum, class)
 
 # Sum the abundance for each sample.
-lapply(dfPhylum[, 2:11], sum)
+round(sapply(dfPhylum[, 2:11], sum), 3)
 
 # Save this dataframe to be used later to create a phyloseq object.
 dfOTU <- dfPhylum
@@ -227,6 +231,11 @@ dfPhylum %>%
   group_by(Phylum) %>%
   summarise(max = max(Abundance)) %>%
   arrange(desc(max))
+
+dfPhylum %>%
+  group_by(Phylum) %>%
+  summarise(mean = mean(Abundance)) %>%
+  arrange(desc(mean))
 
 # Create an "Other" category based on a threshold of abundance 5%
 dfPhylum_pool <- dfPhylum %>%
@@ -246,7 +255,6 @@ dfPhylum_Others <- inner_join(dfPhylum, dfPhylum_pool, by = "Phylum") %>%
 
 
 # Create stacked barplot using this new dataframe.
-colors <- RColorBrewer::brewer.pal(5,"Set3")
 colors <- c("#debbcc", "#d4cce6", "#bad6ef", "#a8e1de", "#dedede")
 
 ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
@@ -267,7 +275,6 @@ ggplot(dfPhylum_Others, aes(x = Sample, y = Abundance, fill = Phylum)) +
 # Remove variables no longer required.
 rm(dfPhylum, dfPhylum_Others, dfPhylum_pool)
 
-#TODO can manipulate ggplot to have the top two taxa on either side of the stacked bar --> anchor for the top two, one at the top, and one at the bottom
 
 
 #### 4. PCA ----
@@ -334,6 +341,9 @@ plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3,
         mode = "markers+text") %>%
   layout(title = "3D PCA of Samples")
 
+# Remove variables no longer required.
+rm(pca1, dfPCA1_var, dfPCA1_scores)
+
 
 #### 5. Hierarchical Clustering ----
 
@@ -370,6 +380,10 @@ fviz_dend(hc,k = 5,
           main = "Hierarchical Clustering of Samples using Complete Linkage")
           #ggtheme = theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())) # Add if y axis lines are required
 
+# As the value of k decreases, the groups on the right come together first, leaving samples 9,6 5 to be added last.
+
+# Remove variables no longer required.
+rm(hc)
 
 
 #### 6. PCA Comparison to Publicly Available Data ----
@@ -514,7 +528,12 @@ autoplot(pca2, data = dfJoin,
   scale_color_manual(values = colors_pca2) +
   geom_text(label = c(rownames(dfJoin)[1:10], rep("", 30)),
             nudge_x = 0.04,
-            cex = 3)
+            cex = 3) 
+
+# Decided not to use this PCA as part of the analysis as the taxa used is a very small subset of the actual information available. Will be using the whole taxa information for analysis.
+
+# Remove variables no longer required.
+rm(dfJoin, dfPCA2_var, pca2, colors_pca2)
 
 
 ## Try again using the FULL taxonomic information.
@@ -548,7 +567,7 @@ dfPCA3_var <- data.frame(PC = paste0("PC", 1:40),
 
 ggplot(dfPCA3_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
   geom_bar(stat = "identity", fill = "darkslategray3") +
-  ggtitle("Scree plot: PCA based on variance for taxonomy") +
+  ggtitle("Scree plot: PCA based on variance for taxonomy from both external dataset and the ten samples") +
   xlab("Principal Component") +
   ylab("Proportion of Variance") +
   theme_minimal() +
@@ -569,7 +588,9 @@ autoplot(pca3, data = dfFullJoin,
   scale_color_manual(values = colors_pca3) +
   geom_text(label = c(rownames(dfFullJoin)[1:10], rep("", 30)),
             nudge_x = 0.04,
-            cex = 3)
+            cex = 3)+
+  guides(color = guide_legend(override.aes = list(size = 5)),
+         size = F)
 
 # 3D PCA visualization - to determine if the points grouped together are separated based on PC3 or are similar to one another. Create a dataframe for the PC scores used for this visualization.
 dfPCA3_scores <- as.data.frame(pca3$x)
@@ -609,7 +630,7 @@ t.Data.Sample <- rep(rownames(t.Data), 2)
 t.matData <- t(matData)
 t.matData <- rbind(t.matData, t.matData) # Had to duplicate the results data as ANOSIM requires replicates withing groupings; out groupings are the sample names.
 anosim(t.matData, grouping = t.Data.Sample, permutations = 9999, distance = "bray")
-# ANOSIM statistic R:     1 
+# ANOSIM statistic R: 1 
 # Significance: 1e-04 
 # Permutation: free
 
