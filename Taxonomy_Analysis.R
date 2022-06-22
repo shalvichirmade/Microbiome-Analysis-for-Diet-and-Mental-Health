@@ -789,6 +789,17 @@ var(dfSimpson$Simpson)
 # 0.0001757916
 
 
+
+
+# Sample relatedness between 
+# Average taxa among all samples --> use avergae for fischers exact test or ch sq
+# Null hypothesos - the same
+# Understand why you need the two more simial;r samples -- then this stat analysios would make sense
+# be the two most simialr out of the ten, do not say representative
+# choose the highest p value --> all ten samples
+# use diust amtrix as well to look for the highest value? which samples do they beliong to
+# How does he species variation change across the ten -> phyla-based?
+
 #### . REFERENCES ----
 
 # Yin, L., Wan, Y. D., Pan, X. T., Zhou, C. Y., Lin, N., Ma, C. T., Yao, J., Su, Z., Wan, C., Yu, Y. W., & Zhu, R. X. (2019). Association Between Gut Bacterial Diversity and Mortality in Septic Shock Patients: A Cohort Study. Medical science monitor : international medical journal of experimental and clinical research, 25, 7376–7382. https://doi.org/10.12659/MSM.916808
