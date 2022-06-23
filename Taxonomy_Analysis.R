@@ -607,207 +607,273 @@ plot_ly(dfPCA3_scores, x = ~PC1, y = ~PC2, z = ~PC3,
         mode = "markers+text") %>%
   layout(title = "3D PCA of Samples")
 
+# Remove variables no longer required.
+rm(pca3, colors_pca1, colors_pca3, dfPCA3_var, dfPCA3_scores, 
+   dfFullJoin, dfExtAbund, dfExtAbund_Subset, dfExtDetails, dfExtDetails_Subset)
+
 
 
 
 #### 7. Statistical Analysis ----
 
-# Create a matrix of the relative abundance data.
-matData <- dfData[,c(1, 3:12)]
-rownames(matData) <- matData[,1]
-matData <- matData[,-1]
-matData <- as.data.frame(matData)
+# Create a dataframe of the relative abundance data for us in chi-square testing.
+dfTesting <- dfData[,c(1, 3:12)]
+rownames(dfTesting) <- dfTesting[,1]
+dfTesting <- dfTesting[,-1]
 
-# Convert abundance data to numeric.
-matData[] <- lapply(matData, function(x) as.numeric(as.character(x)))
-sapply(matData, class)
-matData <- as.matrix(matData)
+# Reorder columns in order of patients.
+dfTesting <- select(dfTesting, levels(samples))
 
-
-# Carry out anoism test. 
-t.Data <- as.data.frame(t(matData))
-t.Data.Sample <- rep(rownames(t.Data), 2)
-t.matData <- t(matData)
-t.matData <- rbind(t.matData, t.matData) # Had to duplicate the results data as ANOSIM requires replicates withing groupings; out groupings are the sample names.
-anosim(t.matData, grouping = t.Data.Sample, permutations = 9999, distance = "bray")
-# ANOSIM statistic R: 1 
-# Significance: 1e-04 
-# Permutation: free
-
-# As the significance value is less than 0.05 and the R statistic is 1, there is a strong, statistically significant difference between the samples. 
+# Convert all columns to numeric.
+sapply(dfTesting, class)
+dfTesting[] <- sapply(dfTesting, function(x) as.numeric(as.character(x)))
+sapply(dfTesting, class)
 
 
-## Try to create Phyloseq object. Require three dataframes: OTU, taxonomy and samples table.
+# Round each value to two decimal places
+dfTesting <- round(dfTesting, digits = 2)
 
-# OTU table needs to have the OTU names as a column and all the samples as columns. I will make the full taxonomy name as the OTU name (already created when making dfPhylum). Only using the Phylum information as this is the clade being used for analysis and the relative abundance for all samples at this stage equate to 100%.
+# Create a column with the "Expected" values for each taxa - this is done by taking the average across all ten samples.
+dfTesting$Expected <- round(rowMeans(dfTesting), 2)
+# Checked to make sure it was correct with a few random rows.
 
-# Changing the columns to go in order.
-dfOTU <- relocate(dfOTU, levels(samples))
-dfOTU <- relocate(dfOTU, Phylum, .before = levels(samples))
-colnames(dfOTU)[1] <- "otu"
+## Check the assumptions for Chi-Square Test.
 
-# Make the row names, the Phylum names. First, save the current row names into a varibale.
-index <- rownames(dfOTU)
-rownames(dfOTU) <- dfOTU$otu
-matOTU <- as.matrix(dfOTU[,-1])
-otu <- otu_table(matOTU, taxa_are_rows = T)
+# 1. Variables are categorical --> yes, all variables are taxa names.
+# 2. All observations are independent --> all patients are independent of one another
+# 3. Cells in table are mutually exclusive --> yes, none can represent the other
+# 4. Expected value of cells should be 5 or greater in at least 80% of the cells
+sum((dfTesting$Expected > 5)) # 25
+sum((dfTesting$Expected > 5))/nrow(dfTesting) * 100 # 7.69%
+# Carry out Fisher's Exact Test instead as assumption 4 cannot be met.
 
+# Fisher's Exact Test for each patient in comparison to the "Expected" value. The samples with the highest p values will be chosen as they will be the most similar to each other and close to the average values of this sample set. However due to the large sample size, FET cannot be computed in R - Chi-Square Test will be used instead.
 
-# Making the Taxonomy table, keeping the otu names column as the first (what is required).
-dfTaxa <- tibble(otu = dfOTU$otu, dfTidy[index, 1:2])
-rownames(dfTaxa) <- dfTaxa$otu
-matTaxa <- as.matrix(dfTaxa)
-tax <- tax_table(matTaxa)
+test <- chisq.test(dfTesting$Expected, dfTesting$Patient_1)
+# p-value for all are 0.
 
-# Making the Samples table. The frist column has to be the sample names.
-dfSamples <- data.frame(sample = colnames(dfOTU)[2:11])
-rownames(dfSamples) <- dfSamples$sample
-dfSamples <- dfSamples[,-1]
+# Use Phylum level for chisq.
+dfTesting_Phylum <- dfPhylum
+rownames(dfTesting_Phylum) <- dfTesting_Phylum[,1]
+dfTesting_Phylum <- dfTesting_Phylum[,-1]
+dfTesting_Phylum <- select(dfTesting_Phylum, levels(samples))
+dfTesting_Phylum$Expected <- round(rowMeans(dfTesting_Phylum), 2)
+dfTesting_Phylum$Expected <- ifelse(dfTesting_Phylum$Expected < 0.1, 0, dfTesting_Phylum$Expected)
 
-# Adding age range as a variable.
-dfSamples$Age5 <- c("Below", "Below", "Above", "Below", "Below", 
-                   "Above", "Below", "Below", "Below", "Above")
-dfSamples$Age5 <- as.factor(dfSamples$Age5)
+chisq.test(dfTesting_Phylum$Patient_1, dfTesting_Phylum$Expected) # 0.1094
+chisq.test(dfTesting_Phylum$Patient_2, dfTesting_Phylum$Expected) # 0.03162
+chisq.test(dfTesting_Phylum$Patient_3, dfTesting_Phylum$Expected) # 0.03162
+chisq.test(dfTesting_Phylum$Patient_4, dfTesting_Phylum$Expected) # 0.03162
+chisq.test(dfTesting_Phylum$Patient_5, dfTesting_Phylum$Expected) # 0.03162
+chisq.test(dfTesting_Phylum$Patient_6, dfTesting_Phylum$Expected) # 0.03162
+chisq.test(dfTesting_Phylum$Patient_7, dfTesting_Phylum$Expected) # 0.1094
+chisq.test(dfTesting_Phylum$Patient_9, dfTesting_Phylum$Expected) # 0.26
+chisq.test(dfTesting_Phylum$Patient_11, dfTesting_Phylum$Expected) # 0.1505
+chisq.test(dfTesting_Phylum$Patient_ASD, dfTesting_Phylum$Expected) # 0.05038
 
-# Adding if the child was exposed to antibiotics as a variable.
-dfSamples$Ab <- c("Yes", "Yes", "Yes", "Yes", "No",
-                  "Yes", "Yes", "No", "No", "Yes")
-dfSamples$Ab <- as.factor(dfSamples$Ab)
-
-dfSamples_phy <- sample_data(dfSamples)
-
-# Create phyloseq object.
-phy <- phyloseq(otu, tax, dfSamples_phy)
-
-# Make another phyloseq object with the full dataset.
-dfOTU2 <- dfData[,c(1,3:12)]
-dfOTU2 <- relocate(dfOTU2, levels(samples))
-dfOTU2 <- relocate(dfOTU2, clade_name, .before = levels(samples))
-colnames(dfOTU2)[1] <- "otu"
-dfOTU2$otu <- paste0("OTU", 1:nrow(dfOTU2))
-rownames(dfOTU2) <- dfOTU2$otu
-matOTU2 <- as.matrix(dfOTU2[,-1])
-storage.mode(matOTU2) <- "numeric"
-otu2 <- otu_table(matOTU2, taxa_are_rows = T)
-
-dfTaxa2 <- tibble(otu = dfOTU2$otu, dfTidy[,1:7])
-rownames(dfTaxa2) <- dfTaxa2$otu
-matTaxa2 <- as.matrix(dfTaxa2)
-tax2 <- tax_table(matTaxa2)
+# Which cell in the dissimilarity matrix have the lowest values - these would be the most similar samples to one another.
+which.min(distDissim)
 
 
 
-phy2 <- phyloseq(otu2, tax2, dfSamples_phy)
 
-
-# Alpha diversity measure using Shannon index.
-# "In our study, microbiota diversity was quantified using Shannon index. This diversity index is a quantitative indicator of the number of different bacteria that are present in a stool sample, taking into account the uniformity in the distribution of these bacteria in these species. Diversity index value increases both when the number of species increases and when evenness increases. The Shannon index is a well-known diversity index used in microecological studies. The higher the Shannon index value, the higher the community diversity ." Yin et al., 2019
-plot_richness(phy, measures = "Shannon") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on Phylum alone")
-
-plot_richness(phy2, measures = "Shannon") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on full dataset")
-
-# There's only one point for each sample as we have not distinguished the samples by any variable.
-
-# Measure based on the variables.
-
-plot_richness(phy, measures = "Shannon", color = "Ab") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on Phylum alone") +
-  xlab("Samples")
-
-
-plot_richness(phy2, measures = "Shannon", color = "Ab") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on full dataset") +
-  xlab("Samples")
-
-plot_richness(phy2, measures = "Simpson", color = "Ab") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on full dataset") +
-  xlab("Samples")
-
-plot_richness(phy, measures = "Simpson", color = "Ab") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on Phylum alone") +
-  xlab("Samples")
-
-plot_richness(phy2, measures = c("Simpson", "Shannon"), color = "Ab") +
-  scale_x_discrete(limits = levels(samples)) +
-  ggtitle("Alpha Diversity based on full dataset") +
-  xlab("Samples")
-
-# Samples 5 and 9 always seem to be outliers and they have never been exposed to antibiotics.
-
-# Carry out an ANOVA test based on the Shannon index for each sample. Save the Shannon index calculations into a dataframe first.
-dfShannon <- data.frame(sample = dfSamples$sample, 
-                        Shannon = estimate_richness(phy2, measures = "Shannon"))
-
-# Don't think this is correct....
-anova <- aov(Shannon ~ sample, data = dfShannon)
-TukeyHSD(anova)
-
-
-# Also tried lm and wilcox-test - none seem appropriate.
-
-
-# Try t-test for the variables -Shannon.
-dfShannon <- data.frame(dfSamples, 
-                        Shannon = estimate_richness(phy2, measures = "Shannon"))
-
-test <- dfShannon %>%
-  group_by(Ab) %>%
-  summarise(meanShannon = mean(Shannon))
-  
-wilcox.test(Shannon ~ Ab, data = dfShannon)
-t.test(Shannon ~ Ab, data = dfShannon)
-
-hist(dfShannon$Shannon)
-qqnorm(dfShannon$Shannon)
-qqline(dfShannon$Shannon)
-var(dfShannon$Shannon)
-# 0.03690366
-
-# Try t-test for the variables - Simpson.
-dfSimpson <- data.frame(dfSamples, 
-                        Simpson = estimate_richness(phy2, measures = "Simpson"))
-
-test <- dfSimpson %>%
-  group_by(Ab) %>%
-  summarise(meanSimpson = mean(Simpson))
-
-wilcox.test(Simpson ~ Ab, data = dfSimpson)
-t.test(Simpson ~ Ab, data = dfSimpson)
-
-hist(dfSimpson$Simpson)
-qqnorm(dfSimpson$Simpson)
-qqline(dfSimpson$Simpson)
-var(dfSimpson$Simpson)
-# 0.0001757916
-
-
-
+# Notes from meeting with Lewis:
 
 # Sample relatedness between 
-# Average taxa among all samples --> use average for fischers exact test or ch sq
+# Average taxa among all samples --> use average for fishers exact test or ch sq
 # Convert relative abundance data to count data - then carry out chisq test
-# Null hypothesos - the same
-# Understand why you need the two more simial;r samples -- then this stat analysios would make sense
-# be the two most simialr out of the ten, do not say representative
+# Null hypothesis - the same
+# Understand why you need the two more similar samples -- then this stat analysis would make sense
+# be the two most similar out of the ten, do not say representative
 # choose the highest p value --> all ten samples
-# use diust amtrix as well to look for the highest value? which samples do they beliong to
+# use dist matrix as well to look for the highest value? which samples do they belong to
 # How does he species variation change across the ten -> phyla-based?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## TEST START
+#
+# # Carry out anoism test.
+# t.Data <- as.data.frame(t(matData))
+# t.Data.Sample <- rep(rownames(t.Data), 2)
+# t.matData <- t(matData)
+# t.matData <- rbind(t.matData, t.matData) # Had to duplicate the results data as ANOSIM requires replicates withing groupings; out groupings are the sample names.
+# anosim(t.matData, grouping = t.Data.Sample, permutations = 9999, distance = "bray")
+# # ANOSIM statistic R: 1
+# # Significance: 1e-04
+# # Permutation: free
+# 
+# # As the significance value is less than 0.05 and the R statistic is 1, there is a strong, statistically significant difference between the samples.
+# 
+# 
+# ## Try to create Phyloseq object. Require three dataframes: OTU, taxonomy and samples table.
+# 
+# # OTU table needs to have the OTU names as a column and all the samples as columns. I will make the full taxonomy name as the OTU name (already created when making dfPhylum). Only using the Phylum information as this is the clade being used for analysis and the relative abundance for all samples at this stage equate to 100%.
+# 
+# # Changing the columns to go in order.
+# dfOTU <- relocate(dfOTU, levels(samples))
+# dfOTU <- relocate(dfOTU, Phylum, .before = levels(samples))
+# colnames(dfOTU)[1] <- "otu"
+# 
+# # Make the row names, the Phylum names. First, save the current row names into a varibale.
+# index <- rownames(dfOTU)
+# rownames(dfOTU) <- dfOTU$otu
+# matOTU <- as.matrix(dfOTU[,-1])
+# otu <- otu_table(matOTU, taxa_are_rows = T)
+# 
+# 
+# # Making the Taxonomy table, keeping the otu names column as the first (what is required).
+# dfTaxa <- tibble(otu = dfOTU$otu, dfTidy[index, 1:2])
+# rownames(dfTaxa) <- dfTaxa$otu
+# matTaxa <- as.matrix(dfTaxa)
+# tax <- tax_table(matTaxa)
+# 
+# # Making the Samples table. The frist column has to be the sample names.
+# dfSamples <- data.frame(sample = colnames(dfOTU)[2:11])
+# rownames(dfSamples) <- dfSamples$sample
+# dfSamples <- dfSamples[,-1]
+# 
+# # Adding age range as a variable.
+# dfSamples$Age5 <- c("Below", "Below", "Above", "Below", "Below",
+#                    "Above", "Below", "Below", "Below", "Above")
+# dfSamples$Age5 <- as.factor(dfSamples$Age5)
+# 
+# # Adding if the child was exposed to antibiotics as a variable.
+# dfSamples$Ab <- c("Yes", "Yes", "Yes", "Yes", "No",
+#                   "Yes", "Yes", "No", "No", "Yes")
+# dfSamples$Ab <- as.factor(dfSamples$Ab)
+# 
+# dfSamples_phy <- sample_data(dfSamples)
+# 
+# # Create phyloseq object.
+# phy <- phyloseq(otu, tax, dfSamples_phy)
+# 
+# # Make another phyloseq object with the full dataset.
+# dfOTU2 <- dfData[,c(1,3:12)]
+# dfOTU2 <- relocate(dfOTU2, levels(samples))
+# dfOTU2 <- relocate(dfOTU2, clade_name, .before = levels(samples))
+# colnames(dfOTU2)[1] <- "otu"
+# dfOTU2$otu <- paste0("OTU", 1:nrow(dfOTU2))
+# rownames(dfOTU2) <- dfOTU2$otu
+# matOTU2 <- as.matrix(dfOTU2[,-1])
+# storage.mode(matOTU2) <- "numeric"
+# otu2 <- otu_table(matOTU2, taxa_are_rows = T)
+# 
+# dfTaxa2 <- tibble(otu = dfOTU2$otu, dfTidy[,1:7])
+# rownames(dfTaxa2) <- dfTaxa2$otu
+# matTaxa2 <- as.matrix(dfTaxa2)
+# tax2 <- tax_table(matTaxa2)
+# 
+# 
+# 
+# phy2 <- phyloseq(otu2, tax2, dfSamples_phy)
+# 
+# 
+# # Alpha diversity measure using Shannon index.
+# # "In our study, microbiota diversity was quantified using Shannon index. This diversity index is a quantitative indicator of the number of different bacteria that are present in a stool sample, taking into account the uniformity in the distribution of these bacteria in these species. Diversity index value increases both when the number of species increases and when evenness increases. The Shannon index is a well-known diversity index used in microecological studies. The higher the Shannon index value, the higher the community diversity ." Yin et al., 2019
+# plot_richness(phy, measures = "Shannon") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on Phylum alone")
+# 
+# plot_richness(phy2, measures = "Shannon") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on full dataset")
+# 
+# # There's only one point for each sample as we have not distinguished the samples by any variable.
+# 
+# # Measure based on the variables.
+# 
+# plot_richness(phy, measures = "Shannon", color = "Ab") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on Phylum alone") +
+#   xlab("Samples")
+# 
+# 
+# plot_richness(phy2, measures = "Shannon", color = "Ab") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on full dataset") +
+#   xlab("Samples")
+# 
+# plot_richness(phy2, measures = "Simpson", color = "Ab") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on full dataset") +
+#   xlab("Samples")
+# 
+# plot_richness(phy, measures = "Simpson", color = "Ab") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on Phylum alone") +
+#   xlab("Samples")
+# 
+# plot_richness(phy2, measures = c("Simpson", "Shannon"), color = "Ab") +
+#   scale_x_discrete(limits = levels(samples)) +
+#   ggtitle("Alpha Diversity based on full dataset") +
+#   xlab("Samples")
+# 
+# # Samples 5 and 9 always seem to be outliers and they have never been exposed to antibiotics.
+# 
+# # Carry out an ANOVA test based on the Shannon index for each sample. Save the Shannon index calculations into a dataframe first.
+# dfShannon <- data.frame(sample = dfSamples$sample,
+#                         Shannon = estimate_richness(phy2, measures = "Shannon"))
+# 
+# # Don't think this is correct....
+# anova <- aov(Shannon ~ sample, data = dfShannon)
+# TukeyHSD(anova)
+# 
+# 
+# # Also tried lm and wilcox-test - none seem appropriate.
+# 
+# 
+# # Try t-test for the variables -Shannon.
+# dfShannon <- data.frame(dfSamples,
+#                         Shannon = estimate_richness(phy2, measures = "Shannon"))
+# 
+# test <- dfShannon %>%
+#   group_by(Ab) %>%
+#   summarise(meanShannon = mean(Shannon))
+# 
+# wilcox.test(Shannon ~ Ab, data = dfShannon)
+# t.test(Shannon ~ Ab, data = dfShannon)
+# 
+# hist(dfShannon$Shannon)
+# qqnorm(dfShannon$Shannon)
+# qqline(dfShannon$Shannon)
+# var(dfShannon$Shannon)
+# # 0.03690366
+# 
+# # Try t-test for the variables - Simpson.
+# dfSimpson <- data.frame(dfSamples,
+#                         Simpson = estimate_richness(phy2, measures = "Simpson"))
+# 
+# test <- dfSimpson %>%
+#   group_by(Ab) %>%
+#   summarise(meanSimpson = mean(Simpson))
+# 
+# wilcox.test(Simpson ~ Ab, data = dfSimpson)
+# t.test(Simpson ~ Ab, data = dfSimpson)
+# 
+# hist(dfSimpson$Simpson)
+# qqnorm(dfSimpson$Simpson)
+# qqline(dfSimpson$Simpson)
+# var(dfSimpson$Simpson)
+# # 0.0001757916
+#
+## TEST END
+
+
 
 #### . REFERENCES ----
 
 # Yin, L., Wan, Y. D., Pan, X. T., Zhou, C. Y., Lin, N., Ma, C. T., Yao, J., Su, Z., Wan, C., Yu, Y. W., & Zhu, R. X. (2019). Association Between Gut Bacterial Diversity and Mortality in Septic Shock Patients: A Cohort Study. Medical science monitor : international medical journal of experimental and clinical research, 25, 7376–7382. https://doi.org/10.12659/MSM.916808
 
-
-
-data("mtcars")
-chisq.test(mtcars$vs, mtcars$carb)
-chisq.test(mtcars$vs, mtcars$wt)
-chisq.test(mtcars)
