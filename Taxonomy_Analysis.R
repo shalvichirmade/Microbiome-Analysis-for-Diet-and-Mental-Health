@@ -792,7 +792,8 @@ var(dfSimpson$Simpson)
 
 
 # Sample relatedness between 
-# Average taxa among all samples --> use avergae for fischers exact test or ch sq
+# Average taxa among all samples --> use average for fischers exact test or ch sq
+# Convert relative abundance data to count data - then carry out chisq test
 # Null hypothesos - the same
 # Understand why you need the two more simial;r samples -- then this stat analysios would make sense
 # be the two most simialr out of the ten, do not say representative
@@ -805,3 +806,8 @@ var(dfSimpson$Simpson)
 # Yin, L., Wan, Y. D., Pan, X. T., Zhou, C. Y., Lin, N., Ma, C. T., Yao, J., Su, Z., Wan, C., Yu, Y. W., & Zhu, R. X. (2019). Association Between Gut Bacterial Diversity and Mortality in Septic Shock Patients: A Cohort Study. Medical science monitor : international medical journal of experimental and clinical research, 25, 7376–7382. https://doi.org/10.12659/MSM.916808
 
 
+
+data("mtcars")
+chisq.test(mtcars$vs, mtcars$carb)
+chisq.test(mtcars$vs, mtcars$wt)
+chisq.test(mtcars)
