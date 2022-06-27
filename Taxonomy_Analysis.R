@@ -341,6 +341,9 @@ plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3,
         mode = "markers+text") %>%
   layout(title = "3D PCA of Samples")
 
+# Eigen vectors for this PCA.
+summary(pca1)
+
 # Remove variables no longer required.
 rm(pca1, dfPCA1_var, dfPCA1_scores)
 
@@ -674,6 +677,28 @@ chisq.test(dfTesting_Phylum$Patient_ASD, dfTesting_Phylum$Expected) # 0.05038
 # Which cell in the dissimilarity matrix have the lowest values - these would be the most similar samples to one another.
 which.min(distDissim)
 
+# Use Family level for chisq.
+dfTesting_Family <- dfFamily
+rownames(dfTesting_Family) <- dfTesting_Family[,1]
+dfTesting_Family <- dfTesting_Family[,-1]
+dfTesting_Family <- select(dfTesting_Family, levels(samples))
+dfTesting_Family$Expected <- round(rowMeans(dfTesting_Family), 2)
+dfTesting_Family$Expected <- ifelse(dfTesting_Family$Expected < 0.1, 0, dfTesting_Family$Expected)
+
+chisq.test(dfTesting_Family$Patient_1, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_2, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_3, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_4, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_5, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_6, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_7, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_9, dfTesting_Family$Expected) # 0.0001552
+chisq.test(dfTesting_Family$Patient_11, dfTesting_Family$Expected) # 0
+chisq.test(dfTesting_Family$Patient_ASD, dfTesting_Family$Expected) # 0
+
+# Which cell in the dissimilarity matrix have the lowest values - these would be the most similar samples to one another.
+which.min(distDissim)
+
 
 
 
@@ -871,6 +896,62 @@ which.min(distDissim)
 #
 ## TEST END
 
+
+## Unsupervised non-hierarchical clustering - Nykole's suggestion
+
+shapiro.test(matScaled)
+# W = 0.64966, p-value < 2.2e-16
+# A significant p value indicates that the data is not normal. K medoid, which uses medians, would be the optimal choice for analyzing the clusters in this dataset.
+
+# Takes a few minutes to run.
+fviz_nbclust(t(matScaled), pam, method = "wss") +
+  geom_vline(xintercept = 3, linetype = 2) +
+  labs(subtitle = "WSS Elbow method for Kmedoid (genes)")
+# Optimal cluster at 3
+
+medoid3 <- pam(matScaled, 3)
+medoid3
+medoid3$clustering # Patients 6 and 9 are their own clusters
+table(medoid3$clustering)
+
+fviz_cluster(medoid3, data = matScaled, 
+             main = "K-Medoid cluster plot", 
+             repel = TRUE)
+
+summary(medoid3)
+
+
+
+## Again without ASD and remove columns with all 0.
+matNoASD <- dfData[,c(1, 4:12)]
+rownames(matNoASD) <- matNoASD[,1]
+matNoASD <- matNoASD[,-1]
+matNoASD <- as.data.frame(t(matNoASD))
+
+# Convert abundance data to numeric.
+matNoASD[] <- lapply(matNoASD, function(x) as.numeric(as.character(x)))
+sapply(matNoASD, class)
+
+# Remove columns with all 0's.
+matNoASD <- matNoASD %>%
+  select_if(negate(function(x) sum(x) == 0))
+
+
+# Standardize data.
+matNoASD <- as.data.frame(scale(matNoASD))
+
+matNoASD <- as.matrix(matNoASD)
+
+medoid3_2 <- pam(matNoASD, 3)
+medoid3_2
+medoid3_2$clustering # Patients 6 and 9 are their own clusters
+table(medoid3_2$clustering)
+
+fviz_cluster(medoid3_2, data = matNoASD, 
+             main = "K-Medoid cluster plot", 
+             repel = TRUE)
+
+summary(medoid3_2)
 
 
 #### . REFERENCES ----
