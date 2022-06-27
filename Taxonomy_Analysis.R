@@ -898,6 +898,7 @@ which.min(distDissim)
 
 
 ## Unsupervised non-hierarchical clustering - Nykole's suggestion
+# K-medoids use actual data points as centroids rather than mean positions in a given cluster. The medoids are points that minimize the distance to all other points in their cluster. This variation is more interpretable because the centroids are always data points.
 
 shapiro.test(matScaled)
 # W = 0.64966, p-value < 2.2e-16
