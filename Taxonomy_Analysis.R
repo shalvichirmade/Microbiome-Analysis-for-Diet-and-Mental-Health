@@ -27,6 +27,8 @@ library(factoextra)
 library(forcats)
 #install.packages("ggfortify")
 library(ggfortify)
+#install.packages("matrixStats")
+library(matrixStats)
 #install.packages("phyloseq")
 library(phyloseq)
 #install.packages("plotly")
@@ -660,14 +662,14 @@ dfTesting_Phylum <- dfPhylum
 rownames(dfTesting_Phylum) <- dfTesting_Phylum[,1]
 dfTesting_Phylum <- dfTesting_Phylum[,-1]
 dfTesting_Phylum <- select(dfTesting_Phylum, levels(samples))
-dfTesting_Phylum$Expected <- round(rowMeans(dfTesting_Phylum), 2)
+dfTesting_Phylum$Expected <- round(rowMeans(dfTesting_Phylum), 2) 
 dfTesting_Phylum$Expected <- ifelse(dfTesting_Phylum$Expected < 0.1, 0, dfTesting_Phylum$Expected)
 
 chisq.test(dfTesting_Phylum$Patient_1, dfTesting_Phylum$Expected) # 0.1094
 chisq.test(dfTesting_Phylum$Patient_2, dfTesting_Phylum$Expected) # 0.03162
 chisq.test(dfTesting_Phylum$Patient_3, dfTesting_Phylum$Expected) # 0.03162
 chisq.test(dfTesting_Phylum$Patient_4, dfTesting_Phylum$Expected) # 0.03162
-chisq.test(dfTesting_Phylum$Patient_5, dfTesting_Phylum$Expected) # 0.03162
+chisq.test(dfTesting_Phylum$Patient_5, dfTesting_Phylum$Expected) # 0.03162 #0.1505 (when using median)
 chisq.test(dfTesting_Phylum$Patient_6, dfTesting_Phylum$Expected) # 0.03162
 chisq.test(dfTesting_Phylum$Patient_7, dfTesting_Phylum$Expected) # 0.1094
 chisq.test(dfTesting_Phylum$Patient_9, dfTesting_Phylum$Expected) # 0.26
@@ -682,7 +684,7 @@ dfTesting_Family <- dfFamily
 rownames(dfTesting_Family) <- dfTesting_Family[,1]
 dfTesting_Family <- dfTesting_Family[,-1]
 dfTesting_Family <- select(dfTesting_Family, levels(samples))
-dfTesting_Family$Expected <- round(rowMeans(dfTesting_Family), 2)
+dfTesting_Family$Expected <- round(rowMeans(dfTesting_Family), 2) # tried median - all 0
 dfTesting_Family$Expected <- ifelse(dfTesting_Family$Expected < 0.1, 0, dfTesting_Family$Expected)
 
 chisq.test(dfTesting_Family$Patient_1, dfTesting_Family$Expected) # 0
@@ -698,6 +700,34 @@ chisq.test(dfTesting_Family$Patient_ASD, dfTesting_Family$Expected) # 0
 
 # Which cell in the dissimilarity matrix have the lowest values - these would be the most similar samples to one another.
 which.min(distDissim)
+
+
+### Using median instead of mean for "expected value"
+
+# Create a dataframe of the relative abundance data for us in chi-square testing.
+dfTesting <- dfData[,c(1, 3:12)]
+rownames(dfTesting) <- dfTesting[,1]
+dfTesting <- dfTesting[,-1]
+
+# Reorder columns in order of patients.
+dfTesting <- select(dfTesting, levels(samples))
+
+# Convert all columns to numeric.
+sapply(dfTesting, class)
+dfTesting[] <- sapply(dfTesting, function(x) as.numeric(as.character(x)))
+sapply(dfTesting, class)
+
+
+# Round each value to two decimal places
+dfTesting <- round(dfTesting, digits = 2)
+
+# Create a column with the "Expected" values for each taxa - this is done by taking the average across all ten samples.
+dfTesting$Expected <- round(rowMedians(as.matrix(dfTesting)), 2)
+# Checked to make sure it was correct with a few random rows.
+
+chisq.test(dfTesting$Expected, dfTesting$Patient_ASD)
+# 0 for all again
+
 
 
 
