@@ -9,7 +9,7 @@
 # https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-3.0
 # https://github.com/biobakery/biobakery/wiki/metaphlan3
 
-## Download meptaphlan and all it's dependencies in a conda environment
+## Download meptaphlan and all its dependencies in a conda environment
 conda create --name mpa -c bioconda python=3.7 metaphlan
 
 # Terminal output - all the file dependencies
