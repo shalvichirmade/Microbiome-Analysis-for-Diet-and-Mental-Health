@@ -1,0 +1,8 @@
+#### Weston Project - Microbiome Analysis
+    ## BINF*6999
+    ## Primary advisor: Dr. Terry Van Raay
+    ## Secondary advisor: Dr. Lewis Lukens
+### Author: Shalvi Chirmade
+### Date start: July 5, 2022
+# ---------------------------------------------------------------------
+
