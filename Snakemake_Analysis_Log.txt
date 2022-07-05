@@ -6,3 +6,18 @@
 ### Date start: July 5, 2022
 # ---------------------------------------------------------------------
 
+## Start by downloading Snakemake using conda. Mamba has to be downloaded first for initiation - recommended to be installed in an environment called "base".
+
+conda install -n base -c conda-forge mamba
+conda activate base
+
+## Snakemake is downloaded in an environment called snakemake.
+mamba create -c conda-forge -c bioconda -n snakemake snakemake
+conda deactivate
+
+conda activate snakemake
+touch Snakefile             # Creation of Snakefile
+snakemake -n                # Dry run of Snakefile
+conda deactivate
+
+## Will have to activate the snakemake environment before running and testing the file.
