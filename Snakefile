@@ -32,7 +32,19 @@ rule trim:
         "Snakemake_Trial/{sample}_R2_001.fastq.gz"
 
     output:
-        "Snakemake_Trial/trim"
+        "Snakemake_Trial/trim/{sample}.fastq.gz"
 
     shell:
-        "java -jar "/Users/shalvichirmade/miniconda3/share/trimmomatic-0.39-2/trimmomatic.jar" PE -phred33 {input} -baseout {sample}.fastq.gz"
+        "java -jar "/Users/shalvichirmade/miniconda3/share/trimmomatic-0.39-2/trimmomatic.jar" PE -phred33 {input} -baseout {output} LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50"
+
+rule join:
+    input:
+        "Snakemake_Trial/trim/*P.fastq.gz"
+
+    output:
+        "Snakemake_Trial/join/{sample}_%.fastq.gz"
+
+    shell:
+        "fastq-join {input} -o {output}"
+
+
