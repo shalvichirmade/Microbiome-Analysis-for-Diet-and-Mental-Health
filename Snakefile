@@ -47,4 +47,23 @@ rule join:
     shell:
         "fastq-join {input} -o {output}"
 
+rule merge_join:
+    input:
+        "Snakemake_Trial/join/{sample}*.gz"
 
+    output:
+        "Snakemake_Trial/join/{sample}_merged_fastq.gz"
+
+    shell:
+        "cat {input} > {output}"
+
+rule metaphlan:
+    input: 
+        "Snakemake_Trial/join/{sample}_merged_fastq.gz"
+
+    output:
+        "Snakemake_Trial/metaphlan/{sample}_merged_profile.txt"
+
+    shell:
+        "conda activate mpa"
+        "metaphlan {input} --input_type fastq --bowtie2db "/Users/shalvichirmade/Documents/MBinf/BINF 6999/Weston Project/MetaPhlan 3.0" --nproc 2 > {output}"
