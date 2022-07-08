@@ -13,8 +13,10 @@
 
 # ---------------------------------------------------------------------
 
+# Need to change path for hard drive
+
 rule check_fastqc:
-    input:
+    input: 
         "Snakemake_Trial/{sample}_R1_001.fastq.gz"
         "Snakemake_Trial/{sample}_R2_001.fastq.gz"
 
@@ -24,3 +26,13 @@ rule check_fastqc:
     shell:
         "fastqc {input} -o {output}"
 
+rule trim:
+    input:
+        "Snakemake_Trial/{sample}_R1_001.fastq.gz"
+        "Snakemake_Trial/{sample}_R2_001.fastq.gz"
+
+    output:
+        "Snakemake_Trial/trim"
+
+    shell:
+        "java -jar "/Users/shalvichirmade/miniconda3/share/trimmomatic-0.39-2/trimmomatic.jar" PE -phred33 {input} -baseout {sample}.fastq.gz"
