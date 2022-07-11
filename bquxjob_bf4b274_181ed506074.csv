@@ -1,0 +1,1114 @@
+acc,tax_id,rank,name,total_count,self_count,ilevel,ileft,iright
+ERR2744174,2109688,species,Clostridiales bacterium CCNA10,337,337,9,585,585
+ERR2744174,32524,,Amniota,616,7,17,969,984
+ERR2744174,2157,superkingdom,Archaea,589,127,2,1059,1074
+ERR2744174,1730,genus,Eubacterium,7076,1712,8,556,571
+ERR2744174,2292975,species,Blautia sp. AM29-29,39,39,9,308,308
+ERR2744174,1318,species,Streptococcus parasanguinis,78,78,9,699,699
+ERR2744174,1263,genus,Ruminococcus,26828,15542,8,383,427
+ERR2744174,2292248,species,Ruminococcus sp. AF17-22AC,31,31,9,413,413
+ERR2744174,213810,,Ruminococcus champanellensis 18P13 = JCM 17042,197,197,10,394,394
+ERR2744174,997873,,Bacteroides caccae CL03T12C61,238,238,11,39,39
+ERR2744174,729,species,Haemophilus parainfluenzae,323,323,8,896,896
+ERR2744174,29465,genus,Veillonella,79,79,8,672,672
+ERR2744174,85006,order,Micrococcales,56,19,6,840,843
+ERR2744174,88431,species,Dorea longicatena,10214,9762,9,272,275
+ERR2744174,2292996,species,Clostridium sp. AF15-41,32,32,9,508,508
+ERR2744174,1236,class,Gammaproteobacteria,2642,475,4,896,932
+ERR2744174,39482,species,Faecalicatena contorta,16,16,9,350,350
+ERR2744174,1965649,species,Butyricimonas sp. An62,1261,1261,10,171,171
+ERR2744174,356,order,Rhizobiales,31,31,5,935,935
+ERR2744174,5758,genus,Entamoeba,345,345,7,1013,1013
+ERR2744174,2292234,species,Faecalibacterium sp. AF28-13AC,381,381,9,369,369
+ERR2744174,2202644,species,Microviridae sp.,16,16,4,1107,1107
+ERR2744174,2293184,species,Ruminococcus sp. AM16-34,48,48,9,407,407
+ERR2744174,1512,species,[Clostridium] symbiosum,98,39,9,325,327
+ERR2744174,2292943,species,Bacteroides sp. AM23-18,34,34,10,107,107
+ERR2744174,84999,order,Coriobacteriales,29005,154,6,742,786
+ERR2744174,724,genus,Haemophilus,834,494,7,896,899
+ERR2744174,1776382,species,Neglecta timonensis,53,53,9,472,472
+ERR2744174,706562,species,Lactobacillus rogosae,464,464,9,710,710
+ERR2744174,1256908,,Eubacterium ramulus ATCC 29099,478,478,10,556,556
+ERR2744174,2292938,species,Bacteroides sp. AM16-13,73,73,10,95,95
+ERR2744174,100883,genus,Coprobacillus,44,42,8,649,651
+ERR2744174,1965660,species,Flavonifractor sp. An82,45,45,9,452,452
+ERR2744174,135614,order,Xanthomonadales,98,88,5,917,920
+ERR2744174,189330,genus,Dorea,11699,679,8,272,282
+ERR2744174,249188,species,Haemophilus pittmaniae,17,17,8,897,897
+ERR2744174,1520805,species,Blautia sp. SF-50,49,49,9,304,304
+ERR2744174,286,genus,Pseudomonas,424,102,7,912,915
+ERR2744174,2292041,species,Dorea sp. AF36-15AT,69,69,9,279,279
+ERR2744174,2292327,species,Collinsella sp. OM06-18AC,79,79,9,748,748
+ERR2744174,1235793,species,Lachnospiraceae bacterium COE1,31,31,9,240,240
+ERR2744174,194924,family,Desulfovibrionaceae,8051,21,7,852,861
+ERR2744174,1150298,species,Fusicatenibacter saccharivorans,769,769,9,320,320
+ERR2744174,718255,,Roseburia intestinalis XB6B4,111,111,10,260,260
+ERR2744174,32066,phylum,Fusobacteria,18,0,3,957,963
+ERR2744174,1224,phylum,Proteobacteria,17959,761,3,852,942
+ERR2744174,186826,order,Lactobacillales,4123,148,6,698,722
+ERR2744174,658087,species,Lachnospiraceae bacterium 7_1_58FAA,60,60,9,238,238
+ERR2744174,28111,species,Bacteroides eggerthii,264,264,10,79,79
+ERR2744174,2292330,species,Collinsella sp. TF05-9AC,393,393,9,743,743
+ERR2744174,33042,genus,Coprococcus,15989,2925,8,247,257
+ERR2744174,2109687,species,Oscillibacter sp. PEA192,230,230,9,601,601
+ERR2744174,2126739,species,Lachnoclostridium sp. SNUG30370,56,56,9,329,329
+ERR2744174,657323,species,Ruminococcus sp. SR1/5,96,96,9,399,399
+ERR2744174,186928,,unclassified Lachnospiraceae,232067,386,8,229,247
+ERR2744174,191303,genus,Turicibacter,165,122,8,641,644
+ERR2744174,1903262,species,Bacteroides ndongoniae,124,124,10,91,91
+ERR2744174,171549,order,Bacteroidales,1413581,176213,7,0,199
+ERR2744174,2293213,species,Ruminococcus sp. AM41-10BH,195,195,9,396,396
+ERR2744174,35833,species,Bilophila wadsworthia,4656,3135,9,852,855
+ERR2744174,2292013,species,Collinsella sp. AF36-3AT,29,29,9,760,760
+ERR2744174,1007096,,Oscillibacter ruminantium GH1,65,65,10,606,606
+ERR2744174,40520,species,Blautia obeum,1579,1517,9,282,285
+ERR2744174,446660,species,Adlercreutzia equolifaciens,76,76,9,799,799
+ERR2744174,2302955,species,Faecalibacterium sp. AF10-46,379,379,9,370,370
+ERR2744174,2292207,species,Collinsella sp. AF02-46-1,28,28,9,761,761
+ERR2744174,1203611,,Alistipes onderdonkii WAL 8169 = DSM 19147,78,78,11,138,138
+ERR2744174,45972,species,Staphylococcus pasteuri,20,20,9,726,726
+ERR2744174,1506553,genus,Lachnoclostridium,739,52,8,322,338
+ERR2744174,39488,species,Anaerobutyricum hallii,5880,5789,9,315,317
+ERR2744174,544645,species,Butyricimonas virosa,2072,2027,10,169,171
+ERR2744174,68336,,Bacteroidetes/Chlorobi group,1422094,89,4,0,228
+ERR2744174,693988,species,Bilophila sp. 4_1_30,242,242,9,855,855
+ERR2744174,2292910,species,Alistipes sp. AF14-19,2604,2604,10,129,129
+ERR2744174,2292232,species,Eubacterium sp. AF22-8LB,102,102,9,563,563
+ERR2744174,2302961,species,Subdoligranulum sp. AM23-21AC,33,33,9,381,381
+ERR2744174,1121130,,Butyricimonas virosa DSM 23226,45,45,11,169,169
+ERR2744174,128827,family,Erysipelotrichaceae,9965,221,7,632,663
+ERR2744174,154288,species,Turicibacter sanguinis,42,42,9,641,641
+ERR2744174,2109686,species,Butyricicoccus sp. GAM44,377,377,9,529,529
+ERR2744174,84112,species,Eggerthella lenta,254,254,9,789,789
+ERR2744174,1841867,species,Phocea massiliensis,19,19,9,478,478
+ERR2744174,61170,genus,Holdemania,256,47,8,638,641
+ERR2744174,411485,,Faecalibacterium prausnitzii M21/2,474,474,10,364,364
+ERR2744174,2315857,,environmental samples,1,0,6,1099,1101
+ERR2744174,574697,genus,Butyricimonas,4536,772,9,169,174
+ERR2744174,410072,species,Coprococcus comes,9649,9453,9,247,249
+ERR2744174,186804,family,Peptostreptococcaceae,6939,218,7,572,583
+ERR2744174,2292333,species,Collinsella sp. TF08-11AT,27,27,9,762,762
+ERR2744174,2320112,species,bacterium D16-50,30,30,5,944,944
+ERR2744174,2109334,species,Blautia sp. SG-772,173,173,9,290,290
+ERR2744174,909932,class,Negativicutes,7966,51,5,665,684
+ERR2744174,712,family,Pasteurellaceae,884,50,6,896,900
+ERR2744174,397864,genus,Barnesiella,610,22,9,175,181
+ERR2744174,2292899,species,Firmicutes bacterium OM08-11AC,102,102,7,690,690
+ERR2744174,1965588,species,Anaerofilum sp. An201,43,43,9,474,474
+ERR2744174,2,superkingdom,Bacteria,2557874,269084,2,0,969
+ERR2744174,186803,family,Lachnospiraceae,313995,18942,7,229,361
+ERR2744174,1965576,species,Pseudoflavonifractor sp. An184,76,76,9,447,447
+ERR2744174,84111,genus,Eggerthella,1312,39,8,788,793
+ERR2744174,1750560,species,Parabacteroides sp. SN4,67,67,10,157,157
+ERR2744174,1343,species,Streptococcus vestibularis,19,19,9,703,703
+ERR2744174,2292353,species,Eubacterium sp. TM05-53,184,184,9,562,562
+ERR2744174,1760,class,Actinobacteria,10315,224,5,811,850
+ERR2744174,44249,genus,Paenibacillus,19,18,8,722,724
+ERR2744174,186801,class,Clostridia,701045,2520,5,229,632
+ERR2744174,39779,,unclassified Clostridiales (miscellaneous),1778,19,8,583,592
+ERR2744174,10699,family,Siphoviridae,17,1,3,1083,1095
+ERR2744174,839,species,Prevotella ruminicola,274,274,10,13,13
+ERR2744174,371601,species,Bacteroides xylanisolvens,1225,1124,10,56,59
+ERR2744174,2292293,species,Butyricicoccus sp. AM27-36,190,190,9,531,531
+ERR2744174,33084,family,Entamoebidae,383,38,6,1013,1015
+ERR2744174,1841856,species,Bacteroides mediterraneensis,219,219,10,81,81
+ERR2744174,2320082,species,Anaerotruncus sp. 1XD22-93,18,18,9,460,460
+ERR2744174,2292326,species,Collinsella sp. OM04-5,68,68,9,749,749
+ERR2744174,2292233,species,Eubacterium sp. AF22-9,28,28,9,566,566
+ERR2744174,45243,species,Capnocytophaga haemolytica,78,78,10,200,200
+ERR2744174,2292372,species,Ruminococcus sp. AM42-11,2838,2838,9,383,383
+ERR2744174,622312,,Roseburia inulinivorans DSM 16841,60,60,10,262,262
+ERR2744174,239759,genus,Alistipes,68275,19903,9,122,150
+ERR2744174,2293051,species,Clostridium sp. TF06-15AC,115,115,9,496,496
+ERR2744174,946234,genus,Flavonifractor,471,183,8,450,457
+ERR2744174,545697,,Clostridium celatum DSM 1785,291,291,10,487,487
+ERR2744174,2024219,species,Prevotella sp. P4-98,221,221,10,15,15
+ERR2744174,2292356,species,Faecalibacterium sp. OF03-6AC,449,449,9,368,368
+ERR2744174,287,species,Pseudomonas aeruginosa,322,322,9,912,912
+ERR2744174,508458,phylum,Synergistetes,10,0,3,963,968
+ERR2744174,1301,genus,Streptococcus,3467,993,8,698,709
+ERR2744174,2292982,species,Blautia sp. OF11-22,77,77,9,299,299
+ERR2744174,2041842,species,Neobitarella massiliensis,23,23,9,476,476
+ERR2744174,2302960,species,Subdoligranulum sp. AM16-9,40,40,9,380,380
+ERR2744174,2292960,species,Blautia sp. AF19-1,62,62,9,301,301
+ERR2744174,543314,family,Clostridiales Family XIII. Incertae Sedis,49,0,8,616,623
+ERR2744174,1473216,species,Senegalimassilia anaerobia,10442,6956,9,775,777
+ERR2744174,644652,genus,Gordonibacter,291,66,8,795,799
+ERR2744174,411469,,Anaerobutyricum hallii DSM 3353,91,91,10,315,315
+ERR2744174,46228,species,Ruminococcus lactaris,823,753,9,389,392
+ERR2744174,657309,,Bacteroides xylanisolvens XB1A,39,39,11,57,57
+ERR2744174,657317,,[Eubacterium] rectale M104/1,161,161,10,230,230
+ERR2744174,411464,,Desulfovibrio piger ATCC 29098,33,33,10,857,857
+ERR2744174,248744,genus,Marvinbryantia,14,0,8,352,354
+ERR2744174,2305242,species,Clostridium sp. AM34-11AC,68,68,9,501,501
+ERR2744174,2292924,species,Bacteroides sp. AF25-38AC,14,14,10,114,114
+ERR2744174,2293035,species,Clostridium sp. AM49-4BH,63,63,9,503,503
+ERR2744174,28211,class,Alphaproteobacteria,210,82,4,932,941
+ERR2744174,102148,species,Solobacterium moorei,12,12,9,655,655
+ERR2744174,626939,,Phascolarctobacterium succinatutens YIT 12067,7344,7344,10,665,665
+ERR2744174,537012,,Bacteroides cellulosilyticus DSM 14838,41,41,11,70,70
+ERR2744174,29547,class,Epsilonproteobacteria,42,0,5,871,876
+ERR2744174,2292303,species,Clostridium sp. AM30-24,87,87,9,497,497
+ERR2744174,2292024,species,Collinsella sp. AM13-34,30,30,9,759,759
+ERR2744174,471189,species,Gordonibacter pamelaeae,152,152,9,795,795
+ERR2744174,2283482,species,Evtepia gabavorous,1290,1290,9,592,592
+ERR2744174,2302925,species,Bacteroides sp. AF32-8BH,145,145,10,88,88
+ERR2744174,84107,family,Coriobacteriaceae,28794,142,7,742,779
+ERR2744174,78346,species,Bifidobacterium ruminantium,43,43,9,814,814
+ERR2744174,2292309,species,Clostridium sp. OF09-10,30,30,9,509,509
+ERR2744174,216572,family,Oscillospiraceae,4116,638,7,600,612
+ERR2744174,2292375,species,Ruminococcus sp. OM06-36AC,1005,1005,9,388,388
+ERR2744174,2293183,species,Ruminococcus sp. AM12-48,17,17,9,421,421
+ERR2744174,1609975,species,Clostridium sp. FS41,30,30,9,510,510
+ERR2744174,2292269,species,Ruminococcaceae bacterium AM28-23LB,348,348,10,429,429
+ERR2744174,1852366,species,Holdemania sp. Marseille-P2844,87,87,9,639,639
+ERR2744174,29330,genus,Alicyclobacillus,1,1,8,733,733
+ERR2744174,1965632,species,Bacteroides sp. An322,45,45,10,102,102
+ERR2744174,203490,class,Fusobacteriia,18,0,4,957,962
+ERR2744174,816,genus,Bacteroides,446609,262031,9,37,119
+ERR2744174,2292985,species,Blautia sp. OM07-19,21,21,9,313,313
+ERR2744174,1131820,species,uncultured Eggerthella sp. SMG5,78,78,10,790,790
+ERR2744174,2292983,species,Blautia sp. OM05-6,36,36,9,309,309
+ERR2744174,135624,order,Aeromonadales,13,0,5,925,931
+ERR2744174,71274,,asterids,4,1,15,1034,1046
+ERR2744174,1033732,,Alistipes senegalensis JC50,1066,1066,11,132,132
+ERR2744174,2024216,species,Prevotella sp. P5-126,154,154,10,20,20
+ERR2744174,2292342,species,Collinsella sp. TM06-3,24,24,9,764,764
+ERR2744174,39492,species,[Eubacterium] siraeum,1825,1308,9,433,437
+ERR2744174,301302,species,Roseburia faecis,4018,4018,9,257,257
+ERR2744174,39496,species,Eubacterium ventriosum,80,59,9,564,566
+ERR2744174,1211417,species,uncultured crAssphage,1,1,7,1099,1099
+ERR2744174,1115758,species,Romboutsia ilealis,24,24,9,578,578
+ERR2744174,1307,species,Streptococcus suis,40,16,9,701,703
+ERR2744174,2305240,species,Clostridium sp. AM25-23AC,17,17,9,517,517
+ERR2744174,457389,species,Bacteroides sp. 3_1_13,27,27,10,110,110
+ERR2744174,2292897,species,Firmicutes bacterium AM59-13,131,131,7,689,689
+ERR2744174,411462,,Dorea longicatena DSM 13814,376,376,10,272,272
+ERR2744174,2302962,species,Subdoligranulum sp. OF01-18,132,132,9,379,379
+ERR2744174,2292376,species,Ruminococcus sp. OM08-7,74,74,9,403,403
+ERR2744174,119065,,unclassified Burkholderiales,69,0,6,886,889
+ERR2744174,573,species,Klebsiella pneumoniae,185,185,8,903,903
+ERR2744174,2292251,species,Ruminococcus sp. AF21-42,1366,1366,9,386,386
+ERR2744174,200643,class,Bacteroidia,1413620,39,6,0,200
+ERR2744174,28119,species,Bacteroides zoogleoformans,21,21,10,111,111
+ERR2744174,1121483,,Dyadobacter crusticola DSM 16708,12,12,11,210,210
+ERR2744174,649775,class,Synergistia,10,0,4,963,967
+ERR2744174,2292196,species,Butyricicoccus sp. AF10-3,34,34,9,537,537
+ERR2744174,2292071,species,Ruminococcus sp. AF45-4BH,45,45,9,408,408
+ERR2744174,1805714,species,Christensenella massiliensis,36,36,9,612,612
+ERR2744174,292632,genus,Subdoligranulum,30321,286,8,375,383
+ERR2744174,33038,species,[Ruminococcus] gnavus,186,186,9,289,289
+ERR2744174,2292206,species,Clostridium sp. AF27-2AA,250,250,9,491,491
+ERR2744174,131567,,cellular organisms,2572984,13034,1,0,1075
+ERR2744174,2292883,species,Clostridiales bacterium AF36-10,35,35,9,590,590
+ERR2744174,1654,genus,Actinomyces,117,88,8,827,831
+ERR2744174,1309,species,Streptococcus mutans,19,19,9,704,704
+ERR2744174,554915,,Amoebozoa,383,0,3,1013,1018
+ERR2744174,1841865,species,Mediterranea massiliensis,114,114,10,119,119
+ERR2744174,216851,genus,Faecalibacterium,142302,47360,8,361,375
+ERR2744174,39948,genus,Dialister,6,0,8,675,678
+ERR2744174,2292889,species,Firmicutes bacterium AF36-3BH,21,21,7,692,692
+ERR2744174,1121096,,Bacteroides gallinarum DSM 18171 = JCM 13658,376,376,11,73,73
+ERR2744174,28132,species,Prevotella melaninogenica,248,248,10,14,14
+ERR2744174,9526,parvorder,Catarrhini,577,32,26,969,975
+ERR2744174,418240,species,Blautia wexlerae,121,77,9,293,295
+ERR2744174,999420,,Parabacteroides merdae CL03T12C32,132,132,11,151,151
+ERR2744174,1263547,species,Oscillibacter ruminantium,65,0,9,606,608
+ERR2744174,310297,species,Bacteroides plebeius,3541,2959,10,48,50
+ERR2744174,445970,,Alistipes putredinis DSM 17216,21910,21910,11,122,122
+ERR2744174,447020,genus,Adlercreutzia,76,0,8,799,801
+ERR2744174,1776379,species,Prevotella lascolaii,519,519,10,11,11
+ERR2744174,999421,,Parabacteroides merdae CL09T00C40,22,22,11,152,152
+ERR2744174,556259,species,Bacteroides sp. D2,53,53,10,99,99
+ERR2744174,1926672,genus,Prevotellamassilia,9989,0,9,34,36
+ERR2744174,1378168,species,Firmicutes bacterium ASF500,41,41,7,691,691
+ERR2744174,55565,species,Actinomyces graevenitzii,19,19,9,827,827
+ERR2744174,47678,species,Bacteroides caccae,21367,21129,10,39,41
+ERR2744174,2293017,species,Clostridium sp. AF37-7,22,22,9,512,512
+ERR2744174,2293167,species,Ruminococcus sp. AF25-28AC,30,30,9,414,414
+ERR2744174,199,species,Campylobacter concisus,39,39,9,871,871
+ERR2744174,2292272,species,Lachnospiraceae bacterium OM04-12BH,215475,215475,9,229,229
+ERR2744174,1501392,species,Coprobacter secundus,81,81,10,181,181
+ERR2744174,2293228,species,Ruminococcus sp. OF02-6,52,52,9,406,406
+ERR2744174,1935192,genus,Mobilibacterium,1,0,9,620,622
+ERR2744174,995019,family,Sutterellaceae,5719,792,6,877,886
+ERR2744174,515620,,[Eubacterium] eligens ATCC 27750,74,74,10,558,558
+ERR2744174,1965592,species,Gordonibacter sp. An230,23,23,9,797,797
+ERR2744174,2292366,species,Roseburia sp. AM51-8,145,145,9,265,265
+ERR2744174,2302956,species,Faecalibacterium sp. AF27-11BH,1335,1335,9,366,366
+ERR2744174,2293831,species,Lachnospiraceae bacterium OF09-6,484,484,9,235,235
+ERR2744174,742741,,[Clostridium] symbiosum WAL-14673,59,59,10,325,325
+ERR2744174,976,phylum,Bacteroidetes,1422005,8204,5,0,227
+ERR2744174,457412,species,Ruminococcus sp. 5_1_39BFAA,18,18,9,419,419
+ERR2744174,39490,species,Eubacterium ramulus,2383,1905,9,556,558
+ERR2744174,1121098,,Bacteroides massiliensis B84634 = Timone 84634 = DSM 17679 = JCM 13223,3123,3123,11,50,50
+ERR2744174,2292069,species,Ruminococcus sp. AF41-9,60,60,9,405,405
+ERR2744174,901,species,Desulfovibrio piger,114,81,9,857,859
+ERR2744174,649756,species,Anaerostipes hadrus,448,432,9,338,340
+ERR2744174,79603,genus,Denitrobacterium,1,0,8,806,808
+ERR2744174,293421,,environmental samples,78,0,9,790,792
+ERR2744174,2005359,genus,Faecalicatena,16,0,8,350,352
+ERR2744174,1761887,species,Prevotella sp. ne3005,15,15,10,26,26
+ERR2744174,2006938,species,Erysipelothrix phage phi1605,1,1,5,1087,1087
+ERR2744174,2292304,species,Clostridium sp. AM33-3,289,289,9,489,489
+ERR2744174,1649459,genus,Hungatella,383,4,8,544,547
+ERR2744174,1496,species,Clostridioides difficile,4529,4529,9,572,572
+ERR2744174,454154,species,Paraprevotella clara,9361,6888,10,29,31
+ERR2744174,1623304,genus,Moineauvirus,2,0,4,1089,1092
+ERR2744174,2293021,species,Clostridium sp. AF50-3,18,18,9,516,516
+ERR2744174,1502,species,Clostridium perfringens,20,20,9,513,513
+ERR2744174,1531,species,[Clostridium] clostridioforme,65,58,9,327,329
+ERR2744174,457397,species,Clostridium sp. 1_1_41A1FAA,317,317,9,483,483
+ERR2744174,2292190,species,Alistipes sp. AF17-16,98,98,10,140,140
+ERR2744174,877424,species,Lachnospiraceae bacterium NK4A179,1,1,9,245,245
+ERR2744174,203494,class,Verrucomicrobiae,35,0,5,950,955
+ERR2744174,290174,genus,Aquimarina,6,0,9,202,205
+ERR2744174,1720200,species,Anaerotruncus rubiinfantis,19,19,9,459,459
+ERR2744174,561,genus,Escherichia,299,18,7,901,903
+ERR2744174,2109689,species,Clostridiales bacterium Choco116,52,52,9,589,589
+ERR2744174,2293014,species,Clostridium sp. AF36-18BH,141,141,9,494,494
+ERR2744174,1871033,species,Olsenella urininfantis,2,2,9,780,780
+ERR2744174,239935,species,Akkermansia muciniphila,35,35,9,950,950
+ERR2744174,2292299,species,Butyricicoccus sp. OF13-6,66,66,9,534,534
+ERR2744174,457387,species,Bacteroides sp. 1_1_30,106,106,10,92,92
+ERR2744174,1550024,species,Ruthenibacterium lactatiformans,133,133,9,467,467
+ERR2744174,2292046,species,Lachnotalea sp. AF33-28,149,149,9,343,343
+ERR2744174,2305133,,unclassified Ruminococcaceae (miscellaneous),13109,5401,9,427,433
+ERR2744174,2292951,species,Bacteroides sp. AM37-9,47,47,10,101,101
+ERR2744174,2320107,species,bacterium 1xD42-67,8,8,5,945,945
+ERR2744174,539738,,Bacillales Family XI. Incertae Sedis,5,0,8,729,732
+ERR2744174,80840,order,Burkholderiales,6226,425,5,877,895
+ERR2744174,580026,species,Enterorhabdus mucosicola,15,0,9,801,803
+ERR2744174,2292320,species,Collinsella sp. AM41-2BH,35,35,9,756,756
+ERR2744174,762968,,Paraprevotella clara YIT 11840,2473,2473,11,29,29
+ERR2744174,2323,,unclassified Bacteria,52,0,3,944,950
+ERR2744174,117563,genus,Granulicatella,3,2,8,717,720
+ERR2744174,1485,genus,Clostridium,17230,12236,8,481,529
+ERR2744174,2292042,species,Eggerthella sp. AM16-19,941,941,9,788,788
+ERR2744174,702443,,Bacteroides ovatus SD CMC 3f,879,879,11,42,42
+ERR2744174,1870884,genus,Clostridioides,4529,0,8,572,574
+ERR2744174,10239,superkingdom,Viruses,769,22,1,1075,1113
+ERR2744174,1506471,species,Dakarella massiliensis,4852,4852,8,877,877
+ERR2744174,2320110,species,bacterium 1XD42-54,7,7,5,946,946
+ERR2744174,7898,superclass,Actinopterygii,1,0,14,987,993
+ERR2744174,742845,family,Malasseziaceae,2,0,10,1003,1006
+ERR2744174,310298,species,Bacteroides coprocola,105509,80015,10,37,39
+ERR2744174,283168,genus,Odoribacter,6429,1399,9,166,169
+ERR2744174,909929,order,Selenomonadales,14,0,6,680,683
+ERR2744174,1392389,genus,Intestinimonas,559,13,8,596,599
+ERR2744174,460384,species,[Clostridium] lavalense,30,30,9,331,331
+ERR2744174,1796613,species,Bacteroides caecimuris,63,63,10,98,98
+ERR2744174,1697794,species,Clostridia bacterium UC5.1-1D1,28,28,8,628,628
+ERR2744174,577310,genus,Parasutterella,40,0,7,879,882
+ERR2744174,2292887,species,Firmicutes bacterium AF22-6AC,243,243,7,688,688
+ERR2744174,2293036,species,Clostridium sp. AM51-4,19,19,9,514,514
+ERR2744174,186813,,unclassified Clostridiales,5047,332,7,583,600
+ERR2744174,620,genus,Shigella,2,0,7,908,910
+ERR2744174,204475,genus,Gemmiger,6906,38,8,441,444
+ERR2744174,469593,species,Bacteroides sp. 3_1_40A,98,98,10,93,93
+ERR2744174,2292941,species,Bacteroides sp. AM22-3LB,2122,2122,10,52,52
+ERR2744174,329857,genus,Cohnella,11,11,8,724,724
+ERR2744174,1505657,genus,Intestinibacter,1524,0,8,574,577
+ERR2744174,241778,subfamily,Apioideae,3,0,20,1034,1041
+ERR2744174,651554,genus,Paraeggerthella,3,0,8,804,806
+ERR2744174,328814,species,Alistipes shahii,2635,0,10,127,129
+ERR2744174,48461,order,Verrucomicrobiales,35,0,6,950,954
+ERR2744174,1235785,,Bacteroides thetaiotaomicron dnLKV9,22,22,11,44,44
+ERR2744174,246787,species,Bacteroides cellulosilyticus,468,427,10,70,72
+ERR2744174,2293176,species,Ruminococcus sp. AF33-11BH,14,14,9,423,423
+ERR2744174,333367,species,[Clostridium] asparagiforme,102,73,9,323,325
+ERR2744174,1739319,species,Bacteroides sp. HMSC068A09,159,159,10,87,87
+ERR2744174,165696,genus,Novosphingobium,1,1,7,932,932
+ERR2744174,2292964,species,Blautia sp. AF22-5LB,77,77,9,298,298
+ERR2744174,1432052,species,Eisenbergiella tayi,119,119,9,345,345
+ERR2744174,717959,,Alistipes shahii WAL 8301,2635,2635,11,127,127
+ERR2744174,1981033,genus,Mordavella,7,0,8,549,551
+ERR2744174,2292076,species,Sutterella sp. AM18-8-1,31,31,8,882,882
+ERR2744174,2292957,species,Bacteroides sp. OF03-11BH,168,168,10,85,85
+ERR2744174,2079531,species,Prevotella sp. Marseille-P4119,5028,5028,10,3,3
+ERR2744174,28883,order,Caudovirales,477,0,2,1075,1105
+ERR2744174,1501226,genus,Romboutsia,657,92,8,577,580
+ERR2744174,1924110,genus,Massilimicrobiota,62,58,8,647,649
+ERR2744174,1987748,genus,Dakarella,4852,0,7,877,879
+ERR2744174,853,species,Faecalibacterium prausnitzii,91449,87645,9,361,366
+ERR2744174,2293096,species,Coprococcus sp. TF11-13,10,10,9,255,255
+ERR2744174,2292354,species,Eubacterium sp. TM06-47,461,461,9,561,561
+ERR2744174,1115809,,Prevotella baroniae F0067,3,3,11,18,18
+ERR2744174,642,genus,Aeromonas,11,11,7,925,925
+ERR2744174,1924105,genus,Neglecta,53,0,8,472,474
+ERR2744174,2302958,species,Ruminococcus sp. OM02-16LB,32,32,9,412,412
+ERR2744174,1660,species,Schaalia odontolytica,11,11,9,833,833
+ERR2744174,2041843,species,Anaeromassilibacillus sp. Marseille-P4683,59,59,9,469,469
+ERR2744174,61171,species,Holdemania filiformis,122,122,9,638,638
+ERR2744174,1280698,,Dorea longicatena AGR2136,76,76,10,273,273
+ERR2744174,2293208,species,Ruminococcus sp. AM36-17,9,9,9,424,424
+ERR2744174,718252,,Faecalibacterium prausnitzii L2-6,649,649,10,363,363
+ERR2744174,526524,class,Erysipelotrichia,9965,0,5,632,665
+ERR2744174,2292346,species,Dorea sp. AM58-8,56,56,9,280,280
+ERR2744174,501571,species,Butyricicoccus pullicaecorum,57,57,9,536,536
+ERR2744174,29760,species,Vitis vinifera,33,33,21,1027,1027
+ERR2744174,552397,,unclassified Ruminococcaceae,15241,37,8,427,441
+ERR2744174,117570,,Teleostomi,634,0,12,969,995
+ERR2744174,2070182,species,Faecalibacterium phage FP_Epona,88,88,5,1076,1076
+ERR2744174,526525,order,Erysipelotrichales,9965,0,6,632,664
+ERR2744174,208479,species,[Clostridium] bolteae,45,45,9,330,330
+ERR2744174,1783270,,FCB group,1422110,16,3,0,229
+ERR2744174,649757,,Anaerostipes hadrus DSM 3319,16,16,10,338,338
+ERR2744174,41297,family,Sphingomonadaceae,82,81,6,932,934
+ERR2744174,2292993,species,Clostridium sp. AF02-29,33,33,9,507,507
+ERR2744174,411461,,Dorea formicigenerans ATCC 27755,24,24,10,275,275
+ERR2744174,28216,class,Betaproteobacteria,6242,16,4,877,896
+ERR2744174,10744,family,Podoviridae,1,0,3,1099,1104
+ERR2744174,1774128,genus,Murimonas,383,0,8,341,343
+ERR2744174,2293009,species,Clostridium sp. AF29-8BH,23,23,9,511,511
+ERR2744174,1380,genus,Atopobium,14,14,8,783,783
+ERR2744174,1280669,species,Dorea sp. AGR2135,84,84,9,278,278
+ERR2744174,2293215,species,Ruminococcus sp. AM42-10AC,123,123,9,398,398
+ERR2744174,1965583,species,Lachnoclostridium sp. An196,231,231,9,322,322
+ERR2744174,484018,,Bacteroides plebeius DSM 17135,582,582,11,48,48
+ERR2744174,3602,family,Vitaceae,34,1,18,1027,1031
+ERR2744174,2605435,,Evosea,383,0,4,1013,1017
+ERR2744174,2293024,species,Clostridium sp. AM22-11AC,80,80,9,498,498
+ERR2744174,1522,species,[Clostridium] innocuum,26,26,9,651,651
+ERR2744174,1227261,,Actinobaculum sp. oral taxon 183 str. F0552,8,8,10,835,835
+ERR2744174,133925,genus,Olsenella,40,30,8,779,783
+ERR2744174,387090,species,Bacteroides coprophilus,201,201,10,83,83
+ERR2744174,40518,species,Ruminococcus bromii,189,189,9,397,397
+ERR2744174,28050,genus,Lachnospira,2077,0,8,318,320
+ERR2744174,539002,,Bacillales incertae sedis,5,0,7,729,733
+ERR2744174,411473,,Ruminococcus callidus ATCC 27760,1746,1746,10,384,384
+ERR2744174,1623303,genus,Brussowvirus,2,0,4,1092,1094
+ERR2744174,33208,kingdom,Metazoa,682,0,4,969,1003
+ERR2744174,84998,class,Coriobacteriia,40328,6151,5,742,811
+ERR2744174,2292995,species,Clostridium sp. AF15-31,293,293,9,486,486
+ERR2744174,2292914,species,Bacteroides sp. AF14-46,470,470,10,69,69
+ERR2744174,721789,tribe,Potentilleae,89,1,20,1018,1023
+ERR2744174,1408437,,Agathobaculum desmolans ATCC 43058,29,29,10,464,464
+ERR2744174,2292898,species,Firmicutes bacterium TM09-10,354,354,7,686,686
+ERR2744174,2305244,species,Lachnospiraceae bacterium OF11-28,154,154,9,236,236
+ERR2744174,2292068,species,Ruminococcus sp. AF37-6AT,16,16,9,422,422
+ERR2744174,585543,species,Bacteroides sp. D20,212,212,10,82,82
+ERR2744174,667015,,Bacteroides salanitronis DSM 18170,67,67,11,96,96
+ERR2744174,823,species,Parabacteroides distasonis,715,668,10,154,156
+ERR2744174,93974,species,Bacteroides sp. AR20,6,6,10,116,116
+ERR2744174,693746,,Oscillibacter valericigenes Sjm18-20,78,78,10,604,604
+ERR2744174,1965590,species,Barnesiella sp. An22,72,72,10,177,177
+ERR2744174,2292364,species,Prevotella sp. AM34-19LB,3747,3747,10,5,5
+ERR2744174,85011,order,Streptomycetales,52,0,6,843,847
+ERR2744174,2293220,species,Ruminococcus sp. AM46-18,24,24,9,417,417
+ERR2744174,2292270,species,Ruminococcaceae bacterium TF06-43,3628,3628,10,427,427
+ERR2744174,33090,kingdom,Viridiplantae,149,7,3,1018,1058
+ERR2744174,626932,species,Alistipes indistinctus,4502,3877,10,125,127
+ERR2744174,204516,species,Bacteroides massiliensis,3139,16,10,50,52
+ERR2744174,2070184,species,Faecalibacterium phage FP_Lugh,5,5,5,1083,1083
+ERR2744174,538999,,Clostridiales incertae sedis,49,0,7,616,624
+ERR2744174,43947,genus,Tolumonas,2,0,7,926,929
+ERR2744174,209880,species,Allisonella histaminiformans,424,424,9,670,670
+ERR2744174,541000,family,Ruminococcaceae,230175,6615,7,361,481
+ERR2744174,2292959,species,Blautia sp. AF17-9LB,120,120,9,295,295
+ERR2744174,657313,,[Ruminococcus] torques L2-14,23,23,10,286,286
+ERR2744174,537013,,[Clostridium] methylpentosum DSM 5476,25,25,10,438,438
+ERR2744174,357276,species,Bacteroides dorei,609,577,10,61,63
+ERR2744174,3745,family,Rosaceae,91,0,18,1018,1025
+ERR2744174,39485,species,[Eubacterium] eligens,1538,1464,9,558,560
+ERR2744174,1661,species,Trueperella pyogenes,16,16,9,831,831
+ERR2744174,4038,genus,Daucus,3,0,23,1034,1038
+ERR2744174,1519438,species,Eubacterium sp. ER2,7,7,9,569,569
+ERR2744174,329854,species,Bacteroides intestinalis,478,478,10,68,68
+ERR2744174,1519439,species,Oscillibacter sp. ER4,2509,2509,9,600,600
+ERR2744174,626937,species,Christensenella minuta,24,24,9,613,613
+ERR2744174,572511,genus,Blautia,9081,4621,8,282,315
+ERR2744174,2292271,species,Lachnospiraceae bacterium AM48-27BH,489,489,9,234,234
+ERR2744174,204458,order,Caulobacterales,5,0,5,936,940
+ERR2744174,39484,species,Agathobaculum desmolans,29,0,9,464,466
+ERR2744174,2293147,species,Ruminococcus sp. AF14-5,33,33,9,409,409
+ERR2744174,2292917,species,Bacteroides sp. AF16-29,1,1,10,117,117
+ERR2744174,572010,species,Slackia isoflavoniconvertens,513,513,9,793,793
+ERR2744174,657322,,Faecalibacterium prausnitzii SL3/3,1245,1245,10,362,362
+ERR2744174,36834,species,Clostridium celatum,292,1,9,487,489
+ERR2744174,2293218,species,Ruminococcus sp. AM45-2,66,66,9,404,404
+ERR2744174,1783257,,PVC group,35,0,3,950,957
+ERR2744174,28131,species,Prevotella intermedia,1163,1163,10,10,10
+ERR2744174,470145,,Bacteroides coprocola DSM 17136,25494,25494,11,37,37
+ERR2744174,261299,species,Intestinibacter bartlettii,1524,1176,9,574,576
+ERR2744174,1235797,species,Oscillibacter sp. 1-3,143,143,9,602,602
+ERR2744174,1926556,genus,Emergencia,19,0,9,618,620
+ERR2744174,1034345,,Senegalimassilia anaerobia JC110,3486,3486,10,775,775
+ERR2744174,818,species,Bacteroides thetaiotaomicron,4733,4711,10,44,46
+ERR2744174,33039,species,[Ruminococcus] torques,312,289,9,286,288
+ERR2744174,2292944,species,Bacteroides sp. AM25-34,655,655,10,60,60
+ERR2744174,997877,,Bacteroides dorei CL03T12C01,32,32,11,61,61
+ERR2744174,2292030,species,Collinsella sp. AM23-17,48,48,9,752,752
+ERR2744174,2292357,species,Faecalibacterium sp. OM04-11BH,364,364,9,371,371
+ERR2744174,2172004,genus,Lawsonibacter,1088,0,8,594,596
+ERR2744174,328813,species,Alistipes onderdonkii,128,50,10,138,140
+ERR2744174,386414,species,Prevotella timonensis,181,179,10,16,18
+ERR2744174,52784,genus,Anaerofilum,43,0,8,474,476
+ERR2744174,671267,species,Bacteroides sartorii,159,159,10,86,86
+ERR2744174,1643826,family,Eggerthellaceae,5172,979,7,786,809
+ERR2744174,2306574,species,Clostridiales bacterium AM23-16LB,234,234,9,586,586
+ERR2744174,987066,species,Pseudoscardovia radai,9,9,9,823,823
+ERR2744174,31979,family,Clostridiaceae,24194,679,7,481,556
+ERR2744174,2293011,species,Clostridium sp. AF34-10BH,152,152,9,493,493
+ERR2744174,742726,,Barnesiella intestinihominis YIT 11860,494,494,11,175,175
+ERR2744174,31977,family,Veillonellaceae,545,6,7,670,679
+ERR2744174,166486,species,Roseburia intestinalis,1525,1414,9,260,262
+ERR2744174,2024228,species,Prevotella sp. P4-51,145,145,10,22,22
+ERR2744174,1853229,order,Chitinophagales,1,0,7,223,225
+ERR2744174,49894,genus,Acetomicrobium,6,6,7,963,963
+ERR2744174,2292987,species,Blautia sp. TF11-31AT,54,54,9,302,302
+ERR2744174,186806,family,Eubacteriaceae,7081,5,7,556,572
+ERR2744174,77133,species,uncultured bacterium,17488,17488,4,942,942
+ERR2744174,189325,,unclassified Clostridia,28,0,6,628,631
+ERR2744174,2292287,species,Blautia sp. OF03-15BH,607,607,9,285,285
+ERR2744174,29363,species,Clostridium paraputrificum,3,3,9,524,524
+ERR2744174,117574,,unclassified Microviridae,18,0,3,1107,1111
+ERR2744174,2292208,species,Collinsella sp. AF04-24,14,14,9,771,771
+ERR2744174,1002367,,Prevotella stercorea DSM 18206,617,617,11,7,7
+ERR2744174,1437612,,Bifidobacterium stercoris JCM 15918,10,10,10,811,811
+ERR2744174,2292214,species,Collinsella sp. AF15-51,42,42,9,753,753
+ERR2744174,2292885,species,Firmicutes bacterium AF16-15,297,297,7,687,687
+ERR2744174,1935927,genus,Massilioclostridium,60,0,8,547,549
+ERR2744174,2560065,family,Herelleviridae,1,0,3,1095,1099
+ERR2744174,1602170,species,Prevotella sp. P5-60,146,146,10,21,21
+ERR2744174,742766,,Dysgonomonas gadei ATCC BAA-286,15,15,11,191,191
+ERR2744174,84026,species,[Clostridium] methylpentosum,25,0,9,438,440
+ERR2744174,1855299,species,Oscillibacter sp. PC13,135,135,9,603,603
+ERR2744174,1965604,species,Anaeromassilibacillus sp. An250,35,35,9,470,470
+ERR2744174,1296416,,Aquimarina megaterium XH134,6,6,11,202,202
+ERR2744174,445973,,Intestinibacter bartlettii DSM 16795,348,348,10,574,574
+ERR2744174,207598,subfamily,Homininae,473,219,29,969,972
+ERR2744174,1535,species,[Clostridium] leptum,245,245,9,437,437
+ERR2744174,2292274,species,Clostridiaceae bacterium OM08-6BH,2239,2239,9,540,540
+ERR2744174,6072,,Eumetazoa,682,0,5,969,1002
+ERR2744174,214851,species,Subdoligranulum variabile,276,0,9,376,378
+ERR2744174,1965550,species,Faecalibacterium sp. An121,10,10,9,373,373
+ERR2744174,2759,superkingdom,Eukaryota,1487,269,2,969,1059
+ERR2744174,2292328,species,Collinsella sp. OM07-12,19,19,9,768,768
+ERR2744174,1628085,species,Agathobaculum butyriciproducens,228,228,9,463,463
+ERR2744174,1268,family,Micrococcaceae,37,0,7,840,842
+ERR2744174,2292295,species,Butyricicoccus sp. AM29-23AC,81,81,9,533,533
+ERR2744174,2022527,species,Prevotella sp. 885,1316,1316,10,9,9
+ERR2744174,80841,,unclassified Burkholderiales (miscellaneous),69,25,7,886,888
+ERR2744174,28889,phylum,Crenarchaeota,33,0,4,1066,1072
+ERR2744174,349124,,Halorhodospira halophila SL1,13,13,9,920,920
+ERR2744174,2292297,species,Butyricicoccus sp. AM42-5AC,204,204,9,530,530
+ERR2744174,990721,genus,Christensenella,60,0,8,612,615
+ERR2744174,1350,genus,Enterococcus,22,20,8,714,716
+ERR2744174,71275,,rosids,128,1,15,1018,1034
+ERR2744174,1658111,species,Inediibacterium massiliense,2,2,9,553,553
+ERR2744174,9606,species,Homo sapiens,252,252,31,969,969
+ERR2744174,292407,species,Dyadobacter crusticola,12,0,10,210,212
+ERR2744174,194,genus,Campylobacter,42,3,8,871,873
+ERR2744174,411486,species,Clostridium sp. M62/1,308,308,9,484,484
+ERR2744174,1339314,,Bacteroides fragilis str. 3976T8,26,26,11,53,53
+ERR2744174,473772,,unclassified Oscillospiraceae,30,0,8,609,611
+ERR2744174,32207,genus,Rothia,37,37,8,840,840
+ERR2744174,2109691,species,Lachnospiraceae bacterium GAM79,149,149,9,237,237
+ERR2744174,28025,species,Bifidobacterium animalis,7,7,9,815,815
+ERR2744174,831,species,Butyrivibrio fibrisolvens,16,15,9,347,349
+ERR2744174,5204,phylum,Basidiomycota,2,0,6,1003,1010
+ERR2744174,2292334,species,Collinsella sp. TF09-1AT,26,26,9,763,763
+ERR2744174,1926659,genus,Mediterranea,116,2,9,119,121
+ERR2744174,35832,genus,Bilophila,7912,3014,8,852,857
+ERR2744174,2304100,tribe,Viteae,33,0,19,1027,1030
+ERR2744174,9605,genus,Homo,254,2,30,969,971
+ERR2744174,196896,,unclassified Myoviridae,456,1,4,1075,1082
+ERR2744174,1883,genus,Streptomyces,47,42,8,843,845
+ERR2744174,2293207,species,Ruminococcus sp. AM34-9LB,26,26,9,416,416
+ERR2744174,314293,infraorder,Simiiformes,596,19,25,969,976
+ERR2744174,2364787,species,Alistipes sp. Marseille-P5997,72,72,10,142,142
+ERR2744174,28231,genus,Geobacter,3,0,8,866,868
+ERR2744174,1573535,genus,Holdemanella,4565,0,8,632,635
+ERR2744174,84108,genus,Slackia,515,2,8,793,795
+ERR2744174,47420,genus,Hydrogenophaga,2,0,7,889,891
+ERR2744174,999417,,Parabacteroides distasonis CL09T03C24,47,47,11,154,154
+ERR2744174,2292329,species,Collinsella sp. OM08-14AT,22,22,9,766,766
+ERR2744174,106588,species,Pseudoflavonifractor capillosus,256,0,9,444,446
+ERR2744174,2292065,species,Roseburia sp. AM16-25,132,132,9,266,266
+ERR2744174,537011,,Prevotella copri DSM 18205,7016,7016,11,0,0
+ERR2744174,1926504,species,Poophage MBI-2016a,1,1,4,1108,1108
+ERR2744174,1239,phylum,Firmicutes,774658,43869,4,229,742
+ERR2744174,2529408,genus,Schaalia,11,0,8,833,835
+ERR2744174,70994,genus,Lewinella,1,0,9,218,220
+ERR2744174,241799,subtribe,Daucinae,3,0,22,1034,1039
+ERR2744174,2316020,genus,Mediterraneibacter,12,0,8,358,360
+ERR2744174,2292894,species,Firmicutes bacterium AM41-5BH,13,13,7,693,693
+ERR2744174,563835,family,Chitinophagaceae,1,1,8,223,223
+ERR2744174,1478221,species,Anaeromicrobium sediminis,3,3,9,551,551
+ERR2744174,2062,family,Streptomycetaceae,52,5,7,843,846
+ERR2744174,32033,family,Xanthomonadaceae,10,7,6,917,919
+ERR2744174,1578,genus,Lactobacillus,474,7,8,710,713
+ERR2744174,387661,species,Parabacteroides johnsonii,22,14,10,158,160
+ERR2744174,2293087,species,Coprococcus sp. AF16-22,26,26,9,254,254
+ERR2744174,1680,species,Bifidobacterium adolescentis,8117,8107,9,811,813
+ERR2744174,218538,species,Dialister invisus,6,0,9,675,677
+ERR2744174,626929,species,Bacteroides clarus,139,139,10,89,89
+ERR2744174,72294,family,Campylobacteraceae,42,0,7,871,874
+ERR2744174,2292968,species,Blautia sp. AF34-10,47,47,9,305,305
+ERR2744174,348577,,environmental samples,127,0,9,184,186
+ERR2744174,1437201,,Pentapetalae,138,6,14,1018,1047
+ERR2744174,1870991,species,Massilioclostridium coli,60,60,9,547,547
+ERR2744174,2292980,species,Blautia sp. OF03-13,87,87,9,296,296
+ERR2744174,2305245,species,Clostridiaceae bacterium TF01-6,65,65,9,541,541
+ERR2744174,1965634,species,Flavonifractor sp. An4,33,33,9,454,454
+ERR2744174,649724,species,Clostridium sp. ATCC BAA-442,161,161,9,492,492
+ERR2744174,46124,species,Granulicatella adiacens,1,0,9,717,719
+ERR2744174,85009,order,Propionibacteriales,13,5,6,847,849
+ERR2744174,102106,genus,Collinsella,18210,14506,8,742,775
+ERR2744174,2283794,,Methanomada group,429,0,4,1059,1065
+ERR2744174,2293054,species,Clostridium sp. TM06-18,40,40,9,506,506
+ERR2744174,411489,species,Clostridium sp. L2-50,80,80,9,499,499
+ERR2744174,207244,genus,Anaerostipes,448,0,8,338,341
+ERR2744174,1873447,section,Daucus sect. Daucus,3,0,24,1034,1037
+ERR2744174,171552,family,Prevotellaceae,668966,6150,8,0,37
+ERR2744174,57918,species,Fragaria vesca,87,1,23,1018,1020
+ERR2744174,543,family,Enterobacteriaceae,622,112,6,901,911
+ERR2744174,1016,genus,Capnocytophaga,78,0,9,200,202
+ERR2744174,2569097,genus,Anaerobutyricum,5880,0,8,315,318
+ERR2744174,2004411,genus,Inediibacterium,2,0,8,553,555
+ERR2744174,762966,,Parasutterella excrementihominis YIT 11859,40,40,9,879,879
+ERR2744174,1871015,species,Pseudoflavonifractor sp. Marseille-P3106,174,174,9,446,446
+ERR2744174,2292244,species,Pseudoflavonifractor sp. AF19-9AC,47,47,9,448,448
+ERR2744174,1965571,species,Erysipelatoclostridium sp. An173,1,1,9,653,653
+ERR2744174,457390,species,Bacteroides sp. 3_1_23,41,41,10,103,103
+ERR2744174,624,species,Shigella sonnei,2,2,8,908,908
+ERR2744174,2292221,species,Collinsella sp. AF20-14LB,54,54,9,750,750
+ERR2744174,1077285,,Bacteroides faecis MAJ27,442,442,11,66,66
+ERR2744174,1505663,genus,Erysipelatoclostridium,39,1,8,651,655
+ERR2744174,2292365,species,Prevotella sp. TF12-30,3006,3006,10,6,6
+ERR2744174,2173,species,Methanobrevibacter smithii,241,241,9,1059,1059
+ERR2744174,1965569,species,Lachnoclostridium sp. An169,9,9,9,334,334
+ERR2744174,2048137,genus,Agathobaculum,257,0,8,463,467
+ERR2744174,89966,genus,Hymenobacter,2,2,9,214,214
+ERR2744174,1965560,species,Lachnoclostridium sp. An138,19,19,9,332,332
+ERR2744174,2292349,species,Eubacterium sp. AM28-29,573,573,9,560,560
+ERR2744174,28890,phylum,Euryarchaeota,429,0,3,1059,1066
+ERR2744174,2005525,family,Tannerellaceae,34336,0,8,151,166
+ERR2744174,712888,species,Actinobaculum sp. oral taxon 183,8,0,9,835,837
+ERR2744174,183925,class,Methanobacteria,429,0,5,1059,1064
+ERR2744174,7711,phylum,Chordata,634,0,8,969,999
+ERR2744174,28901,species,Salmonella enterica,3,3,8,906,906
+ERR2744174,186822,family,Paenibacillaceae,41,11,7,722,726
+ERR2744174,848,genus,Fusobacterium,11,1,7,957,959
+ERR2744174,1965581,species,Faecalibacterium sp. An192,31,31,9,372,372
+ERR2744174,1965580,species,Bacteroides sp. An19,139,139,10,90,90
+ERR2744174,361210,,unclassified Porphyromonadaceae,4,0,9,186,188
+ERR2744174,1288121,species,Alistipes senegalensis,1066,0,10,132,134
+ERR2744174,1965645,species,Alistipes sp. An54,13,13,10,146,146
+ERR2744174,196895,,unclassified Podoviridae,1,0,4,1099,1103
+ERR2744174,244127,genus,Anaerotruncus,266,131,8,457,463
+ERR2744174,1843488,order,Acidaminococcales,7356,0,6,665,670
+ERR2744174,768507,order,Cytophagales,85,68,7,210,217
+ERR2744174,1905344,genus,Ruthenibacterium,133,0,8,467,469
+ERR2744174,1737407,,unclassified Tissierellia,10,0,6,737,740
+ERR2744174,907,species,Megasphaera elsdenii,26,26,9,673,673
+ERR2744174,592028,,Dialister invisus DSM 15470,6,6,10,675,675
+ERR2744174,515619,,[Eubacterium] rectale ATCC 33656,109,109,10,232,232
+ERR2744174,1647988,family,Akkermansiaceae,35,0,7,950,953
+ERR2744174,46503,species,Parabacteroides merdae,23402,23248,10,151,154
+ERR2744174,1577792,species,Terrisporobacter othiniensis,11,11,9,580,580
+ERR2744174,888727,,Eubacterium sulci ATCC 35585,29,29,10,616,616
+ERR2744174,2302957,species,Faecalibacterium sp. AM43-5AT,544,544,9,367,367
+ERR2744174,768503,class,Cytophagia,85,0,6,210,218
+ERR2744174,997888,,Bacteroides finegoldii CL09T03C10,24,24,11,64,64
+ERR2744174,75,genus,Caulobacter,2,0,7,936,938
+ERR2744174,841,genus,Roseburia,15489,6173,8,257,272
+ERR2744174,2305241,species,Clostridium sp. AF28-12,18,18,9,515,515
+ERR2744174,1843489,order,Veillonellales,545,0,6,670,680
+ERR2744174,2172,genus,Methanobrevibacter,429,188,8,1059,1061
+ERR2744174,28052,species,Lachnospira pectinoschiza,2077,2077,9,318,318
+ERR2744174,2292012,species,Collinsella sp. AF33-16,39,39,9,755,755
+ERR2744174,12333,,unclassified bacterial viruses,252,0,2,1105,1107
+ERR2744174,1926663,genus,Phocea,19,0,8,478,480
+ERR2744174,1280697,,Butyrivibrio fibrisolvens AB2020,1,1,10,347,347
+ERR2744174,585394,,Roseburia hominis A2-183,741,741,10,258,258
+ERR2744174,1305,species,Streptococcus sanguinis,14,14,9,705,705
+ERR2744174,2070186,species,Faecalibacterium phage FP_Taranis,46,46,5,1078,1078
+ERR2744174,1678,genus,Bifidobacterium,9794,1403,8,811,823
+ERR2744174,42,genus,Cystobacter,4,4,9,862,862
+ERR2744174,68525,subphylum,delta/epsilon subdivisions,8104,0,4,852,877
+ERR2744174,657314,,Blautia obeum A2-162,30,30,10,283,283
+ERR2744174,2293023,species,Clostridium sp. AM18-55,5,5,9,521,521
+ERR2744174,471875,,Ruminococcus lactaris ATCC 29176,41,41,10,389,389
+ERR2744174,49546,family,Flavobacteriaceae,94,9,8,200,208
+ERR2744174,815,family,Bacteroidaceae,448065,1340,8,37,122
+ERR2744174,570,genus,Klebsiella,199,14,7,903,905
+ERR2744174,305719,species,Prevotella baroniae,175,172,10,18,20
+ERR2744174,449659,species,Lactobacillus pobuzihii,3,3,9,711,711
+ERR2744174,1936995,species,Parabacteroides bouchesdurhonensis,325,325,10,156,156
+ERR2744174,1978007,,crAss-like viruses,1,0,5,1099,1102
+ERR2744174,2037,order,Actinomycetales,159,0,6,827,840
+ERR2744174,483215,,Bacteroides finegoldii DSM 17565,221,221,11,63,63
+ERR2744174,2292070,species,Ruminococcus sp. AF42-9BH,86,86,9,401,401
+ERR2744174,2292315,species,Collinsella sp. AM33-4BH,31,31,9,758,758
+ERR2744174,742738,,Flavonifractor plautii 1_3_50AFAA,19,19,10,450,450
+ERR2744174,997892,,Bacteroides xylanisolvens CL03T12C04,62,62,11,56,56
+ERR2744174,665956,species,Subdoligranulum sp. 4_3_54A2FAA,239,239,9,378,378
+ERR2744174,2293052,species,Clostridium sp. TF08-15,67,67,9,502,502
+ERR2744174,186625,,Clupeocephala,1,1,19,987,987
+ERR2744174,563193,species,Parabacteroides sp. D13,19,19,10,160,160
+ERR2744174,28221,class,Deltaproteobacteria,8062,4,5,852,871
+ERR2744174,2292066,species,Roseburia sp. AM23-20,8,8,9,269,269
+ERR2744174,7742,,Vertebrata,634,0,10,969,997
+ERR2744174,2070188,species,Faecalibacterium phage FP_oengus,3,3,5,1084,1084
+ERR2744174,1715004,species,Clostridiales bacterium KLE1615,511,511,9,583,583
+ERR2744174,1853228,class,Chitinophagia,1,0,6,223,226
+ERR2744174,2292009,species,Clostridium sp. AM22-16AC,9,9,9,520,520
+ERR2744174,2070187,species,Faecalibacterium phage FP_Toutatis,46,46,5,1079,1079
+ERR2744174,908612,species,Alistipes sp. HGB5,147,147,10,136,136
+ERR2744174,91827,,Gunneridae,138,0,13,1018,1048
+ERR2744174,2211178,genus,Evtepia,1290,0,8,592,594
+ERR2744174,241789,tribe,Scandiceae,3,0,21,1034,1040
+ERR2744174,2292343,species,Collinsella sp. TM09-10AT,12,12,9,773,773
+ERR2744174,2292015,species,Collinsella sp. AF38-3AC,80,80,9,746,746
+ERR2744174,1443666,species,Aquimarina megaterium,6,0,10,202,204
+ERR2744174,1338369,,Dipnotetrapodomorpha,616,0,15,969,986
+ERR2744174,2292308,species,Clostridium sp. OF03-18AA,340,340,9,482,482
+ERR2744174,69541,order,Desulfuromonadales,3,0,6,866,870
+ERR2744174,2292312,species,Collinsella sp. AM28-11LB,16,16,9,770,770
+ERR2744174,2292337,species,Collinsella sp. TF12-2AT,21,21,9,767,767
+ERR2744174,203492,family,Fusobacteriaceae,18,7,6,957,960
+ERR2744174,1235802,,Eubacterium plexicaudatum ASF492,8,8,10,567,567
+ERR2744174,2293016,species,Clostridium sp. AF37-5,2,2,9,525,525
+ERR2744174,79604,species,Denitrobacterium detoxificans,1,1,9,806,806
+ERR2744174,1414720,species,Clostridium saudiense,54,54,9,504,504
+ERR2744174,2292231,species,Coprococcus sp. AF21-14LB,99,99,9,253,253
+ERR2744174,1121866,,Enterorhabdus mucosicola DSM 19490,15,15,10,801,801
+ERR2744174,39,family,Archangiaceae,4,0,8,862,864
+ERR2744174,1232453,species,Clostridiales bacterium VE202-21,65,65,9,587,587
+ERR2744174,518636,,[Clostridium] asparagiforme DSM 15981,29,29,10,323,323
+ERR2744174,1033731,,Alistipes timonensis JC136,184,184,11,134,134
+ERR2744174,76892,family,Caulobacteraceae,5,3,6,936,939
+ERR2744174,209879,genus,Allisonella,424,0,8,670,672
+ERR2744174,2293041,species,Clostridium sp. OM04-12AA,12,12,9,519,519
+ERR2744174,360807,species,Roseburia inulinivorans,671,611,9,262,264
+ERR2744174,1184124,subtribe,Fragariinae,88,0,21,1018,1022
+ERR2744174,2293006,species,Clostridium sp. AF23-8,4,4,9,523,523
+ERR2744174,428128,,[Eubacterium] siraeum DSM 15702,102,102,10,434,434
+ERR2744174,28116,species,Bacteroides ovatus,6293,5414,10,42,44
+ERR2744174,1871012,species,Mobilibacterium timonense,1,1,10,620,620
+ERR2744174,1655645,species,Parabacteroides phage YZ-2015b,1,1,4,1109,1109
+ERR2744174,717962,,Coprococcus catus GD/7,192,192,10,249,249
+ERR2744174,1470345,species,Bacteroides timonensis,39,39,10,105,105
+ERR2744174,10841,family,Microviridae,18,0,2,1107,1112
+ERR2744174,3193,,Embryophyta,142,0,6,1018,1055
+ERR2744174,1891238,species,Burkholderiales bacterium,44,44,8,886,886
+ERR2744174,2291998,species,Alistipes sp. AF48-12,33,33,10,144,144
+ERR2744174,29,order,Myxococcales,4,0,6,862,866
+ERR2744174,1437608,,Bifidobacterium biavatii DSM 23969,1,1,10,820,820
+ERR2744174,762212,species,Bifidobacterium biavatii,1,0,9,820,822
+ERR2744174,1937960,family,Lewinellaceae,1,0,8,218,221
+ERR2744174,4036,order,Apiales,3,0,17,1034,1044
+ERR2744174,2293039,species,Clostridium sp. OF10-22XD,126,126,9,495,495
+ERR2744174,1118061,species,Alistipes obesi,13146,13146,10,124,124
+ERR2744174,585544,species,Bacteroides sp. D22,39,39,10,104,104
+ERR2744174,29348,species,[Clostridium] spiroforme,11,11,9,652,652
+ERR2744174,1735,species,Holdemanella biformis,4565,4288,9,632,634
+ERR2744174,1776384,species,Emergencia timonensis,19,19,10,618,618
+ERR2744174,219748,species,Clostridium tunisiense,1,0,9,526,528
+ERR2744174,397865,species,Barnesiella viscericola,20,0,10,178,180
+ERR2744174,1935200,genus,Merdibacter,8,0,8,657,659
+ERR2744174,90964,family,Staphylococcaceae,29,0,7,726,729
+ERR2744174,84135,species,Gemella sanguinis,5,5,10,729,729
+ERR2744174,72276,family,Ectothiorhodospiraceae,13,0,6,920,924
+ERR2744174,742722,species,Collinsella sp. 4_8_47FAA,379,379,9,744,744
+ERR2744174,657318,,[Eubacterium] rectale DSM 17629,157,157,10,231,231
+ERR2744174,2284,genus,Sulfolobus,33,0,8,1066,1068
+ERR2744174,46506,species,Bacteroides stercoris,4251,4227,10,46,48
+ERR2744174,351091,species,Oscillibacter valericigenes,81,3,9,604,606
+ERR2744174,547,genus,Enterobacter,7,7,7,905,905
+ERR2744174,239934,genus,Akkermansia,35,0,8,950,952
+ERR2744174,1737404,class,Tissierellia,12,2,5,737,741
+ERR2744174,216816,species,Bifidobacterium longum,216,216,9,813,813
+ERR2744174,2292048,species,Odoribacter sp. AM16-33,50,50,10,167,167
+ERR2744174,154046,species,Hungatella hathewayi,379,257,9,544,546
+ERR2744174,451640,,Catenibacterium mitsuokai DSM 15897,1239,1239,10,635,635
+ERR2744174,679192,,Bulleidia extructa W1219,3,3,10,659,659
+ERR2744174,1280691,,Blautia wexlerae AGR2146,44,44,10,293,293
+ERR2744174,135613,order,Chromatiales,13,0,5,920,925
+ERR2744174,1898205,species,Ruminococcaceae bacterium,140,140,10,430,430
+ERR2744174,1297617,species,Intestinimonas butyriciproducens,446,446,9,596,596
+ERR2744174,203491,order,Fusobacteriales,18,0,5,957,961
+ERR2744174,213115,order,Desulfovibrionales,8051,0,6,852,862
+ERR2744174,2034272,species,Streptomyces sp. rh34,5,5,9,843,843
+ERR2744174,411459,,Blautia obeum ATCC 29174,32,32,10,282,282
+ERR2744174,32523,,Tetrapoda,616,0,16,969,985
+ERR2744174,376913,suborder,Haplorrhini,596,0,24,969,977
+ERR2744174,2126740,species,Lachnoclostridium sp. SNUG30386,18,18,9,333,333
+ERR2744174,563192,,Bilophila wadsworthia 3_1_6,694,694,10,853,853
+ERR2744174,2292923,species,Bacteroides sp. AF25-18,95,95,10,94,94
+ERR2744174,9443,order,Primates,599,3,23,969,978
+ERR2744174,762982,,Paraprevotella xylaniphila YIT 11841,761,761,11,31,31
+ERR2744174,2281,order,Sulfolobales,33,0,6,1066,1070
+ERR2744174,135858,genus,Catenibacterium,4441,3202,8,635,638
+ERR2744174,91834,,rosids incertae sedis,34,0,16,1027,1033
+ERR2744174,2292368,species,Roseburia sp. OM02-15,10,10,9,268,268
+ERR2744174,375288,genus,Parabacteroides,34220,9664,9,151,163
+ERR2744174,2292300,species,Butyricicoccus sp. OM04-18BH,25,25,9,538,538
+ERR2744174,1853232,family,Hymenobacteraceae,2,0,8,214,216
+ERR2744174,48479,,environmental samples,17644,156,3,942,944
+ERR2744174,85831,species,Bacteroides acidifaciens,32,32,10,109,109
+ERR2744174,990719,family,Christensenellaceae,60,0,7,612,616
+ERR2744174,1965615,species,Olsenella sp. An270,1,1,9,781,781
+ERR2744174,1408428,,Bilophila wadsworthia ATCC 49260,827,827,10,852,852
+ERR2744174,457391,species,Bacteroides sp. 3_1_33FAA,238,238,10,80,80
+ERR2744174,1937959,class,Saprospiria,1,0,6,218,223
+ERR2744174,2292198,species,Butyricicoccus sp. AF22-28AC,60,60,9,535,535
+ERR2744174,117743,class,Flavobacteriia,94,0,6,200,210
+ERR2744174,230658,species,Paraeggerthella hongkongensis,3,3,9,804,804
+ERR2744174,1776391,species,Romboutsia timonensis,541,541,9,577,577
+ERR2744174,2316025,species,Mediterraneibacter butyricigenes,12,12,9,358,358
+ERR2744174,742725,,Alistipes indistinctus YIT 12060,625,625,11,125,125
+ERR2744174,1673721,species,Intestinimonas massiliensis,100,100,9,597,597
+ERR2744174,2070181,species,Faecalibacterium phage FP_Brigit,55,55,5,1077,1077
+ERR2744174,1965538,species,Flavonifractor sp. An100,34,34,9,453,453
+ERR2744174,363265,species,Prevotella stercorea,2078,1461,10,7,9
+ERR2744174,1161942,species,Ruminococcus champanellensis,197,0,9,394,396
+ERR2744174,1069494,genus,Trueperella,16,0,8,831,833
+ERR2744174,2293075,species,Coprobacillus sp. AM23-2,2,2,9,649,649
+ERR2744174,2292903,species,Lachnospiraceae bacterium AM21-21,9,9,9,242,242
+ERR2744174,2005473,family,Muribaculaceae,79,69,8,189,191
+ERR2744174,2293034,species,Clostridium sp. AM48-13,15,15,9,518,518
+ERR2744174,817,species,Bacteroides fragilis,1384,1358,10,53,55
+ERR2744174,156973,genus,Dysgonomonas,15,0,9,191,194
+ERR2744174,2293160,species,Ruminococcus sp. AF20-12LB,28,28,9,415,415
+ERR2744174,2292010,species,Collinsella sp. AF29-7AC,53,53,9,751,751
+ERR2744174,1763508,genus,Lachnotalea,149,0,8,343,345
+ERR2744174,1164882,genus,Lachnoanaerobaculum,12,1,8,356,358
+ERR2744174,394340,species,Asaccharobacter celatus,1977,1977,9,786,786
+ERR2744174,33043,species,Coprococcus eutactus,495,457,9,251,253
+ERR2744174,478744,species,Lewinella agarilytica,1,1,10,218,218
+ERR2744174,131221,subphylum,Streptophytina,142,0,5,1018,1056
+ERR2744174,169435,species,Anaerotruncus colihominis,66,66,9,457,457
+ERR2744174,9604,family,Hominidae,513,40,28,969,973
+ERR2744174,135625,order,Pasteurellales,884,0,5,896,901
+ERR2744174,884684,species,Mageeibacillus indolicus,3,3,9,624,624
+ERR2744174,33974,,unclassified Firmicutes sensu stricto,7524,0,5,684,698
+ERR2744174,1783272,,Terrabacteria group,830962,5239,3,229,852
+ERR2744174,1308,species,Streptococcus thermophilus,2241,2241,9,698,698
+ERR2744174,872,genus,Desulfovibrio,118,4,8,857,860
+ERR2744174,936595,species,Lachnoanaerobaculum sp. OBRC5-5,11,11,9,356,356
+ERR2744174,1230730,species,Tissierellia bacterium S5-A11,10,10,8,737,737
+ERR2744174,2292965,species,Blautia sp. AF25-12LB,44,44,9,307,307
+ERR2744174,1232439,species,Clostridiales bacterium VE202-03,54,54,9,588,588
+ERR2744174,2292902,species,Lachnospiraceae bacterium AM10-38,2,2,9,243,243
+ERR2744174,1232459,species,Oscillospiraceae bacterium VE202-24,30,30,9,609,609
+ERR2744174,85154,species,Streptococcus virus O1205,2,2,5,1092,1092
+ERR2744174,2293144,species,Roseburia sp. TF10-5,606,606,9,264,264
+ERR2744174,470146,,Coprococcus comes ATCC 27758,196,196,10,247,247
+ERR2744174,376806,species,Bacteroides gallinarum,376,0,10,73,75
+ERR2744174,28127,species,Prevotella buccalis,93,93,10,24,24
+ERR2744174,85108,genus,Halorhodospira,13,0,7,920,923
+ERR2744174,2292911,species,Alistipes sp. AM16-43,132,132,10,137,137
+ERR2744174,411463,,Eubacterium ventriosum ATCC 27560,21,21,10,564,564
+ERR2744174,74201,phylum,Verrucomicrobia,35,0,4,950,956
+ERR2744174,638301,,Granulicatella adiacens ATCC 49175,1,1,10,717,717
+ERR2744174,1965613,species,Bacteroides sp. An269,277,277,10,78,78
+ERR2744174,2292191,species,Anaerotruncus sp. AF02-27,31,31,9,458,458
+ERR2744174,333046,,unclassified Bacteroidales,3,0,8,195,198
+ERR2744174,748224,,Faecalibacterium cf. prausnitzii KLE1255,1436,1436,10,361,361
+ERR2744174,2292939,species,Bacteroides sp. AM16-15,834,834,10,59,59
+ERR2744174,2159,family,Methanobacteriaceae,429,0,7,1059,1062
+ERR2744174,2231643,,unclassified Moineauvirus,2,1,5,1089,1091
+ERR2744174,171550,family,Rikenellaceae,68390,115,8,122,151
+ERR2744174,562,species,Escherichia coli,281,281,8,901,901
+ERR2744174,77635,species,Bifidobacterium subtile,1,1,9,818,818
+ERR2744174,118883,family,Sulfolobaceae,33,0,7,1066,1069
+ERR2744174,1538075,class,Malasseziomycetes,2,0,8,1003,1008
+ERR2744174,84086,,unclassified Firmicutes sensu stricto (miscellaneous),7524,4429,6,684,697
+ERR2744174,58024,,Spermatophyta,142,0,9,1018,1052
+ERR2744174,348578,species,uncultured Porphyromonadaceae bacterium,127,127,10,184,184
+ERR2744174,2292317,species,Collinsella sp. AM36-4AA,17,17,9,769,769
+ERR2744174,403667,order,Vitales,34,0,17,1027,1032
+ERR2744174,2049,family,Actinomycetaceae,159,7,7,827,839
+ERR2744174,3746,genus,Fragaria,88,1,22,1018,1021
+ERR2744174,717961,,[Eubacterium] siraeum V10Sc8a,77,77,10,435,435
+ERR2744174,1852370,species,Prevotellamassilia timonensis,9989,9989,10,34,34
+ERR2744174,185291,,unclassified Bacteroidales (miscellaneous),3,2,9,195,197
+ERR2744174,2292273,species,Lachnospiraceae bacterium OF09-33XD,39,39,9,239,239
+ERR2744174,33958,family,Lactobacillaceae,474,0,7,710,714
+ERR2744174,2292888,species,Firmicutes bacterium AF36-19BH,1111,1111,7,684,684
+ERR2744174,2320099,species,bacterium 0.1xD8-71,2,2,5,947,947
+ERR2744174,2304686,family,Hungateiclostridiaceae,7,4,7,624,627
+ERR2744174,2315193,,unclassified Sepunavirus,1,1,6,1095,1095
+ERR2744174,2292026,species,Collinsella sp. AM16-21,80,80,9,747,747
+ERR2744174,72274,order,Pseudomonadales,476,51,5,912,917
+ERR2744174,245014,species,butyrate-producing bacterium SS3/4,471,471,9,584,584
+ERR2744174,2292901,species,Firmicutes bacterium OM04-13BH,3,3,7,694,694
+ERR2744174,518637,,Holdemanella biformis DSM 3989,277,277,10,632,632
+ERR2744174,35493,phylum,Streptophyta,142,0,4,1018,1057
+ERR2744174,1233099,,Clostridium tunisiense TJ,1,1,10,526,526
+ERR2744174,2292984,species,Blautia sp. OM06-15AC,123,123,9,292,292
+ERR2744174,1505652,genus,Terrisporobacter,11,0,8,580,582
+ERR2744174,1816676,species,Alistipes sp. Marseille-P2431,34,34,10,143,143
+ERR2744174,433334,,unclassified Erysipelotrichaceae,149,0,8,644,647
+ERR2744174,1918540,genus,Muribaculum,10,10,9,189,189
+ERR2744174,83231,species,Prevotella brevis,316,316,10,12,12
+ERR2744174,118748,species,Bulleidia extructa,3,0,9,659,661
+ERR2744174,2292928,species,Bacteroides sp. AF29-11,52,52,10,100,100
+ERR2744174,459786,genus,Oscillibacter,3448,285,8,600,609
+ERR2744174,2025877,species,Parabacteroides sp. AT13,6,6,10,161,161
+ERR2744174,4037,family,Apiaceae,3,0,19,1034,1042
+ERR2744174,41665,subclass,Neopterygii,1,0,16,987,991
+ERR2744174,2293174,species,Ruminococcus sp. AF31-8BH,1174,1174,9,387,387
+ERR2744174,1053,species,Halorhodospira halophila,13,0,8,920,922
+ERR2744174,2292884,species,Firmicutes bacterium AF12-30,1,1,7,695,695
+ERR2744174,1348911,genus,Coprobacter,81,0,9,181,183
+ERR2744174,84642,family,Aeromonadaceae,13,0,6,925,930
+ERR2744174,1965625,species,Olsenella sp. An290,7,7,9,779,779
+ERR2744174,1334,species,Streptococcus dysgalactiae,2,2,10,706,706
+ERR2744174,1520815,species,Ruminococcaceae bacterium D5,70,70,10,431,431
+ERR2744174,487174,species,Barnesiella intestinihominis,496,2,10,175,177
+ERR2744174,679935,,Alistipes finegoldii DSM 17242,463,463,11,130,130
+ERR2744174,1214177,,Streptococcus suis 92-1400,24,24,10,701,701
+ERR2744174,2292180,species,Ruminococcaceae bacterium AF10-16,3522,3522,10,428,428
+ERR2744174,2293151,species,Ruminococcus sp. AF17-12,82,82,9,402,402
+ERR2744174,1155689,species,Psychroflexus salarius,1,1,10,205,205
+ERR2744174,2292306,species,Clostridium sp. AM45-5,68,68,9,500,500
+ERR2744174,2126544,genus,Neobitarella,23,0,8,476,478
+ERR2744174,2108523,species,Lawsonibacter asaccharolyticus,1088,1088,9,594,594
+ERR2744174,2292936,species,Bacteroides sp. AF39-16AC,199,199,10,84,84
+ERR2744174,2086584,species,Mordavella sp. Marseille-P3756,7,7,9,549,549
+ERR2744174,43948,species,Tolumonas auensis,2,0,8,926,928
+ERR2744174,1144304,species,Caulobacter sp. AP07,2,2,8,936,936
+ERR2744174,68,genus,Lysobacter,3,3,7,917,917
+ERR2744174,580024,genus,Enterorhabdus,18,3,8,801,804
+ERR2744174,553372,genus,Asaccharobacter,1977,0,8,786,788
+ERR2744174,2293053,species,Clostridium sp. TF11-13AC,48,48,9,505,505
+ERR2744174,291645,species,Bacteroides nordii,321,266,10,76,78
+ERR2744174,314295,superfamily,Hominoidea,545,32,27,969,974
+ERR2744174,120831,genus,Dyadobacter,15,3,9,210,213
+ERR2744174,186623,class,Actinopteri,1,0,15,987,992
+ERR2744174,89593,subphylum,Craniata,634,0,9,969,998
+ERR2744174,592978,species,Ruminococcus faecis,32,0,9,410,412
+ERR2744174,9347,,Eutheria,609,1,20,969,981
+ERR2744174,1737408,,unclassified Tissierellia (miscellaneous),10,0,7,737,739
+ERR2744174,577309,genus,Paraprevotella,11409,1287,9,29,34
+ERR2744174,2560081,subfamily,Twortvirinae,1,0,4,1095,1098
+ERR2744174,1737424,species,Blautia massiliensis,64,64,9,300,300
+ERR2744174,2086273,species,Subdoligranulum sp. APC924/74,29315,29315,9,375,375
+ERR2744174,85004,order,Bifidobacteriales,9811,0,6,811,827
+ERR2744174,84030,species,[Clostridium] saccharolyticum,7,7,9,335,335
+ERR2744174,742765,,Dorea formicigenerans 4_6_53AFAA,10,10,10,276,276
+ERR2744174,838,genus,Prevotella,641418,149804,9,0,29
+ERR2744174,2292990,species,Blautia sp. TM10-2,51,51,9,303,303
+ERR2744174,1685,species,Bifidobacterium breve,1,1,9,819,819
+ERR2744174,38018,species,unidentified phage,252,252,3,1105,1105
+ERR2744174,544447,,unclassified Erysipelotrichaceae (miscellaneous),149,3,9,644,646
+ERR2744174,1945864,species,Hydrogenophaga sp. A37,2,2,8,889,889
+ERR2744174,2293166,species,Ruminococcus sp. AF25-23LB,17,17,9,420,420
+ERR2744174,2292920,species,Bacteroides sp. AF18-33,19,19,10,112,112
+ERR2744174,2293249,species,Tannerella sp. AM09-19,35,35,10,163,163
+ERR2744174,1300,family,Streptococcaceae,3476,9,7,698,710
+ERR2744174,195950,genus,Tannerella,116,81,9,163,165
+ERR2744174,745368,species,Gemmiger formicilis,6826,6826,9,441,441
+ERR2744174,186828,family,Carnobacteriaceae,3,0,7,717,721
+ERR2744174,830,genus,Butyrivibrio,95,79,8,347,350
+ERR2744174,1017280,genus,Pseudoflavonifractor,599,46,8,444,450
+ERR2744174,1924093,genus,Anaeromassilibacillus,98,4,8,469,472
+ERR2744174,821,species,Bacteroides vulgatus,20051,20051,10,41,41
+ERR2744174,91835,,fabids,93,2,16,1018,1027
+ERR2744174,1843491,family,Selenomonadaceae,14,7,7,680,682
+ERR2744174,1965540,species,Massilimicrobiota sp. An105,4,4,9,647,647
+ERR2744174,1226324,species,Blautia sp. KLE 1732,127,127,9,291,291
+ERR2744174,861448,species,Streptococcus phage phi-SsUD.1,1,1,5,1086,1086
+ERR2744174,1298596,,Ruminococcus faecis JCM 15917,32,32,10,410,410
+ERR2744174,1122992,,Prevotella timonensis 4401737 = DSM 22865 = JCM 15640,2,2,11,16,16
+ERR2744174,168384,species,Marvinbryantia formatexigens,14,14,9,352,352
+ERR2744174,1473205,genus,Senegalimassilia,10442,0,8,775,778
+ERR2744174,1965558,species,Flavonifractor sp. An135,13,13,9,455,455
+ERR2744174,101020,subspecies,Fragaria vesca subsp. vesca,86,86,24,1018,1018
+ERR2744174,118747,genus,Bulleidia,3,0,8,659,662
+ERR2744174,44008,species,Enterococcus cecorum,2,2,9,714,714
+ERR2744174,123375,genus,Solobacterium,12,0,8,655,657
+ERR2744174,1410613,species,Prevotella sp. P6B1,64,64,10,25,25
+ERR2744174,487175,species,Parasutterella excrementihominis,40,0,8,879,881
+ERR2744174,652706,species,Oribacterium sp. oral taxon 078,11,11,9,354,354
+ERR2744174,55193,genus,Malassezia,2,0,11,1003,1005
+ERR2744174,2285,species,Sulfolobus acidocaldarius,33,33,9,1066,1066
+ERR2744174,183924,class,Thermoprotei,33,0,5,1066,1071
+ERR2744174,119603,species group,Streptococcus dysgalactiae group,2,0,9,706,708
+ERR2744174,1105030,species,Actinomyces sp. ICM58,2,2,9,829,829
+ERR2744174,1643822,order,Eggerthellales,5172,0,6,786,810
+ERR2744174,1965549,species,Gemmiger sp. An120,42,42,9,442,442
+ERR2744174,1520828,species,Lachnospiraceae bacterium YSD2013,2,2,9,244,244
+ERR2744174,40674,class,Mammalia,609,0,18,969,983
+ERR2744174,649776,order,Synergistales,10,0,5,963,966
+ERR2744174,1637257,genus,Mageeibacillus,3,0,8,624,626
+ERR2744174,76833,genus,Actinobaculum,8,0,8,835,838
+ERR2744174,2293125,species,Prevotella sp. AM42-24,46306,46306,10,2,2
+ERR2744174,1871030,species,Merdibacter massiliensis,8,8,9,657,657
+ERR2744174,2302976,species,Erysipelotrichaceae bacterium AF19-24AC,146,146,10,644,644
+ERR2744174,204457,order,Sphingomonadales,92,10,5,932,935
+ERR2744174,2292054,species,Prevotella sp. AM23-5,4083,4083,10,4,4
+ERR2744174,40545,species,Sutterella wadsworthensis,1,1,8,883,883
+ERR2744174,506,family,Alcaligenaceae,1,0,6,892,894
+ERR2744174,292800,species,Flavonifractor plautii,163,144,9,450,452
+ERR2744174,2292921,species,Bacteroides sp. AF20-13LB,15,15,10,113,113
+ERR2744174,28117,species,Alistipes putredinis,21934,24,10,122,124
+ERR2744174,4039,species,Daucus carota,3,0,25,1034,1036
+ERR2744174,91347,order,Enterobacterales,683,61,5,901,912
+ERR2744174,1783275,,TACK group,33,0,3,1066,1073
+ERR2744174,2070185,species,Faecalibacterium phage FP_Mushu,218,218,5,1075,1075
+ERR2744174,1853231,family,Odoribacteraceae,16691,5726,8,166,175
+ERR2744174,2005520,family,Dysgonamonadaceae,15,0,8,191,195
+ERR2744174,411474,,Coprococcus eutactus ATCC 27759,38,38,10,251,251
+ERR2744174,1470347,species,Alistipes ihumii,9,0,10,147,149
+ERR2744174,116085,species,Coprococcus catus,2785,2593,9,249,251
+ERR2744174,39491,species,[Eubacterium] rectale,14762,14335,9,230,234
+ERR2744174,201174,phylum,Actinobacteria,51065,422,4,742,851
+ERR2744174,1280695,,[Clostridium] clostridioforme AGR2157,7,7,10,327,327
+ERR2744174,871324,species,Bacteroides stercorirosoris,34,34,10,108,108
+ERR2744174,310300,species,Bacteroides pyogenes,36,36,10,106,106
+ERR2744174,165179,species,Prevotella copri,422207,415191,10,0,2
+ERR2744174,1616788,species,Paenibacillus bovis,1,1,9,722,722
+ERR2744174,1073376,,Ruminococcus lactaris CC59_002D,29,29,10,390,390
+ERR2744174,10662,family,Myoviridae,458,2,3,1075,1083
+ERR2744174,2293236,species,Ruminococcus sp. OM08-9BH,326,326,9,392,392
+ERR2744174,1681,species,Bifidobacterium bifidum,3,3,9,816,816
+ERR2744174,58023,,Tracheophyta,142,0,7,1018,1054
+ERR2744174,78536,,Euphyllophyta,142,0,8,1018,1053
+ERR2744174,8287,superclass,Sarcopterygii,616,0,14,969,987
+ERR2744174,301301,species,Roseburia hominis,2184,1443,9,258,260
+ERR2744174,1378,genus,Gemella,5,0,9,729,731
+ERR2744174,2293224,species,Ruminococcus sp. AM50-15BH,4,4,9,425,425
+ERR2744174,580596,genus,Butyricicoccus,3104,1832,8,529,540
+ERR2744174,1658779,species,Porphyromonadaceae bacterium H1,4,4,10,186,186
+ERR2744174,80864,family,Comamonadaceae,12,10,6,889,892
+ERR2744174,1907658,species,Bacteroides ilei,445,445,10,72,72
+ERR2744174,2070183,species,Faecalibacterium phage FP_Lagaffe,2,2,5,1080,1080
+ERR2744174,33024,genus,Phascolarctobacterium,7348,4,8,665,668
+ERR2744174,674529,species,Bacteroides faecis,478,36,10,66,68
+ERR2744174,1643824,family,Atopobiaceae,57,3,7,779,785
+ERR2744174,657319,,[Eubacterium] siraeum 70/3,338,338,10,433,433
+ERR2744174,265975,genus,Oribacterium,13,2,8,354,356
+ERR2744174,91061,class,Bacilli,4277,65,5,698,737
+ERR2744174,33213,,Bilateria,682,48,6,969,1001
+ERR2744174,1980928,genus,Sepunavirus,1,0,5,1095,1097
+ERR2744174,1936988,order,Saprospirales,1,0,7,218,222
+ERR2744174,595494,,Tolumonas auensis DSM 9187,2,2,9,926,926
+ERR2744174,31957,family,Propionibacteriaceae,8,8,7,847,847
+ERR2744174,880074,,Barnesiella viscericola DSM 18177,20,20,11,178,178
+ERR2744174,906,genus,Megasphaera,30,4,8,673,675
+ERR2744174,1335613,species,Gordonibacter urolithinfaciens,50,50,9,796,796
+ERR2744174,97253,species,Eubacterium plexicaudatum,8,0,9,567,569
+ERR2744174,171638,subfamily,Rosoideae,91,2,19,1018,1024
+ERR2744174,80811,suborder,Cystobacterineae,4,0,7,862,865
+ERR2744174,338188,species,Bacteroides finegoldii,479,234,10,63,66
+ERR2744174,3398,,Magnoliopsida,142,0,10,1018,1051
+ERR2744174,1602171,species,Prevotella sp. P5-119,122,122,10,23,23
+ERR2744174,7776,,Gnathostomata,634,0,11,969,996
+ERR2744174,364270,suborder,Apiineae,3,0,18,1034,1043
+ERR2744174,79200,subspecies,Daucus carota subsp. sativus,3,3,26,1034,1034
+ERR2744174,135621,family,Pseudomonadaceae,425,1,6,912,916
+ERR2744174,376805,species,Bacteroides salanitronis,67,0,10,96,98
+ERR2744174,411471,,Subdoligranulum variabile DSM 15176,276,276,10,376,376
+ERR2744174,820,species,Bacteroides uniformis,1293,1293,10,55,55
+ERR2744174,186802,order,Clostridiales,698497,106834,6,229,628
+ERR2744174,2293030,species,Clostridium sp. AM34-9AC,296,296,9,485,485
+ERR2744174,213849,order,Campylobacterales,42,0,6,871,875
+ERR2744174,1437183,,Mesangiospermae,142,2,11,1018,1050
+ERR2744174,443143,species,Geobacter sp. M18,3,3,9,866,866
+ERR2744174,658086,species,Lachnospiraceae bacterium 3_1_57FAA_CT1,24,24,9,241,241
+ERR2744174,555406,,Archamoebae,383,0,5,1013,1016
+ERR2744174,1432051,genus,Eisenbergiella,121,2,8,345,347
+ERR2744174,1907659,species,Blautia sp. Marseille-P3201T,26,26,9,310,310
+ERR2744174,2292294,species,Butyricicoccus sp. AM28-25,178,178,9,532,532
+ERR2744174,162474,order,Malasseziales,2,0,9,1003,1007
+ERR2744174,83612,genus,Psychroflexus,1,0,9,205,207
+ERR2744174,189971,,unclassified Clostridiaceae,2726,397,8,540,544
+ERR2744174,1073351,,Bacteroides stercoris CC31F,24,24,11,46,46
+ERR2744174,4751,kingdom,Fungi,2,0,4,1003,1012
+ERR2744174,40519,species,Ruminococcus callidus,1746,0,9,384,386
+ERR2744174,156974,species,Dysgonomonas gadei,15,0,10,191,193
+ERR2744174,2292316,species,Collinsella sp. AM34-10,351,351,9,745,745
+ERR2744174,1465754,species,Alistipes timonensis,184,0,10,134,136
+ERR2744174,81852,family,Enterococcaceae,22,0,7,714,717
+ERR2744174,2292025,species,Collinsella sp. AM15-2,32,32,9,757,757
+ERR2744174,40544,genus,Sutterella,35,3,7,882,885
+ERR2744174,1712675,species,Turicibacter sp. H121,1,1,9,642,642
+ERR2744174,590,genus,Salmonella,3,0,7,906,908
+ERR2744174,517,genus,Bordetella,1,1,7,892,892
+ERR2744174,1852361,species,Actinomyces bouchesdurhonensis,8,8,9,828,828
+ERR2744174,186823,family,Alicyclobacillaceae,1,0,7,733,735
+ERR2744174,3603,genus,Vitis,33,0,20,1027,1029
+ERR2744174,1437010,,Boreoeutheria,608,7,21,969,980
+ERR2744174,74426,species,Collinsella aerofaciens,1579,1579,9,742,742
+ERR2744174,214856,species,Alistipes finegoldii,1537,1074,10,130,132
+ERR2744174,33154,,Opisthokonta,686,2,3,969,1013
+ERR2744174,2292181,species,Firmicutes bacterium AF25-13AC,778,778,7,685,685
+ERR2744174,1965650,species,Alistipes sp. An66,75,75,10,141,141
+ERR2744174,28118,species,Odoribacter splanchnicus,4980,4980,10,166,166
+ERR2744174,143393,species,[Eubacterium] sulci,29,0,9,616,618
+ERR2744174,2292311,species,Clostridium sp. OM02-18AC,4,4,9,522,522
+ERR2744174,31953,family,Bifidobacteriaceae,9811,8,7,811,826
+ERR2744174,452284,subphylum,Ustilaginomycotina,2,0,7,1003,1009
+ERR2744174,348841,,unclassified Clostridia (miscellaneous),28,0,7,628,630
+ERR2744174,213422,family,Geobacteraceae,3,0,7,866,869
+ERR2744174,1489341,,Osteoglossocephalai,1,0,18,987,989
+ERR2744174,2005519,family,Barnesiellaceae,691,0,8,175,184
+ERR2744174,1385,order,Bacillales,89,13,6,722,736
+ERR2744174,32525,,Theria,609,0,19,969,982
+ERR2744174,649777,family,Synergistaceae,10,4,6,963,965
+ERR2744174,77917,species,Fusobacterium naviforme,10,10,8,957,957
+ERR2744174,3744,order,Rosales,91,0,17,1018,1026
+ERR2744174,1211813,,Alistipes ihumii AP11,9,9,11,147,147
+ERR2744174,2291999,species,Bacteroides sp. AF39-11AC,13,13,10,115,115
+ERR2744174,2158,order,Methanobacteriales,429,0,6,1059,1063
+ERR2744174,384639,species,Bacteroides galacturonicus,344,344,10,75,75
+ERR2744174,196894,,unclassified Siphoviridae,12,0,4,1083,1089
+ERR2744174,32443,infraclass,Teleostei,1,0,17,987,990
+ERR2744174,39486,species,Dorea formicigenerans,597,563,9,275,278
+ERR2744174,200644,order,Flavobacteriales,94,0,7,200,209
+ERR2744174,2293127,species,Roseburia sp. AF12-17LB,5,5,9,270,270
+ERR2744174,2292335,species,Collinsella sp. TF10-11AT,23,23,9,765,765
+ERR2744174,1701259,species,Streptococcus phage phiNJ3,2,2,5,1085,1085
+ERR2744174,2293225,species,Ruminococcus sp. AM54-14NS,19,19,9,418,418
+ERR2744174,2321404,species,Anaerotruncus sp. 22A2-44,1,1,9,461,461
+ERR2744174,1279,genus,Staphylococcus,29,9,8,726,728
+ERR2744174,411467,,Pseudoflavonifractor capillosus ATCC 29799,256,256,10,444,444
+ERR2744174,100886,species,Catenibacterium mitsuokai,1239,0,9,635,637
+ERR2744174,91882,,campanulids,3,0,16,1034,1045
+ERR2744174,909930,family,Acidaminococcaceae,7356,8,7,665,669
+ERR2744174,117571,,Euteleostomi,634,17,13,969,994
+ERR2744174,1407607,genus,Fusicatenibacter,769,0,8,320,322
+ERR2744174,171551,family,Porphyromonadaceae,132,1,8,184,189
+ERR2744174,1337051,species,Murimonas intestini,383,383,9,341,341
+ERR2744174,28026,species,Bifidobacterium pseudocatenulatum,2,2,9,817,817
+ERR2744174,2042309,species,Butyricimonas sp. Marseille-P4593,431,431,10,172,172
+ERR2744174,1302778,genus,Pseudoscardovia,9,0,8,823,825
+ERR2744174,358743,species,[Clostridium] citroniae,7,7,9,336,336
+ERR2744174,2292961,species,Blautia sp. AF19-10LB,23,23,9,312,312
+ERR2744174,999419,,Parabacteroides johnsonii CL02T12C29,8,8,11,158,158
+ERR2744174,1650661,species,Clostridium phoceensis,257,257,9,490,490
+ERR2744174,84024,species,Clostridium disporicum,685,685,9,481,481
+ERR2744174,451864,subkingdom,Dikarya,2,0,5,1003,1011
+ERR2744174,2292319,species,Collinsella sp. AM40-7AC,41,41,9,754,754
+ERR2744174,1051631,species,Streptococcus phage YMC-2011,1,1,6,1089,1089
+ERR2744174,2292976,species,Blautia sp. AM42-2,207,207,9,288,288
+ERR2744174,89373,family,Cytophagaceae,15,0,8,210,214
+ERR2744174,2292336,species,Collinsella sp. TF11-5AC,12,12,9,772,772
+ERR2744174,1805476,species,Blautia sp. Marseille-P2398,80,80,9,297,297
+ERR2744174,1929105,genus,Anaeromicrobium,3,0,8,551,553
+ERR2744174,314146,superorder,Euarchontoglires,601,2,22,969,979
+ERR2744174,2320088,species,Roseburia sp. 1XD42-69,12,12,9,267,267
+ERR2744174,49928,,unclassified Bacteria (miscellaneous),52,5,4,944,949
+ERR2744174,626940,species,Phascolarctobacterium succinatutens,7344,0,9,665,667
+ERR2744174,2292971,species,Blautia sp. AM23-13AC,24,24,9,311,311
+ERR2744174,136841,species group,Pseudomonas aeruginosa group,322,0,8,912,914
+ERR2744174,1499682,species,Alistipes sp. AL-1,23,23,10,145,145
+ERR2744174,1203608,,Bacteroides nordii WAL 11050 = JCM 12987,55,55,11,76,76
+ERR2744174,33511,,Deuterostomia,634,0,7,969,1000
+ERR2744174,2293229,species,Ruminococcus sp. OF03-6AA,250,250,9,393,393
+ERR2744174,2033406,species,Prevotella sp. MGM2,7,7,10,27,27
+ERR2744174,1917876,species,Blautia sp. Marseille-P3087,44,44,9,306,306
+ERR2744174,1304,species,Streptococcus salivarius,61,61,9,700,700
+ERR2744174,970,genus,Selenomonas,7,7,8,680,680
+ERR2744174,1945890,species,Bacteroidales bacterium WCE2004,1,1,10,195,195
+ERR2744174,2291989,species,Clostridiaceae bacterium AF31-3BH,25,25,9,542,542
+ERR2744174,71240,,eudicotyledons,140,2,12,1018,1049
+ERR2744174,2292072,species,Ruminococcus sp. AF46-10NS,95,95,9,400,400
+ERR2744174,1232451,,Hungatella hathewayi VE202-11,122,122,10,544,544
+ERR2744174,454155,species,Paraprevotella xylaniphila,761,0,10,31,33
+ERR2744174,76775,species,Malassezia restricta,2,2,12,1003,1003
