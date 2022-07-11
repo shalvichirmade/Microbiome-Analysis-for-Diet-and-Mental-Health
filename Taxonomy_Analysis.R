@@ -985,6 +985,29 @@ fviz_cluster(medoid3_2, data = matNoASD,
 summary(medoid3_2)
 
 
+
+
+
+#### 8. Evaluation of Pipeline ----
+
+
+
+## Trimmomatic terminal output:
+  # Input Read Pairs: 4664804 Both Surviving: 4427724 (94.92%) Forward Only Surviving: 157515 (3.38%) Reverse Only Surviving: 50893 (1.09%) Dropped: 28672 (0.61%)
+  # TrimmomaticPE: Completed successfully
+
+## Fastq-join terminal output:
+  # Total reads: 4427724
+  # Total joined: 1703390
+  # Average join len: 73.67
+  # Stdev join len: 39.45
+  # Version: 1.3.1
+
+
+## MetaPhlAn terminal output:
+  # WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
+  # An additional column listing the merged species is added to the MetaPhlAn output.
+
 #### . REFERENCES ----
 
 # Yin, L., Wan, Y. D., Pan, X. T., Zhou, C. Y., Lin, N., Ma, C. T., Yao, J., Su, Z., Wan, C., Yu, Y. W., & Zhu, R. X. (2019). Association Between Gut Bacterial Diversity and Mortality in Septic Shock Patients: A Cohort Study. Medical science monitor : international medical journal of experimental and clinical research, 25, 7376–7382. https://doi.org/10.12659/MSM.916808
