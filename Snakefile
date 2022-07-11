@@ -17,52 +17,52 @@
 
 rule check_fastqc:
     input: 
-        "Snakemake_Trial/{sample}_R1_001.fastq.gz"
-        "Snakemake_Trial/{sample}_R2_001.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/{sample}_R1_001.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/{sample}_R2_001.fastq.gz"
 
     output:
-        "Snakemake_Trial/fastqc"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/fastqc"
     
     shell:
         "fastqc {input} -o {output}"
 
 rule trim:
     input:
-        "Snakemake_Trial/{sample}_R1_001.fastq.gz"
-        "Snakemake_Trial/{sample}_R2_001.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/{sample}_R1_001.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/{sample}_R2_001.fastq.gz"
 
     output:
-        "Snakemake_Trial/trim/{sample}.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/trim/{sample}.fastq.gz"
 
     shell:
         "java -jar "/Users/shalvichirmade/miniconda3/share/trimmomatic-0.39-2/trimmomatic.jar" PE -phred33 {input} -baseout {output} LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50"
 
 rule join:
     input:
-        "Snakemake_Trial/trim/*P.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/trim/*P.fastq.gz"
 
     output:
-        "Snakemake_Trial/join/{sample}_%.fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/join/{sample}_%.fastq.gz"
 
     shell:
         "fastq-join {input} -o {output}"
 
 rule merge_join:
     input:
-        "Snakemake_Trial/join/{sample}*.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/join/{sample}*.gz"
 
     output:
-        "Snakemake_Trial/join/{sample}_merged_fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/join/{sample}_merged_fastq.gz"
 
     shell:
         "cat {input} > {output}"
 
 rule metaphlan:
     input: 
-        "Snakemake_Trial/join/{sample}_merged_fastq.gz"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/join/{sample}_merged_fastq.gz"
 
     output:
-        "Snakemake_Trial/metaphlan/{sample}_merged_profile.txt"
+        "/Volumes/VanRaayLab/Weston Project/Pipeline_Evaluation/metaphlan/{sample}_merged_profile.txt"
 
     shell:
         "conda activate mpa"
