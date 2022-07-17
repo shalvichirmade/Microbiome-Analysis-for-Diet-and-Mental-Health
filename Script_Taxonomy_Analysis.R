@@ -269,6 +269,78 @@ rm(dfPhylum, dfPhylum_Others, dfPhylum_pool)
 
 
 
+#### 4. PCA ----
+
+# Will be using the covariance matrix of this dataset as the units for all variables are the same. Have to transform dfData as prcomp() uses the columns as variables.
+
+## Standardize the data as some taxa are found is high and low abundance, which may skew the analysis. Make the taxa the row names before transforming.
+dfScaled <- dfData[,c(1, 3:ncol(dfData))]
+rownames(dfScaled) <- dfScaled[,1]
+dfScaled <- dfScaled[,-1]
+dfScaled <- as.data.frame(t(dfScaled))
+
+# Convert abundance data to numeric.
+dfScaled[] <- lapply(dfScaled, function(x) as.numeric(as.character(x)))
+sapply(dfScaled, class)
+
+# Standardize data.
+dfScaled <- as.data.frame(scale(dfScaled))
+
+# Add column for samples to differentiate in visualizations.
+dfScaled$Sample <- factor(rownames(dfScaled), levels = levels(samples))
+
+# Perform PCA.
+pca1 <- prcomp(dfScaled[,-ncol(dfScaled)])
+
+# Scree plot to visualize variance.
+dfPCA1_var <- data.frame(PC = paste0("PC", 1:length(row.names(dfScaled))),
+                         var = (pca1$sdev)^2 / sum((pca1$sdev)^2))
+
+ggplot(dfPCA1_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
+  geom_bar(stat = "identity", fill = "darkslategray3") +
+  ggtitle("Scree plot: PCA based on variance for taxonomy") +
+  xlab("Principal Component") +
+  ylab("Proportion of Variance") +
+  theme_minimal() +
+  scale_y_continuous(expand = c(0, 0))
+
+
+# Get scores for each PC.
+summary(pca1)
+
+# 2D PCA visualization
+#TODO can edit colors accoridngly 
+colors_pca1 <- c("#ef9e98", "#eaae7a", "#f7de92", "#aef9a1", "#96e3de",
+                 "#9bd7fd", "#73adff", "#c8abe3", "#f68bf9", "#dedede")
+
+autoplot(pca1, data = dfScaled,
+         colour = "Sample",
+         main = "PCA for Differentiation of Samples",
+         size = 5) +
+  theme_minimal() +
+  scale_color_manual(values = colors_pca1) +
+  geom_text(label = rownames(dfScaled),
+            nudge_x = 0.07,
+            cex = 3)
+
+# 3D PCA visualization - to determine if the points grouped together are separated based on PC3 or are similar to one another. Create a dataframe for the PC scores used for this visualization.
+dfPCA1_scores <- as.data.frame(pca1$x)
+dfPCA1_scores$Sample <- factor(rownames(dfPCA1_scores), levels = levels(samples))
+
+plot_ly(dfPCA1_scores, x = ~PC1, y = ~PC2, z = ~PC3, 
+        color = dfPCA1_scores$Sample, 
+        colors = colors_pca1,
+        type = "scatter3d",
+        mode = "markers+text") %>%
+  layout(title = "3D PCA of Samples")
+
+# Eigen vectors for this PCA.
+summary(pca1)
+
+# Remove variables no longer required.
+rm(pca1, dfPCA1_var, dfPCA1_scores)
+
+
 
 
 
