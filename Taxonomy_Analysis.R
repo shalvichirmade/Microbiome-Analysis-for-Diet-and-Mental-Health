@@ -378,7 +378,7 @@ hc <- hclust(distDissim) # complete is the default
 
 colors <- c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07")
   
-fviz_dend(hc,k = 5,
+fviz_dend(hc, k = 5,
           cex = 0.8,
           k_colors = colors,
           rect = T,
