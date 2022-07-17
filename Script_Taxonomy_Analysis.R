@@ -342,7 +342,46 @@ rm(pca1, dfPCA1_var, dfPCA1_scores)
 
 
 
+#### 5. Hierarchical Clustering ----
 
+# Create numerical matrix from data.
+matScaled <- as.matrix(dfScaled[,-ncol(dfScaled)])
+matScaled <- matScaled[levels(samples),,drop = F]
+
+# Crete dissimilarity matrix.
+distDissim <- dist(matScaled)
+matDissim <- as.matrix(distDissim)
+
+# Visualize the dissimilarity matrix for the samples.
+fviz_dist(distDissim,
+          order = F,
+          gradient = list(low = "darkslategray3",
+                          mid = "white",
+                          high = "salmon2")) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  ggtitle("Heatmap of dissimilarity between the samples") +
+  xlab("") +
+  ylab("") 
+
+# Complete linkage clustering.
+hc <- hclust(distDissim) # complete is the default
+
+#TODO can edit colors accordingly
+colors <- c("#f68bf9", "#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07")
+
+fviz_dend(hc, k = 5, #TODO edit number of clusters accordingly
+          cex = 0.8,
+          k_colors = colors,
+          rect = T,
+          rect_fill = T,
+          rect_border = colors,
+          main = "Hierarchical Clustering of Samples using Complete Linkage")
+#ggtheme = theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())) # Add if y axis lines are required
+
+# As the value of k decreases, the groups on the right come together first, leaving samples 9,6 5 to be added last.
+
+# Remove variables no longer required.
+rm(hc)
 
 
 
