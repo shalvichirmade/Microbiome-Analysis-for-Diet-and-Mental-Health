@@ -27,8 +27,12 @@ library(cluster)
 library(factoextra)
 #install.packages("forcats")
 library(forcats)
+#install.packages("ggeasy")
+library(ggeasy)
 #install.packages("ggfortify")
 library(ggfortify)
+#install.packages("ggVennDiagram")
+library(ggVennDiagram)
 #install.packages("matrixStats")
 library(matrixStats)
 #install.packages("phyloseq")
@@ -1087,6 +1091,66 @@ View(dfSource)
 # test <- dfSource
 # test <- test %>%
 #   pivot_wider(names_from = rank, values_from = name, values_fill = "NA")
+
+
+# Create a separate dataframe for Family level data for the evaluation data.
+dfEvaluate_Family <- dfEvaluate_Tidy[,5:9]
+
+# Remove rows with NAs in Family
+dfEvaluate_Family <- dfEvaluate_Family[complete.cases(dfEvaluate_Family$Family),]
+
+# Keep rows with NAs in both Genus and Species - we only want these rows as the abundance information encompasses the whole Family.
+dfEvaluate_Family <- dfEvaluate_Family[!complete.cases(dfEvaluate_Family$Genus),]
+dfEvaluate_Family <- dfEvaluate_Family[,c(1, 5)]
+
+# Convert abundance information from character to numerical values.
+dfEvaluate_Family[,2] <- as.numeric(dfEvaluate_Family[,2])
+sapply(dfEvaluate_Family, class)
+
+# Sum the abundance for each sample.
+round(sum(dfEvaluate_Family[, 2]), 3)
+
+# Fix the rownames.
+rownames(dfEvaluate_Family) <- 1:nrow(dfEvaluate_Family)
+
+
+# Create a separate dataframe for Family level data for the source data.
+dfSource %>%
+  count(rank)
+# 73 family level
+
+dfSource_Family <- dfSource %>%
+  filter(rank == "family")
+
+# Number of unique Family names.
+length(unique(dfSource_Family$name)) # all unique
+
+# Convert count data to relative abundance.
+dfSource_Family[, 5:6] <- sapply(dfSource_Family[, 5:6], make_relative)
+
+dfSource_Family[, 5:6] <- sapply(dfSource_Family[, 5:6], function(x) round(x, 6))
+
+# Use total count column for comparison with MetaPhlAn output.
+dfSource_Family <- dfSource_Family[, 4:5]
+
+# Reorder based on percentage.
+dfSource_Family <- dfSource_Family %>%
+  arrange(desc(total_count))
+
+
+## Create a Venn Diagram showing the overlapping taxa detected. Data needs to be in a list form.
+list_Family <- list(Source = dfSource_Family$name,
+                    Pipeline = dfEvaluate_Family$Family)
+
+ggVennDiagram(list_Family,
+              label_alpha = 0,
+              edge_size = 0.05) +
+  scale_fill_gradient(low = "#cfebe9", high = "#2ad4c3") +
+  ggtitle("Venn diagram for Family level comparison") +
+  easy_center_title()
+  
+
+
 
 
 
