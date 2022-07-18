@@ -1077,8 +1077,18 @@ write_tsv(dfEvaluate_Tidy, file = "Evaluation_Abundance_Table.tsv", col_names = 
 
 
 
+### Import and clean the taxonomy file from the sequence source. https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=run_browser&page_size=10&acc=ERR2744174&display=analysis
 
+# Import the merged taxa file.
+dfSource <- read_csv("bquxjob_bf4b274_181ed506074.csv")
+View(dfSource)
 
+# Pivot table based on taxonomy rank.
+test <- dfSource
+test <- test %>%
+  extract(rank,
+          into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
+          regex = c("kingdom", "phylum", "Class", "Order", "Family", "Genus", "Species"),)
 
 
 
