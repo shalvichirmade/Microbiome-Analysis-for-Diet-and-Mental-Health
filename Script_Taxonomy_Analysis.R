@@ -106,6 +106,7 @@ rm(i)
 
 
 # Export dfTidy as a .tsv file for cleaner raw data. Only needs to be run once; comment the code once completed to prevent overwriting.
+#TODO change name of file to be saved accordingly 
 write_tsv(dfTidy, file = "Tidy_Merged_Abundance_Table.tsv", col_names = T)
 
 
@@ -309,7 +310,7 @@ ggplot(dfPCA1_var[1:10,], aes(x = reorder(PC, -var), y = var)) +
 summary(pca1)
 
 # 2D PCA visualization
-#TODO can edit colors accoridngly 
+#TODO can edit colors accordingly 
 colors_pca1 <- c("#ef9e98", "#eaae7a", "#f7de92", "#aef9a1", "#96e3de",
                  "#9bd7fd", "#73adff", "#c8abe3", "#f68bf9", "#dedede")
 
