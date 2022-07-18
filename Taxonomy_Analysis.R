@@ -1152,10 +1152,95 @@ ggVennDiagram(list_Family,
 # Top five Family taxa found in each dataframe.
 dfSource_Family[1:5,] ; dfEvaluate_Family[1:5,]
 
-# Same top five, the additional Families detected are before 1% of relative abundance.
+# Same top five.
+#https://academic.oup.com/dnaresearch/article/26/5/391/5541856
+#https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8317196/pdf/TSM2-4-174.pdf
+
+# The intersecting taxa.
+intersect(dfSource_Family$name, dfEvaluate_Family$Family)
+
+# Additional taxa found in source dataframe.
+diff_family <- setdiff(dfSource_Family$name, dfEvaluate_Family$Family)
+dfDiff_Family <- dfSource_Family %>%
+  filter(name %in% diff_family)
+
+# All the additional families selected are less than 0.3% of relative abundance.
 
 
 
+### Do the same for Phylum.
+# Create a separate dataframe for Phylum level data for the evaluation data.
+dfEvaluate_Phylum <- dfEvaluate_Tidy[,2:9]
+
+# Remove rows with NAs in Phylum
+dfEvaluate_Phylum <- dfEvaluate_Phylum[complete.cases(dfEvaluate_Phylum$Phylum),]
+
+# Keep rows with NAs in Class - we only want these rows as the abundance information encompasses the whole Phylum.
+dfEvaluate_Phylum <- dfEvaluate_Phylum[!complete.cases(dfEvaluate_Phylum$Class),]
+dfEvaluate_Phylum <- dfEvaluate_Phylum[,c(1, 8)]
+
+# Convert abundance information from character to numerical values.
+dfEvaluate_Phylum[,2] <- as.numeric(dfEvaluate_Phylum[,2])
+sapply(dfEvaluate_Phylum, class)
+
+# Sum the abundance for each sample.
+round(sum(dfEvaluate_Phylum[, 2]), 3)
+
+# Fix the rownames.
+rownames(dfEvaluate_Phylum) <- 1:nrow(dfEvaluate_Phylum)
+
+
+# Create a separate dataframe for Phylum level data for the source data.
+dfSource %>%
+  count(rank)
+# 12 Phylum level
+
+dfSource_Phylum <- dfSource %>%
+  filter(rank == "phylum")
+
+# Number of unique Phylum names.
+length(unique(dfSource_Phylum$name)) # all unique
+
+# Convert count data to relative abundance.
+dfSource_Phylum[, 5:6] <- sapply(dfSource_Phylum[, 5:6], make_relative)
+
+dfSource_Phylum[, 5:6] <- sapply(dfSource_Phylum[, 5:6], function(x) round(x, 6))
+
+# Use total count column for comparison with MetaPhlAn output.
+dfSource_Phylum <- dfSource_Phylum[, 4:5]
+
+# Reorder based on percentage.
+dfSource_Phylum <- dfSource_Phylum %>%
+  arrange(desc(total_count))
+
+
+## Create a Venn Diagram showing the overlapping taxa detected. Data needs to be in a list form.
+list_Phylum <- list(Source = dfSource_Phylum$name,
+                    Pipeline = dfEvaluate_Phylum$Phylum)
+
+ggVennDiagram(list_Phylum,
+              label_alpha = 0,
+              edge_size = 0.05) +
+  scale_fill_gradient(low = "#cfebe9", high = "#2ad4c3") +
+  ggtitle("Venn diagram for Phylum level comparison") +
+  easy_center_title()
+
+# Top five Phylum taxa found in each dataframe.
+dfSource_Phylum[1:5,] ; dfEvaluate_Phylum[1:5,]
+
+# Same top four; the sixth Phylum corresponds to the fifth in dfEvaluate_Phylum
+#https://academic.oup.com/dnaresearch/article/26/5/391/5541856
+#https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8317196/pdf/TSM2-4-174.pdf
+
+# The intersecting taxa.
+intersect(dfSource_Phylum$name, dfEvaluate_Phylum$Phylum)
+
+# Additional taxa found in source dataframe.
+diff_phylum <- setdiff(dfSource_Phylum$name, dfEvaluate_Phylum$Phylum)
+dfDiff_Phylum<- dfSource_Phylum %>%
+  filter(name %in% diff_phylum)
+
+# All the additional families selected are less than 0.03% of relative abundance.
 
 
 #### . REFERENCES ----
