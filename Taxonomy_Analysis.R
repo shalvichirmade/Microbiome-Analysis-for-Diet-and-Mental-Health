@@ -1083,12 +1083,12 @@ write_tsv(dfEvaluate_Tidy, file = "Evaluation_Abundance_Table.tsv", col_names = 
 dfSource <- read_csv("bquxjob_bf4b274_181ed506074.csv")
 View(dfSource)
 
-# Pivot table based on taxonomy rank.
-test <- dfSource
-test <- test %>%
-  extract(rank,
-          into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
-          regex = c("kingdom", "phylum", "Class", "Order", "Family", "Genus", "Species"),)
+# # Pivot table based on taxonomy rank.
+# test <- dfSource
+# test <- test %>%
+#   pivot_wider(names_from = rank, values_from = name, values_fill = "NA")
+
+
 
 
 
