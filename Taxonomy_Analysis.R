@@ -1149,8 +1149,10 @@ ggVennDiagram(list_Family,
   ggtitle("Venn diagram for Family level comparison") +
   easy_center_title()
   
+# Top five Family taxa found in each dataframe.
+dfSource_Family[1:5,] ; dfEvaluate_Family[1:5,]
 
-
+# Same top five, the additional Families detected are before 1% of relative abundance.
 
 
 
