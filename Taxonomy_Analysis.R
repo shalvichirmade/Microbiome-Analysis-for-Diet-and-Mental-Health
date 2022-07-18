@@ -992,7 +992,7 @@ summary(medoid3_2)
 
 #### 8. Evaluation of Pipeline ----
 
-
+# The following are the terminal outputs regarding the pre-processing and MetaPhlAn steps of the sequence file being evaluated against the created pipeline.
 
 ## Trimmomatic terminal output:
   # Input Read Pairs: 4664804 Both Surviving: 4427724 (94.92%) Forward Only Surviving: 157515 (3.38%) Reverse Only Surviving: 50893 (1.09%) Dropped: 28672 (0.61%)
@@ -1005,10 +1005,19 @@ summary(medoid3_2)
   # Stdev join len: 39.45
   # Version: 1.3.1
 
-
 ## MetaPhlAn terminal output:
   # WARNING: The metagenome profile contains clades that represent multiple species merged into a single representant.
   # An additional column listing the merged species is added to the MetaPhlAn output.
+
+
+
+
+
+
+
+
+
+
 
 #### . REFERENCES ----
 
