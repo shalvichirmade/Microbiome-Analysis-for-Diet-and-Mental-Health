@@ -1077,7 +1077,7 @@ dfEvaluate_Tidy <- dfEvaluate_Tidy %>%
 # The additional species columns can be used later when comparing taxonomy found.
 
 # Export dfEvaluate_Tidy as a .tsv file for cleaner raw data. Code commented out as it does not need to be redone.
-write_tsv(dfEvaluate_Tidy, file = "Evaluation_Abundance_Table.tsv", col_names = T)
+#write_tsv(dfEvaluate_Tidy, file = "Evaluation_Abundance_Table.tsv", col_names = T)
 
 
 
@@ -1241,6 +1241,9 @@ dfDiff_Phylum<- dfSource_Phylum %>%
   filter(name %in% diff_phylum)
 
 # All the additional families selected are less than 0.03% of relative abundance.
+
+
+# I also used all the additional species column and conducted a Venn diagram again. Produced the same result so I deleted the code.
 
 
 #### . REFERENCES ----
