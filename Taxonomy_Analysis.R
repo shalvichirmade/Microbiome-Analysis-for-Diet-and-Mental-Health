@@ -1011,6 +1011,69 @@ summary(medoid3_2)
 
 
 
+### Import and clean the taxonomy file from the evaluation, after MetaPhlAn.
+
+# Import the merged taxa file.
+dfEvaluate <- read.delim("N_S002_9_S57_merged_profile.txt", header = F)
+View(dfEvaluate)
+
+# Row 1, 2 and 3 contains the name of the database used for the taxonomy analysis - will be deleted.
+dfEvaluate <- dfEvaluate[-c(1,2,3),]
+
+# Now Row 1 contains the column names, will make those the names of the columns of the dataframe and delete the row.
+colnames(dfEvaluate) <- dfEvaluate[1,]
+colnames(dfEvaluate)
+dfEvaluate <- dfEvaluate[-1,]
+
+# Make rownames clean.
+rownames(dfEvaluate) <- 1:(nrow(dfEvaluate))
+
+# Clean column names.
+colnames(dfEvaluate)[1] <- "clade_name"
+
+
+# Create a new dataframe with the clade information separated into different columns.
+dfEvaluate_Tidy <- dfEvaluate
+dfEvaluate_Tidy <- dfEvaluate_Tidy %>% 
+  separate(clade_name, 
+           into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"), 
+           sep = "\\|", 
+           extra = "merge")
+
+
+# Clean all the rank names - i.e. remove "x__".
+for (i in 1:7){
+  dfEvaluate_Tidy[,i] <- sapply(str_split(dfEvaluate_Tidy[,i], "__"), "[", 2)
+} 
+
+
+# Remove genus name from species column.
+dfEvaluate_Tidy[,7] <- sapply(str_split(dfEvaluate_Tidy[,7], "_", n = 2), "[", 2)
+
+
+# The number of NAs in each taxonomic rank column
+sapply(dfEvaluate_Tidy[,1:7], function(x) sum(is.na(x)))
+# Kingdom  Phylum   Class   Order  Family   Genus  Species 
+# 0        2        7       17     28       50     88 
+
+
+# Remove variables that are not required downstream.
+rm(i)
+
+
+# Separate out the additional species column into the number of species present.
+str_count(dfEvaluate_Tidy$additional_species, ",") # one row has 13 species
+
+dfEvaluate_Tidy <- dfEvaluate_Tidy %>% 
+  separate(additional_species, 
+           into = paste0("Species", 1:13), 
+           sep = ",", 
+           extra = "merge")
+
+# The additional species columns can be used later when comparing taxonomy found.
+
+# Export dfEvaluate_Tidy as a .tsv file for cleaner raw data. Code commented out as it does not need to be redone.
+write_tsv(dfEvaluate_Tidy, file = "Evaluation_Abundance_Table.tsv", col_names = T)
 
 
 
