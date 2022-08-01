@@ -393,6 +393,13 @@ fviz_dend(hc, k = 5,
 
 # As the value of k decreases, the groups on the right come together first, leaving samples 9,6 5 to be added last.
 
+# plot(agnes(distDissim,
+#            method = "average"),
+#      main = "B. Complete Linkage using Agnes",
+#      xlab = "Differentially Expressed Genes",
+#      which.plot = 2,
+#      cex = 0.5)
+
 # Remove variables no longer required.
 rm(hc)
 
