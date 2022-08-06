@@ -1,7 +1,7 @@
 #### Script for Microbiome Taxonomy Analysis
 
 ## Author: Shalvi Chirmade
-## BINF*6999 Research Project Summer 2022
+## BINF*6999 Bioinformatics Masters Project - Summer 2022
 
 ## Van Raay Lab at the University of Guelph
 
