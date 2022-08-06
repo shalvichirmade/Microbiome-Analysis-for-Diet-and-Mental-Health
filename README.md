@@ -19,6 +19,6 @@ There are several software available to carry out this proposed workflow, such a
 
 The foundation of this project is important, both to science and society, as there are distinct correlations between diet and mental health, yet minimal research has been conducted on the causative factors of the involved diet-derived metabolites. Identification of the two donor samples is the initial step to be able to answer this dilemma and the use of the new pipeline will allow for consistency over the course of the project. The ultimate goal is to identify the specific dietary fibres which contribute to beneficial impacts upon mental well-being.
 
-![Figure 1: Workflow for the full project.](https://github.com/shalvichirmade/Microbiome-Analysis-for-Diet-and-Mental-Health/blob/main/Workflow - final.png?raw=true)
+![Figure 1: Workflow for the full project.](Workflow - final.png)
 
 
