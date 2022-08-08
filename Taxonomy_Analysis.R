@@ -157,7 +157,7 @@ dfFamily %>%
   summarise(mean = mean(Abundance)) %>%
   arrange(desc(mean))
 
-# Create an "Other" category based on a threshold of abundance 5%
+# Create an "Other" category based on a threshold of abundance 10%
 dfFamily_pool <- dfFamily %>%
   group_by(Family) %>%
   summarise(pool = max(Abundance) < 10, 
@@ -214,10 +214,6 @@ sapply(dfPhylum, class)
 
 # Sum the abundance for each sample.
 round(sapply(dfPhylum[, 2:11], sum), 3)
-
-# Save this dataframe to be used later to create a phyloseq object.
-dfOTU <- dfPhylum
-
 
 # Make the columns into rows - result checked to make sure the transformation was accurate.
 dfPhylum <- pivot_longer(dfPhylum, cols = 2:11, names_to = "Sample")
@@ -402,7 +398,7 @@ rm(hc)
 # Takes a few minutes to run.
 fviz_nbclust(t(matScaled), pam, method = "wss") +
   geom_vline(xintercept = 3, linetype = 2) +
-  labs(subtitle = "WSS Elbow method for Kmedoid (genes)")
+  labs(subtitle = "WSS Elbow method for Kmedoid (samples)")
 # Optimal cluster at 3
 
 # Create the k-medoid plot.
