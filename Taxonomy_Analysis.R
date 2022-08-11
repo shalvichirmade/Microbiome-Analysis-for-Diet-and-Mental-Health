@@ -401,6 +401,7 @@ fviz_nbclust(t(matScaled), pam, method = "wss") +
   labs(subtitle = "WSS Elbow method for Kmedoid (samples)")
 # Optimal cluster at 3
 
+
 # Create the k-medoid plot.
 medoid3 <- pam(matScaled, 3)
 medoid3
